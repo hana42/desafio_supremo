@@ -1,7 +1,8 @@
-import 'package:dartz/dartz.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
+import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/domain/entities/statement.dart';
 import 'package:desafio_supremo/domain/usecases/get_statement.dart';
 
@@ -30,9 +31,53 @@ void main() {
       when(mockStatementRepository.getStatement('10', '1'))
           .thenAnswer((_) async => Right(testStatement));
 
-      final result = await usecase.execute('10', '1');
+      final result = await usecase.get('10', '1');
 
       expect(result, equals(Right(testStatement)));
     },
   );
+
+  String limit = '10';
+  String offset = '1';
+
+  group('getStatement', () {
+    test(
+      'returns a Statement when successful',
+      () async {
+        when(mockStatementRepository.getStatement('10', '1'))
+            .thenAnswer((_) async => Right(testStatement));
+
+        final result = await usecase.get(limit, offset);
+
+        expect(result.isRight, true);
+        expect(result.right, isA<Statement>());
+      },
+    );
+
+    test(
+      'throws an exception when server fails',
+      () async {
+        when(mockStatementRepository.getStatement('10', '1'))
+            .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
+
+        final result = await usecase.get(limit, offset);
+
+        expect(result.isLeft, true);
+        expect(result.left, isA<Failure>());
+      },
+    );
+
+    test(
+      'throws an exception when connection fails',
+      () async {
+        when(mockStatementRepository.getStatement('10', '1')).thenAnswer(
+            (_) async => const Left(ConnectionFailure('No connection')));
+
+        final result = await usecase.get(limit, offset);
+
+        expect(result.isLeft, true);
+        expect(result.left, isA<Failure>());
+      },
+    );
+  });
 }

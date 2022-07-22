@@ -1,7 +1,8 @@
-import 'package:dartz/dartz.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
+import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/domain/entities/balance.dart';
 import 'package:desafio_supremo/domain/usecases/get_balance.dart';
 
@@ -18,17 +19,44 @@ void main() {
 
   const testBalance = Balance(amount: 1245);
 
-  const tAmount = 1245;
+  group('getBalance', () {
+    test(
+      'returns a Balance when successful',
+      () async {
+        when(mockBalanceRepository.getBalance())
+            .thenAnswer((_) async => const Right(testBalance));
 
-  test(
-    'should get current balance from the repository',
-    () async {
-      when(mockBalanceRepository.getBalance(tAmount))
-          .thenAnswer((_) async => const Right(testBalance));
+        final result = await usecase.get();
 
-      final result = await usecase.execute(tAmount);
+        expect(result.isRight, true);
+        expect(result.right, isA<Balance>());
+      },
+    );
 
-      expect(result, equals(const Right(testBalance)));
-    },
-  );
+    test(
+      'throws an exception when server fails',
+      () async {
+        when(mockBalanceRepository.getBalance())
+            .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
+
+        final result = await usecase.get();
+
+        expect(result.isLeft, true);
+        expect(result.left, isA<Failure>());
+      },
+    );
+
+    test(
+      'throws an exception when connection fails',
+      () async {
+        when(mockBalanceRepository.getBalance()).thenAnswer(
+            (_) async => const Left(ConnectionFailure('No connection')));
+
+        final result = await usecase.get();
+
+        expect(result.isLeft, true);
+        expect(result.left, isA<Failure>());
+      },
+    );
+  });
 }

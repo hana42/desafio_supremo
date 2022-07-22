@@ -1,7 +1,8 @@
-import 'package:dartz/dartz.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
+import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/domain/entities/detail.dart';
 import 'package:desafio_supremo/domain/usecases/get_detail.dart';
 
@@ -28,15 +29,44 @@ void main() {
 
   const tId = '49E27207-F3A7-4264-B021-0188690F7D43';
 
-  test(
-    'should get detail from the repository',
-    () async {
-      when(mockDetailRepository.getDetail(tId))
-          .thenAnswer((_) async => Right(testDetail));
+  group('getBalance', () {
+    test(
+      'returns a Detail when successful',
+      () async {
+        when(mockDetailRepository.getDetail(tId))
+            .thenAnswer((_) async => Right(testDetail));
 
-      final result = await usecase.execute(tId);
+        final result = await usecase.get(tId);
 
-      expect(result, equals(Right(testDetail)));
-    },
-  );
+        expect(result.isRight, true);
+        expect(result.right, isA<Detail>());
+      },
+    );
+
+    test(
+      'throws an exception when server fails',
+      () async {
+        when(mockDetailRepository.getDetail(tId))
+            .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
+
+        final result = await usecase.get(tId);
+
+        expect(result.isLeft, true);
+        expect(result.left, isA<Failure>());
+      },
+    );
+
+    test(
+      'throws an exception when connection fails',
+      () async {
+        when(mockDetailRepository.getDetail(tId)).thenAnswer(
+            (_) async => const Left(ConnectionFailure('No connection')));
+
+        final result = await usecase.get(tId);
+
+        expect(result.isLeft, true);
+        expect(result.left, isA<Failure>());
+      },
+    );
+  });
 }
