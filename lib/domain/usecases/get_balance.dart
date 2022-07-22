@@ -8,7 +8,7 @@ class GetBalance {
   final BalanceRepository repository;
   GetBalance(this.repository);
 
-  Future<Either<Failure, Balance>> execute(int amount) {
-    return repository.getBalance(amount);
+  Future<Either<Failure, Balance>> get() {
+    return repository.getBalance();
   }
 }
