@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'core/theme/theme.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -13,7 +11,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: CustomTheme().lightTheme,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
