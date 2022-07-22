@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class Detail extends Equatable {
-  const Detail({
+class DetailModel extends Equatable {
+  const DetailModel({
     required this.amount,
     required this.id,
     required this.authentication,
@@ -19,7 +19,7 @@ class Detail extends Equatable {
   final String? to;
   final String description;
 
-  Detail copyWith({
+  DetailModel copyWith({
     required int amount,
     required String id,
     required String authentication,
@@ -28,7 +28,7 @@ class Detail extends Equatable {
     required String to,
     required String description,
   }) =>
-      Detail(
+      DetailModel(
         amount: amount,
         id: id,
         authentication: authentication,
@@ -38,7 +38,7 @@ class Detail extends Equatable {
         description: description,
       );
 
-  factory Detail.fromJson(Map<String, dynamic> json) => Detail(
+  factory DetailModel.fromJson(Map<String, dynamic> json) => DetailModel(
         amount: json['amount'],
         id: json['id'],
         authentication: json['authentication'],
@@ -58,7 +58,7 @@ class Detail extends Equatable {
         'description': description,
       };
 
-  Detail toEntity() => Detail(
+  DetailModel toEntity() => DetailModel(
         amount: amount,
         id: id,
         authentication: authentication,

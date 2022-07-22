@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class Statement extends Equatable {
-  const Statement({
+class StatementModel extends Equatable {
+  const StatementModel({
     required this.createdAt,
     required this.id,
     required this.amount,
@@ -21,7 +21,7 @@ class Statement extends Equatable {
   final String? from;
   final String? bankName;
 
-  Statement copyWith({
+  StatementModel copyWith({
     required DateTime createdAt,
     required String id,
     required int amount,
@@ -31,7 +31,7 @@ class Statement extends Equatable {
     String? from,
     String? bankName,
   }) =>
-      Statement(
+      StatementModel(
         createdAt: createdAt,
         id: id,
         amount: amount,
@@ -42,7 +42,7 @@ class Statement extends Equatable {
         bankName: bankName,
       );
 
-  factory Statement.fromJson(Map<String, dynamic> json) => Statement(
+  factory StatementModel.fromJson(Map<String, dynamic> json) => StatementModel(
         createdAt: DateTime.parse(json['createdAt']),
         id: json['id'],
         amount: json['amount'],
@@ -64,7 +64,7 @@ class Statement extends Equatable {
         'bankName': bankName,
       };
 
-  Statement toEntity() => Statement(
+  StatementModel toEntity() => StatementModel(
         createdAt: createdAt,
         id: id,
         amount: amount,

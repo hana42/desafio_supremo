@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
 
-class Balance extends Equatable {
-  const Balance({required this.amount});
+class BalanceModel extends Equatable {
+  const BalanceModel({required this.amount});
 
   final int amount;
 
-  Balance copyWith({required int amount}) => Balance(amount: amount);
+  BalanceModel copyWith({required int amount}) => BalanceModel(amount: amount);
 
-  factory Balance.fromJson(Map<String, dynamic> json) =>
-      Balance(amount: json['amount']);
+  factory BalanceModel.fromJson(Map<String, dynamic> json) =>
+      BalanceModel(amount: json['amount']);
 
   Map<String, dynamic> toJson() => {'amount': amount};
 
-  Balance toEntity() => Balance(amount: amount);
+  BalanceModel toEntity() => BalanceModel(amount: amount);
 
   @override
   List<Object?> get props => [amount];
