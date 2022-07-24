@@ -54,7 +54,12 @@ const TextStyle kBodyTextEmphasis =
 const TextStyle kTextButton = TextStyle(fontSize: 18, color: kLightGrey);
 >>>>>>> Stashed changes
 
-TextTheme kTextTheme = Typography().black.copyWith(
+const TextStyle kTextButtom = TextStyle(
+  fontSize: 18,
+  color: kLightGrey,
+);
+
+TextTheme kTextTheme = Typography().white.copyWith(
       headline5: kHeader5,
       headline6: kHeader6,
       subtitle1: kSubtitle,
