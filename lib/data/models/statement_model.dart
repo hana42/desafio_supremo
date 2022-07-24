@@ -1,3 +1,4 @@
+import 'package:desafio_supremo/domain/entities/statement.dart';
 import 'package:equatable/equatable.dart';
 
 class StatementModel extends Equatable {
@@ -64,7 +65,7 @@ class StatementModel extends Equatable {
         'bankName': bankName,
       };
 
-  StatementModel toEntity() => StatementModel(
+  Statement toEntity() => Statement(
         createdAt: createdAt,
         id: id,
         amount: amount,

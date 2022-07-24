@@ -1,0 +1,9 @@
+{
+  "createdAt": "2020-11-19T03:00:00Z",
+  "authentication": "15BA0BB3-EFDB-44E9-99BA-3D0F8725C0E3",
+  "amount": 1615,
+  "to": "Karen Amidala",
+  "description": "Transferência PIX recebida",
+  "id": "49E27207-F3A7-4264-B021-0188690F7D43",
+  "tType": "PIXCASHIN"
+}

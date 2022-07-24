@@ -1,3 +1,4 @@
+import 'package:desafio_supremo/domain/entities/detail.dart';
 import 'package:equatable/equatable.dart';
 
 class DetailModel extends Equatable {
@@ -7,7 +8,8 @@ class DetailModel extends Equatable {
     required this.authentication,
     required this.tType,
     required this.createdAt,
-    required this.to,
+    this.to,
+    this.from,
     required this.description,
   });
 
@@ -17,6 +19,7 @@ class DetailModel extends Equatable {
   final String tType;
   final DateTime createdAt;
   final String? to;
+  final String? from;
   final String description;
 
   DetailModel copyWith({
@@ -25,7 +28,8 @@ class DetailModel extends Equatable {
     required String authentication,
     required String tType,
     required DateTime createdAt,
-    required String to,
+    String? to,
+    String? from,
     required String description,
   }) =>
       DetailModel(
@@ -35,6 +39,7 @@ class DetailModel extends Equatable {
         tType: tType,
         createdAt: createdAt,
         to: to,
+        from: from,
         description: description,
       );
 
@@ -45,6 +50,7 @@ class DetailModel extends Equatable {
         tType: json['tType'],
         createdAt: DateTime.parse(json['createdAt']),
         to: json['to'],
+        from: json['from'],
         description: json['description'],
       );
 
@@ -53,22 +59,24 @@ class DetailModel extends Equatable {
         'id': id,
         'authentication': authentication,
         'tType': tType,
-        'createdAt': createdAt.toIso8601String(),
+        'createdAt': createdAt.toLocal(),
         'to': to,
+        'from': from,
         'description': description,
       };
 
-  DetailModel toEntity() => DetailModel(
+  Detail toEntity() => Detail(
         amount: amount,
         id: id,
         authentication: authentication,
         tType: tType,
         createdAt: createdAt,
         to: to,
+        from: from,
         description: description,
       );
 
   @override
   List<Object?> get props =>
-      [amount, id, authentication, tType, createdAt, to, description];
+      [amount, id, authentication, tType, createdAt, to, from, description];
 }

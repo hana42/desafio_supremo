@@ -5,15 +5,6 @@ class Balance extends Equatable {
 
   final int amount;
 
-  Balance copyWith({required int amount}) => Balance(amount: amount);
-
-  factory Balance.fromJson(Map<String, dynamic> json) =>
-      Balance(amount: json['amount']);
-
-  Map<String, dynamic> toJson() => {'amount': amount};
-
-  Balance toEntity() => Balance(amount: amount);
-
   @override
   List<Object?> get props => [amount];
 }

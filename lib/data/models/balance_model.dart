@@ -1,3 +1,4 @@
+import 'package:desafio_supremo/domain/entities/balance.dart';
 import 'package:equatable/equatable.dart';
 
 class BalanceModel extends Equatable {
@@ -12,7 +13,7 @@ class BalanceModel extends Equatable {
 
   Map<String, dynamic> toJson() => {'amount': amount};
 
-  BalanceModel toEntity() => BalanceModel(amount: amount);
+  Balance toEntity() => Balance(amount: amount);
 
   @override
   List<Object?> get props => [amount];

@@ -20,43 +20,37 @@ void main() {
   const testBalance = Balance(amount: 1245);
 
   group('getBalance', () {
-    test(
-      'returns a Balance when successful',
-      () async {
-        when(mockBalanceRepository.getBalance())
-            .thenAnswer((_) async => const Right(testBalance));
+    test('returns a Balance when successful', () async {
+      when(mockBalanceRepository.getBalance())
+          .thenAnswer((_) async => const Right(testBalance));
 
-        final result = await usecase.get();
+      final result = await usecase.get();
 
-        expect(result.isRight, true);
-        expect(result.right, isA<Balance>());
-      },
-    );
+      expect(result.isRight, true);
+      expect(result.right, isA<Balance>());
+      expect(result.right, equals(testBalance));
+    });
 
-    test(
-      'throws an exception when server fails',
-      () async {
-        when(mockBalanceRepository.getBalance())
-            .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
+    test('throws an exception when server fails', () async {
+      when(mockBalanceRepository.getBalance())
+          .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
 
-        final result = await usecase.get();
+      final result = await usecase.get();
 
-        expect(result.isLeft, true);
-        expect(result.left, isA<Failure>());
-      },
-    );
+      expect(result.isLeft, true);
+      expect(result.left, isA<Failure>());
+      expect(result.left, isA<ServerFailure>());
+    });
 
-    test(
-      'throws an exception when connection fails',
-      () async {
-        when(mockBalanceRepository.getBalance()).thenAnswer(
-            (_) async => const Left(ConnectionFailure('No connection')));
+    test('throws an exception when connection fails', () async {
+      when(mockBalanceRepository.getBalance()).thenAnswer(
+          (_) async => const Left(ConnectionFailure('No connection')));
 
-        final result = await usecase.get();
+      final result = await usecase.get();
 
-        expect(result.isLeft, true);
-        expect(result.left, isA<Failure>());
-      },
-    );
+      expect(result.isLeft, true);
+      expect(result.left, isA<Failure>());
+      expect(result.left, isA<ConnectionFailure>());
+    });
   });
 }
