@@ -115,6 +115,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       children: [
                         const Text(
                           'David Bond',
+                          style: TextStyle(color: kDarkGrey),
                           strutStyle: StrutStyle(leading: 1.5),
                         ),
                         Text(
@@ -126,6 +127,7 @@ class _StatementsPageState extends State<StatementsPage> {
                     ),
                     trailing: const Text(
                       '18/05',
+                      style: TextStyle(color: kDarkGrey),
                       strutStyle: StrutStyle(leading: 2),
                     ),
                   ),
