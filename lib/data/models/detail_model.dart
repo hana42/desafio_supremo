@@ -1,5 +1,6 @@
 import 'package:desafio_supremo/domain/entities/detail.dart';
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 
 class DetailModel extends Equatable {
   const DetailModel({
@@ -59,7 +60,7 @@ class DetailModel extends Equatable {
         'id': id,
         'authentication': authentication,
         'tType': tType,
-        'createdAt': createdAt.toLocal(),
+        'createdAt': DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt),
         'to': to,
         'from': from,
         'description': description,
