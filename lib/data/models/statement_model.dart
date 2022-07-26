@@ -1,5 +1,6 @@
 import 'package:desafio_supremo/domain/entities/statement.dart';
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 
 class StatementModel extends Equatable {
   const StatementModel({
@@ -55,7 +56,7 @@ class StatementModel extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-        'createdAt': createdAt.toIso8601String(),
+        'createdAt': DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt),
         'id': id,
         'amount': amount,
         'to': to,
