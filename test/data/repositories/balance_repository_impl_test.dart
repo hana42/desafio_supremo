@@ -1,26 +1,25 @@
 import 'dart:io';
 
-import 'package:either_dart/either.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/exception.dart';
 import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/data/models/balance_model.dart';
-import 'package:desafio_supremo/data/repositories/balance_repository.dart';
+import 'package:desafio_supremo/data/repositories/balance_repository_impl.dart';
 import 'package:desafio_supremo/domain/entities/balance.dart';
 
-import '../../../helpers/test_helper.mocks.dart';
+import '../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late MockBalanceRemoteDataSource mockBalanceRemoteDataSource;
+  late MockBalanceRemoteDataSourceImpl mockBalanceRemoteDataSource;
   late BalanceRepositoryImpl repository;
 
   const tBalanceModel = BalanceModel(amount: 1345);
   const tBalance = Balance(amount: 1345);
 
   setUp(() {
-    mockBalanceRemoteDataSource = MockBalanceRemoteDataSource();
+    mockBalanceRemoteDataSource = MockBalanceRemoteDataSourceImpl();
     repository = BalanceRepositoryImpl(
         balanceRemoteDataSource: mockBalanceRemoteDataSource);
   });

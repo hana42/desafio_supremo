@@ -14,7 +14,7 @@ import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
-  late DetailRemoteDataSourceImpl dataSource;
+  late DetailRemoteDataSource dataSource;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
