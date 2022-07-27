@@ -6,10 +6,9 @@ import 'package:timelines/timelines.dart';
 import '../../core/theme/colors.dart';
 import '../../core/theme/constants.dart';
 
-import '../bloc/balance/balance_state.dart';
-import '../bloc/statement/statement_bloc.dart';
+import '../bloc/statement/statement_bloc_2.dart';
 import '../bloc/statement/statement_event.dart';
-import '../bloc/statement/statement_state.dart';
+import '../bloc/statement/statement_state_2.dart';
 
 class StatementList extends StatefulWidget {
   const StatementList({Key? key}) : super(key: key);
