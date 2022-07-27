@@ -1,3 +1,4 @@
+import 'package:desafio_supremo/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
@@ -5,7 +6,7 @@ import 'colors.dart';
 class CustomTheme {
   ThemeData lightTheme = ThemeData.light().copyWith(
     primaryColor: kBlack,
-    textTheme: null,
+    textTheme: kTextTheme,
     colorScheme: kColorScheme,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(elevation: 0),
