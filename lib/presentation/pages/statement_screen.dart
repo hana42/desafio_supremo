@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:desafio_supremo/core/theme/constants.dart';
 import 'package:desafio_supremo/injection.dart';
-
 import 'package:desafio_supremo/presentation/bloc/statement/statement_bloc.dart';
 import 'package:desafio_supremo/presentation/bloc/statement/statement_event.dart';
 import 'package:desafio_supremo/presentation/bloc/statement/statement_state.dart';
@@ -21,9 +21,16 @@ class StatementScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: Column(
-          children: const [
-            BalanceWidget(),
-            Expanded(child: StatementBody()),
+          children: [
+            const BalanceWidget(),
+            Padding(
+              padding: kDefaultPadding,
+              child: Text(
+                'Suas movimentações',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+            const Expanded(child: StatementBody()),
           ],
         ));
   }
@@ -79,7 +86,7 @@ class _StatementBodyState extends State<StatementBody> {
           } else if (state is StatementError) {
             return const Center(child: Text('Error'));
           } else {
-            return const Center(child: Text('caiu no else'));
+            return const Center(child: Text(''));
           }
         });
   }
