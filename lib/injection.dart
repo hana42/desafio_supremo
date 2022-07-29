@@ -22,49 +22,53 @@ final locator = GetIt.instance;
 
 void init() {
   // bloc
-  locator.registerFactory(() => BalanceBloc(locator()));
-  locator.registerFactory(() => StatementBloc(locator()));
-  locator.registerFactory(() => DetailBloc(locator()));
+  locator.registerFactory(
+    () => BalanceBloc(locator()),
+  );
+  locator.registerFactory(
+    () => StatementBloc(locator()),
+  );
+  locator.registerFactory(
+    () => DetailBloc(locator()),
+  );
 
   // usecase
-  locator.registerLazySingleton(() => GetBalance(locator()));
-  locator.registerLazySingleton(() => GetStatement(locator()));
-  locator.registerLazySingleton(() => GetDetail(locator()));
+  locator.registerLazySingleton(
+    () => GetBalance(locator()),
+  );
+  locator.registerLazySingleton(
+    () => GetStatement(locator()),
+  );
+  locator.registerLazySingleton(
+    () => GetDetail(locator()),
+  );
 
   // repository
   locator.registerLazySingleton<BalanceRepository>(
-    () => BalanceRepositoryImpl(
-      balanceRemoteDataSource: locator(),
-    ),
+    () => BalanceRepositoryImpl(balanceRemoteDataSource: locator()),
   );
   locator.registerLazySingleton<StatementRepository>(
-    () => StatementRepositoryImpl(
-      statementRemoteDataSource: locator(),
-    ),
+    () => StatementRepositoryImpl(statementRemoteDataSource: locator()),
   );
   locator.registerLazySingleton<DetailRepository>(
-    () => DetailRepositoryImpl(
-      detailRemoteDataSource: locator(),
-    ),
+    () => DetailRepositoryImpl(detailRemoteDataSource: locator()),
   );
 
   // datasources
   locator.registerLazySingleton<BalanceRemoteDataSource>(
-    () => BalanceRemoteDataSourceImpl(
-      client: locator(),
-    ),
+    () => BalanceRemoteDataSourceImpl(client: locator()),
   );
+
   locator.registerLazySingleton<StatementRemoteDataSource>(
-    () => StatementRemoteDataSourceImpl(
-      client: locator(),
-    ),
+    () => StatementRemoteDataSourceImpl(client: locator()),
   );
+
   locator.registerLazySingleton<DetailRemoteDataSource>(
-    () => DetailRemoteDataSourceImpl(
-      client: locator(),
-    ),
+    () => DetailRemoteDataSourceImpl(client: locator()),
   );
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(
+    () => http.Client(),
+  );
 }
