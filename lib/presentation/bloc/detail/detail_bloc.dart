@@ -12,7 +12,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
     on<FetchDetail>((event, emit) async {
       emit(DetailLoading());
 
-      final result = await _getDetail.get('1');
+      final result = await _getDetail.get(event.id);
       result.fold(
         (failure) {
           emit(DetailError(failure.message));

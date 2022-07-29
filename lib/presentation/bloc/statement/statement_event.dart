@@ -8,5 +8,6 @@ abstract class StatementEvent extends Equatable {
 }
 
 class FetchStatement extends StatementEvent {
-  const FetchStatement();
+  final int offset;
+  const FetchStatement(this.offset);
 }

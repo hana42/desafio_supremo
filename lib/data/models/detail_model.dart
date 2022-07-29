@@ -11,6 +11,7 @@ class DetailModel extends Equatable {
     required this.createdAt,
     this.to,
     this.from,
+    this.bankName,
     required this.description,
   });
 
@@ -21,6 +22,7 @@ class DetailModel extends Equatable {
   final DateTime createdAt;
   final String? to;
   final String? from;
+  final String? bankName;
   final String description;
 
   DetailModel copyWith({
@@ -31,6 +33,7 @@ class DetailModel extends Equatable {
     required DateTime createdAt,
     String? to,
     String? from,
+    String? bankName,
     required String description,
   }) =>
       DetailModel(
@@ -41,6 +44,7 @@ class DetailModel extends Equatable {
         createdAt: createdAt,
         to: to,
         from: from,
+        bankName: bankName,
         description: description,
       );
 
@@ -52,6 +56,7 @@ class DetailModel extends Equatable {
         createdAt: DateTime.parse(json['createdAt']),
         to: json['to'],
         from: json['from'],
+        bankName: json['bankName'],
         description: json['description'],
       );
 
@@ -63,6 +68,7 @@ class DetailModel extends Equatable {
         'createdAt': DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt),
         'to': to,
         'from': from,
+        'bankName': bankName,
         'description': description,
       };
 
@@ -74,10 +80,11 @@ class DetailModel extends Equatable {
         createdAt: createdAt,
         to: to,
         from: from,
+        bankName: bankName,
         description: description,
       );
 
   @override
   List<Object?> get props =>
-      [amount, id, authentication, tType, createdAt, to, from, description];
+      [amount, id, authentication, tType, createdAt, to, from, bankName, description];
 }

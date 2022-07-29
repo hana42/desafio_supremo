@@ -34,7 +34,7 @@ const TextStyle kBodyTextEmphasis = TextStyle(
   color: kBlack,
 );
 
-TextTheme kTextTheme = Typography().white.copyWith(
+TextTheme kTextTheme = Typography().black.copyWith(
       headline5: kHeader5,
       headline6: kHeader6,
       subtitle1: kSubtitle,

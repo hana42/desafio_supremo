@@ -8,29 +8,35 @@ import 'statement_event.dart';
 class StatementBloc extends Bloc<StatementEvent, StatementState> {
   final GetStatement _getStatement;
 
-  final limit = '10';
-  int offset = 1;
-
-  StatementBloc(this._getStatement) : super(const StatementEmpty()) {
+  StatementBloc(this._getStatement) : super(StatementEmpty()) {
     on<FetchStatement>((event, emit) async {
-      bool reachedMax = false;
-      if (reachedMax == false) {
-        if (state is StatementEmpty) emit(const StatementLoading());
-        final statements = await _getStatement.get(limit, offset.toString());
-        statements.fold(
+      if (state is StatementEmpty) {
+        final result = await _getStatement.get('10', event.offset.toString());
+
+        result.fold(
           (failure) {
             emit(StatementError(failure.message));
           },
           (data) {
-            print(data.last.to ?? data.last.from);
-            data == []
-                ? reachedMax = true
-                : emit(StatementHasData(data, false, offset));
+            data.isEmpty
+                ? emit(const StatementHasData(hasReachedMax: true))
+                : emit(StatementHasData(statement: data));
           },
         );
-        offset += 1;
-        print('new $offset');
       }
+      final result = await _getStatement.get('10', event.offset.toString());
+
+      result.fold(
+        (failure) {
+          emit(StatementError(failure.message));
+        },
+        (data) {
+          data.isEmpty
+              ? emit(const StatementHasData(hasReachedMax: true))
+              : emit(StatementHasData(
+                  statement: List.of(state.statements)..addAll(data)));
+        },
+      );
     });
   }
 }

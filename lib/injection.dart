@@ -1,11 +1,8 @@
-import 'package:desafio_supremo/presentation/bloc/detail/detail_event.dart';
-import 'package:desafio_supremo/presentation/bloc/statement/statement_event.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:desafio_supremo/domain/usecases/get_detail.dart';
 import 'package:desafio_supremo/domain/usecases/get_statement.dart';
-import 'package:desafio_supremo/presentation/bloc/balance/balance_event.dart';
 
 import 'data/datasources/balance_remote_data_source.dart';
 import 'data/datasources/detail_remote_data_source.dart';
@@ -25,10 +22,9 @@ final locator = GetIt.instance;
 
 void init() {
   // bloc
-  locator.registerFactory(() => BalanceBloc(locator())..add(const FetchBalance()));
-  locator.registerFactory(
-      () => StatementBloc(locator())..add(const FetchStatement()));
-  // locator.registerFactory(() => DetailBloc(locator())..add(const FetchDetail(locator())));
+  locator.registerFactory(() => BalanceBloc(locator()));
+  locator.registerFactory(() => StatementBloc(locator()));
+  locator.registerFactory(() => DetailBloc(locator()));
 
   // usecase
   locator.registerLazySingleton(() => GetBalance(locator()));

@@ -9,6 +9,7 @@ class Detail extends Equatable {
     required this.createdAt,
     this.to,
     this.from,
+    this.bankName,
     required this.description,
   });
 
@@ -19,9 +20,10 @@ class Detail extends Equatable {
   final DateTime createdAt;
   final String? to;
   final String? from;
+  final String? bankName;
   final String description;
 
   @override
   List<Object?> get props =>
-      [amount, id, authentication, tType, createdAt, to, from, description];
+      [amount, id, authentication, tType, createdAt, to, from, bankName, description];
 }
