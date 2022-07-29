@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 
 import 'package:desafio_supremo/core/utils/utils.dart';
-import 'package:desafio_supremo/presentation/widgets/proof_widget.dart';
+import 'package:desafio_supremo/presentation/widgets/detail_list.dart';
 
 import '../../core/theme/colors.dart';
 
@@ -39,7 +39,7 @@ class _DetailScreenState extends State<DetailScreen> {
               controller: _screenshotController,
               child: Container(
                 color: Colors.white,
-                child: ProofWidget(
+                child: DetailList(
                   id: widget.id,
                   size: size,
                 ),

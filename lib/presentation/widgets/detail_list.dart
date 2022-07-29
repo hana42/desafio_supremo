@@ -9,17 +9,17 @@ import '../../core/theme/constants.dart';
 import '../bloc/detail/detail_bloc.dart';
 import '../bloc/detail/detail_state.dart';
 
-class ProofWidget extends StatefulWidget {
+class DetailList extends StatefulWidget {
   final Size size;
   final String id;
-  const ProofWidget({Key? key, required this.id, required this.size})
+  const DetailList({Key? key, required this.id, required this.size})
       : super(key: key);
 
   @override
-  State<ProofWidget> createState() => _ProofWidgetState();
+  State<DetailList> createState() => _DetailListState();
 }
 
-class _ProofWidgetState extends State<ProofWidget> {
+class _DetailListState extends State<DetailList> {
   @override
   void initState() {
     locator.get<DetailBloc>().add(FetchDetail(widget.id));
