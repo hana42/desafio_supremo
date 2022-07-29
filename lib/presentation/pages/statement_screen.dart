@@ -10,8 +10,8 @@ import 'package:desafio_supremo/presentation/widgets/balance_widget.dart';
 
 import '../widgets/statements_list.dart';
 
-class BalancePage extends StatelessWidget {
-  const BalancePage({Key? key}) : super(key: key);
+class StatementScreen extends StatelessWidget {
+  const StatementScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

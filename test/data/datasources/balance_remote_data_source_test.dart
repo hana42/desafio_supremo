@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/exception.dart';
-import 'package:desafio_supremo/core/utils/urls.dart';
+import 'package:desafio_supremo/core/utils/api.utils.dart';
 import 'package:desafio_supremo/data/datasources/balance_remote_data_source.dart';
 import 'package:desafio_supremo/data/models/balance_model.dart';
 
@@ -28,8 +28,8 @@ void main() {
 
     test('returns a balance model when the response code is 200', () async {
       when(mockHttpClient.get(
-        Uri.parse(Urls.balance),
-        headers: Urls.defaultHeaders,
+        Uri.parse(API.balance),
+        headers: API.defaultHeaders,
       )).thenAnswer((_) async => http.Response(
           readJson('helpers/dummy_data/dummy_balance_response.json'), 200));
 
@@ -42,8 +42,8 @@ void main() {
         () async {
       when(
         mockHttpClient.get(
-          Uri.parse(Urls.balance),
-          headers: Urls.defaultHeaders,
+          Uri.parse(API.balance),
+          headers: API.defaultHeaders,
         ),
       ).thenAnswer((_) async => http.Response('Not found', 404));
 

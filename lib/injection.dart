@@ -48,7 +48,7 @@ void init() {
     ),
   );
 
-  // data source
+  // datasources
   locator.registerLazySingleton<BalanceRemoteDataSource>(
     () => BalanceRemoteDataSourceImpl(
       client: locator(),

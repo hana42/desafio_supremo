@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../core/error/exception.dart';
-import '../../core/utils/urls.dart';
+import '../../core/utils/api.utils.dart';
 import '../models/detail_model.dart';
 
 abstract class DetailRemoteDataSource {
@@ -16,8 +16,8 @@ class DetailRemoteDataSourceImpl implements DetailRemoteDataSource {
   @override
   Future<DetailModel> getDetail(String id) async {
     final response = await client.get(
-      Uri.parse(Urls.detail(id)),
-      headers: Urls.defaultHeaders,
+      Uri.parse(API.detail(id)),
+      headers: API.defaultHeaders,
     );
 
     if (response.statusCode == 200) {

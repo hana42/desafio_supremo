@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/exception.dart';
-import 'package:desafio_supremo/core/utils/urls.dart';
+import 'package:desafio_supremo/core/utils/api.utils.dart';
 import 'package:desafio_supremo/data/datasources/statement_remote_data_source.dart';
 import 'package:desafio_supremo/data/models/statement_model.dart';
 
@@ -31,12 +31,12 @@ void main() {
 
     test('returns a statement model when the response code is 200', () async {
       when(mockHttpClient.get(
-        Uri.parse(Urls.statement(limit, offset)),
-        headers: Urls.defaultHeaders,
+        Uri.parse(API.statement(limit, offset)),
+        headers: API.defaultHeaders,
       )).thenAnswer((_) async => http.Response(
           readJson('helpers/dummy_data/dummy_statement_response.json'), 200));
 
-      final result = await dataSource.getStatement(limit, offset);
+      final result = await dataSource.getStatement(offset);
 
       expect(result, equals(tStatementModel));
     });
@@ -45,12 +45,12 @@ void main() {
         () async {
       when(
         mockHttpClient.get(
-          Uri.parse(Urls.statement(limit, offset)),
-          headers: Urls.defaultHeaders,
+          Uri.parse(API.statement(limit, offset)),
+          headers: API.defaultHeaders,
         ),
       ).thenAnswer((_) async => http.Response('Not found', 404));
 
-      final call = dataSource.getStatement(limit, offset);
+      final call = dataSource.getStatement(offset);
 
       expect(() => call, throwsA(isA<ServerException>()));
     });

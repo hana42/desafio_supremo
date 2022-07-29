@@ -9,8 +9,8 @@ class BottomLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: SizedBox(
-        width: 30,
-        height: 30,
+        width: 40,
+        height: 40,
         child: CircularProgressIndicator(color: kPurple),
       ),
     );

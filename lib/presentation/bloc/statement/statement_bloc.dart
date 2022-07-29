@@ -1,9 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:desafio_supremo/domain/usecases/get_statement.dart';
+import 'package:desafio_supremo/presentation/bloc/statement/statement_event.dart';
 import 'package:desafio_supremo/presentation/bloc/statement/statement_state.dart';
-
-import '../../../domain/usecases/get_statement.dart';
-import 'statement_event.dart';
 
 class StatementBloc extends Bloc<StatementEvent, StatementState> {
   final GetStatement _getStatement;
@@ -11,7 +10,7 @@ class StatementBloc extends Bloc<StatementEvent, StatementState> {
   StatementBloc(this._getStatement) : super(StatementEmpty()) {
     on<FetchStatement>((event, emit) async {
       if (state is StatementEmpty) {
-        final result = await _getStatement.get('10', event.offset.toString());
+        final result = await _getStatement.get(event.offset.toString());
 
         result.fold(
           (failure) {
@@ -24,7 +23,7 @@ class StatementBloc extends Bloc<StatementEvent, StatementState> {
           },
         );
       }
-      final result = await _getStatement.get('10', event.offset.toString());
+      final result = await _getStatement.get(event.offset.toString());
 
       result.fold(
         (failure) {

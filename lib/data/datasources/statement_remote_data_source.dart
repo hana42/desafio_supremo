@@ -2,22 +2,25 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../core/error/exception.dart';
-import '../../core/utils/urls.dart';
+import '../../core/utils/api.utils.dart';
+
 import '../models/statement_model.dart';
 
 abstract class StatementRemoteDataSource {
-  Future<List<StatementModel>> getStatement(String limit, String offset);
+  Future<List<StatementModel>> getStatement(String offset);
 }
 
 class StatementRemoteDataSourceImpl implements StatementRemoteDataSource {
   final http.Client client;
   StatementRemoteDataSourceImpl({required this.client});
 
+  final String limit = '10';
+
   @override
-  Future<List<StatementModel>> getStatement(String limit, String offset) async {
+  Future<List<StatementModel>> getStatement(String offset) async {
     final response = await client.get(
-      Uri.parse(Urls.statement(limit, offset)),
-      headers: Urls.defaultHeaders,
+      Uri.parse(API.statement(limit, offset)),
+      headers: API.defaultHeaders,
     );
 
     if (response.statusCode == 200) {

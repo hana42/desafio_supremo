@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../core/error/exception.dart';
-import '../../core/utils/urls.dart';
+import '../../core/utils/api.utils.dart';
+
 import '../models/balance_model.dart';
 
 abstract class BalanceRemoteDataSource {
@@ -16,8 +17,8 @@ class BalanceRemoteDataSourceImpl implements BalanceRemoteDataSource {
   @override
   Future<BalanceModel> getBalance() async {
     final response = await client.get(
-      Uri.parse(Urls.balance),
-      headers: Urls.defaultHeaders,
+      Uri.parse(API.balance),
+      headers: API.defaultHeaders,
     );
 
     if (response.statusCode == 200) {

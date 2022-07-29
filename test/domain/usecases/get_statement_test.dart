@@ -17,7 +17,6 @@ void main() {
     usecase = GetStatement(mockStatementRepository);
   });
 
-  String limit = '10';
   String offset = '1';
 
   Statement testStatement = Statement(
@@ -31,10 +30,10 @@ void main() {
 
   group('getStatement', () {
     test('returns a Statement when successful', () async {
-      when(mockStatementRepository.getStatement(limit, offset))
+      when(mockStatementRepository.getStatement(offset))
           .thenAnswer((_) async => Right([testStatement]));
 
-      final result = await usecase.get(limit, offset);
+      final result = await usecase.get(offset);
 
       expect(result.isRight, true);
       expect(result.right, isA<List<Statement>>());
@@ -42,10 +41,10 @@ void main() {
     });
 
     test('throws an exception when server fails', () async {
-      when(mockStatementRepository.getStatement(limit, offset))
+      when(mockStatementRepository.getStatement(offset))
           .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
 
-      final result = await usecase.get(limit, offset);
+      final result = await usecase.get(offset);
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());
@@ -53,10 +52,10 @@ void main() {
     });
 
     test('throws an exception when connection fails', () async {
-      when(mockStatementRepository.getStatement(limit, offset)).thenAnswer(
+      when(mockStatementRepository.getStatement(offset)).thenAnswer(
           (_) async => const Left(ConnectionFailure('No connection')));
 
-      final result = await usecase.get(limit, offset);
+      final result = await usecase.get(offset);
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());

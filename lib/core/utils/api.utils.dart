@@ -1,4 +1,4 @@
-class Urls {
+class API {
   static const String baseUrl = 'https://bank-statement-bff.herokuapp.com';
   static const Map<String, String> defaultHeaders = {
     'token':
@@ -6,7 +6,9 @@ class Urls {
   };
 
   static String balance = '$baseUrl/myBalance';
+
   static String statement(String limit, String offset) =>
       '$baseUrl/myStatement/$limit/$offset';
+
   static String detail(String id) => '$baseUrl/myStatement/detail/$id';
 }

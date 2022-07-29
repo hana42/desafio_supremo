@@ -8,7 +8,7 @@ class GetStatement {
   final StatementRepository repository;
   GetStatement(this.repository);
 
-  Future<Either<Failure, List<Statement>>> get(String limit, String offset) {
-    return repository.getStatement(limit, offset);
+  Future<Either<Failure, List<Statement>>> get(String offset) {
+    return repository.getStatement(offset);
   }
 }

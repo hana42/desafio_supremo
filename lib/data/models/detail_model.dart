@@ -1,6 +1,7 @@
-import 'package:desafio_supremo/domain/entities/detail.dart';
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
+
+import 'package:desafio_supremo/domain/entities/detail.dart';
 
 class DetailModel extends Equatable {
   const DetailModel({
@@ -85,6 +86,15 @@ class DetailModel extends Equatable {
       );
 
   @override
-  List<Object?> get props =>
-      [amount, id, authentication, tType, createdAt, to, from, bankName, description];
+  List<Object?> get props => [
+        amount,
+        id,
+        authentication,
+        tType,
+        createdAt,
+        to,
+        from,
+        bankName,
+        description
+      ];
 }

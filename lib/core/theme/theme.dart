@@ -1,5 +1,6 @@
-import 'package:desafio_supremo/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
+
+import 'package:desafio_supremo/core/theme/text_styles.dart';
 
 import 'colors.dart';
 

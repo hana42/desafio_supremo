@@ -35,7 +35,6 @@ void main() {
     tType: 'PIXCASHIN',
   );
 
-  const String limit = '10';
   const String offset = '1';
 
   setUp(() {
@@ -47,12 +46,12 @@ void main() {
   group('get current statement', () {
     test('returns current statement when a call to datasource is successful',
         () async {
-      when(mockStatementRemoteDataSource.getStatement(limit, offset))
+      when(mockStatementRemoteDataSource.getStatement(offset))
           .thenAnswer((_) async => [tStatementModel]);
 
-      final result = await repository.getStatement(limit, offset);
+      final result = await repository.getStatement(offset);
 
-      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
+      verify(mockStatementRemoteDataSource.getStatement(offset));
 
       expect(result.isRight, true);
       expect(result.right, equals([tStatement]));
@@ -60,12 +59,12 @@ void main() {
 
     test('returns server failure when a call to data source is unsuccessful',
         () async {
-      when(mockStatementRemoteDataSource.getStatement(limit, offset))
+      when(mockStatementRemoteDataSource.getStatement(offset))
           .thenThrow(ServerException());
 
-      final result = await repository.getStatement(limit, offset);
+      final result = await repository.getStatement(offset);
 
-      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
+      verify(mockStatementRemoteDataSource.getStatement(offset));
 
       expect(result.isLeft, true);
       expect(result.left, equals(const ServerFailure('')));
@@ -73,12 +72,12 @@ void main() {
 
     test('returns connection failure when the device has no internet',
         () async {
-      when(mockStatementRemoteDataSource.getStatement(limit, offset))
+      when(mockStatementRemoteDataSource.getStatement(offset))
           .thenThrow(const SocketException('Connection failed'));
 
-      final result = await repository.getStatement(limit, offset);
+      final result = await repository.getStatement(offset);
 
-      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
+      verify(mockStatementRemoteDataSource.getStatement(offset));
 
       expect(result.isLeft, true);
       expect(result.left, equals(const ConnectionFailure('Connection failed')));

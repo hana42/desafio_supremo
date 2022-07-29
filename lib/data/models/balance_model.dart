@@ -1,5 +1,6 @@
-import 'package:desafio_supremo/domain/entities/balance.dart';
 import 'package:equatable/equatable.dart';
+
+import 'package:desafio_supremo/domain/entities/balance.dart';
 
 class BalanceModel extends Equatable {
   const BalanceModel({required this.amount});

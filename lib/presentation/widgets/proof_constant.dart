@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../../core/theme/text_styles.dart';
 
-class ProofConstant extends StatelessWidget {
-  final String text1;
-  final String text2;
-  const ProofConstant({Key? key, required this.text1, required this.text2})
+class DetailWidget extends StatelessWidget {
+  final String title;
+  final String subtitle;
+
+  const DetailWidget({Key? key, required this.title, required this.subtitle})
       : super(key: key);
 
   @override
@@ -14,12 +15,12 @@ class ProofConstant extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          text1,
-          style: kBodyTextBold,
+          title,
+          style: Theme.of(context).textTheme.bodyText2,
         ),
         const SizedBox(height: 12),
         Text(
-          text2,
+          subtitle,
           style: kSubtitle,
         )
       ],

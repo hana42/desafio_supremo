@@ -14,10 +14,9 @@ class StatementRepositoryImpl implements StatementRepository {
   StatementRepositoryImpl({required this.statementRemoteDataSource});
 
   @override
-  Future<Either<Failure, List<Statement>>> getStatement(
-      String limit, String offset) async {
+  Future<Either<Failure, List<Statement>>> getStatement(String offset) async {
     try {
-      final result = await statementRemoteDataSource.getStatement(limit, offset);
+      final result = await statementRemoteDataSource.getStatement(offset);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
       return const Left(ServerFailure(''));

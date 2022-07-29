@@ -1,22 +1,24 @@
-import 'package:desafio_supremo/core/theme/theme.dart';
 import 'package:flutter/material.dart';
+
 import 'injection.dart' as di;
-import 'presentation/pages/statement_page.dart';
+
+import 'package:desafio_supremo/core/theme/theme.dart';
+import 'presentation/pages/statement_screen.dart';
 
 void main() {
   di.init();
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Nobank',
       theme: CustomTheme().lightTheme,
-      home: const BalancePage(),
+      home: const StatementScreen(),
     );
   }
 }

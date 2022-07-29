@@ -1,6 +1,7 @@
-import 'package:desafio_supremo/domain/entities/statement.dart';
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
+
+import 'package:desafio_supremo/domain/entities/statement.dart';
 
 class StatementModel extends Equatable {
   const StatementModel({
