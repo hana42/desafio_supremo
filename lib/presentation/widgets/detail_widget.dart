@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/text_styles.dart';
-
 class DetailWidget extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -12,17 +10,11 @@ class DetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.bodyText2,
-        ),
-        const SizedBox(height: 12),
-        Text(
-          subtitle,
-          style: kSubtitle,
-        )
+        Text(title, style: Theme.of(context).textTheme.bodyText2),
+        Text(subtitle, style: Theme.of(context).textTheme.subtitle1)
       ],
     );
   }

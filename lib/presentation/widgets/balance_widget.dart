@@ -48,7 +48,7 @@ class BalanceWidget extends StatelessWidget {
               ],
             );
           } else if (state is BalanceHasData) {
-            var balance = state.result;
+            var balance = state.result.amount;
             return Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,7 @@ class BalanceWidget extends StatelessWidget {
                     endIndent: MediaQuery.of(context).size.width / 1.8,
                   ),
                   child: Text(
-                    Utils().formatCurrency(balance.amount),
+                    Utils().formatCurrency(balance),
                     style: Theme.of(context).textTheme.headline5,
                   ),
                 ),

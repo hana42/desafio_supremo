@@ -1,3 +1,4 @@
+import 'package:desafio_supremo/core/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 
@@ -29,20 +30,27 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
+      body: Padding(
+        padding: kDefaultPadding,
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: [
-            Screenshot(
-              controller: _screenshotController,
-              child: Container(
-                color: Colors.white,
-                child: DetailList(
-                  id: widget.id,
-                  size: size,
-                ),
+            Text(
+              'Comprovante',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            const Divider(
+              color: kDarkGrey,
+              indent: 15,
+              endIndent: 15,
+              thickness: 1.2,
+            ),
+            Expanded(
+              child: Screenshot(
+                controller: _screenshotController,
+                child: DetailList(id: widget.id),
               ),
             ),
             Center(
@@ -51,12 +59,8 @@ class _DetailScreenState extends State<DetailScreen> {
                   final proof = await _screenshotController.capture();
                   Utils().saveAndShare(proof);
                 },
-                style: ElevatedButton.styleFrom(
-                  primary: kPurple,
-                ),
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 64, vertical: 8),
+                  padding: kPaddingButton,
                   child: Text(
                     'Compartilhar',
                     style: Theme.of(context).textTheme.button,
@@ -64,7 +68,6 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
           ],
         ),
       ),

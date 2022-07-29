@@ -21,6 +21,8 @@ class StatementScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const BalanceWidget(),
             Padding(

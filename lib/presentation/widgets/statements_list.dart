@@ -45,46 +45,47 @@ class StatementsList extends StatelessWidget {
         ),
         contentsAlign: ContentsAlign.basic,
         contentsBuilder: (context, index) {
-          var statement = state.statement[index];
           return index >= state.statement.length
               ? const BottomLoader()
               : GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacement(
-                      context,
+                    Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => DetailScreen(id: statement.id),
+                        builder: (context) =>
+                            DetailScreen(id: state.statement[index].id),
                       ),
                     );
                   },
                   child: ListTile(
                     contentPadding: kHorizontalPadding,
-                    tileColor: statement.description.contains('PIX')
-                        ? kLightGrey
-                        : null,
+                    tileColor:
+                        state.statement[index].description.contains('PIX')
+                            ? kLightGrey
+                            : null,
                     enableFeedback: true,
                     horizontalTitleGap: 0,
                     minVerticalPadding: 0,
                     minLeadingWidth: 0,
                     style: ListTileStyle.list,
-                    title: Text(statement.description.toString()),
+                    title: Text(state.statement[index].description.toString()),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          statement.to ?? statement.from.toString(),
+                          state.statement[index].to ??
+                              state.statement[index].from.toString(),
                           style: const TextStyle(color: kDarkGrey),
                           strutStyle: const StrutStyle(leading: 1.5),
                         ),
                         Text(
-                          Utils().formatCurrency(statement.amount),
+                          Utils().formatCurrency(state.statement[index].amount),
                           style: Theme.of(context).textTheme.bodyText1,
                           strutStyle: const StrutStyle(leading: 1.5),
                         ),
                       ],
                     ),
                     trailing: Text(
-                      '${statement.createdAt.day}/${statement.createdAt.month}',
+                      '${state.statement[index].createdAt.day}/${state.statement[index].createdAt.month}',
                       style: const TextStyle(color: kDarkGrey),
                       strutStyle: const StrutStyle(leading: 2),
                     ),
