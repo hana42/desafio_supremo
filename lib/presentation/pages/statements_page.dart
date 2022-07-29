@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:timelines/timelines.dart';
 
-import '../../core/theme/colors.dart';
-import '../../core/theme/constants.dart';
-import '../../core/theme/text_styles.dart';
+import 'package:desafio_supremo/core/theme/colors.dart';
+import 'package:desafio_supremo/core/theme/constants.dart';
 
 class StatementsPage extends StatefulWidget {
   const StatementsPage({Key? key, required this.title}) : super(key: key);

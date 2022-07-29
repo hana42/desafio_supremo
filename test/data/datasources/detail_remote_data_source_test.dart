@@ -23,7 +23,7 @@ void main() {
 
   const String id = '49E27207-F3A7-4264-B021-0188690F7D43';
 
-  group('get current detail', () {
+  group('get detail', () {
     final tDetailModel = DetailModel.fromJson(
       json.decode(readJson('helpers/dummy_data/dummy_detail_response.json')),
     );

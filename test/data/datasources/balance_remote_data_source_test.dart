@@ -21,7 +21,7 @@ void main() {
     dataSource = BalanceRemoteDataSourceImpl(client: mockHttpClient);
   });
 
-  group('get current balance', () {
+  group('get balance', () {
     final tBalanceModel = BalanceModel.fromJson(
       json.decode(readJson('helpers/dummy_data/dummy_balance_response.json')),
     );

@@ -24,8 +24,8 @@ void main() {
         balanceRemoteDataSource: mockBalanceRemoteDataSource);
   });
 
-  group('get current balance', () {
-    test('returns current balance when a call to datasource is successful',
+  group('get balance', () {
+    test('returns a balance when a call to datasource is successful',
         () async {
       when(mockBalanceRemoteDataSource.getBalance())
           .thenAnswer((_) async => tBalanceModel);
@@ -38,7 +38,7 @@ void main() {
       expect(result.right, equals(tBalance));
     });
 
-    test('returns server failure when a call to data source is unsuccessful',
+    test('returns a server failure when a call to datasource is unsuccessful',
         () async {
       when(mockBalanceRemoteDataSource.getBalance())
           .thenThrow(ServerException());

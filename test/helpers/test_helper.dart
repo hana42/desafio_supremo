@@ -23,8 +23,8 @@ import 'package:desafio_supremo/domain/repositories/statement_repository.dart';
 
   // datasources
   BalanceRemoteDataSource,
-  DetailRemoteDataSource,
   StatementRemoteDataSource,
+  DetailRemoteDataSource,
 
   // repositories
   BalanceRepositoryImpl,
@@ -32,8 +32,8 @@ import 'package:desafio_supremo/domain/repositories/statement_repository.dart';
   DetailRepositoryImpl,
 
   BalanceRemoteDataSourceImpl,
-  DetailRemoteDataSourceImpl,
   StatementRemoteDataSourceImpl,
+  DetailRemoteDataSourceImpl,
 ], customMocks: [
   MockSpec<http.Client>(as: #MockHttpClient)
 ])

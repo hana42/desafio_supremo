@@ -14,7 +14,7 @@ import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
-  late StatementRemoteDataSource dataSource;
+  late StatementRemoteDataSourceImpl dataSource;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
@@ -24,10 +24,14 @@ void main() {
   const String limit = '10';
   const String offset = '1';
 
-  group('get current statement', () {
-    final tStatementModel = StatementModel.fromJson(
-      json.decode(readJson('helpers/dummy_data/dummy_statement_response.json')),
+  group('get statement', () {
+    final decodedJson = json.decode(
+      readJson('helpers/dummy_data/dummy_statement_response.json'),
     );
+    final items = decodedJson['items'] as List;
+    final tStatementModel = [
+      for (final item in items) StatementModel.fromJson(item)
+    ];
 
     test('returns a statement model when the response code is 200', () async {
       when(mockHttpClient.get(

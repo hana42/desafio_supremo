@@ -43,8 +43,8 @@ void main() {
         detailRemoteDataSource: mockDetailRemoteDataSource);
   });
 
-  group('get current detail', () {
-    test('returns current detail when a call to datasource is successful',
+  group('get detail', () {
+    test('returns a detail when a call to datasource is successful',
         () async {
       when(mockDetailRemoteDataSource.getDetail(id))
           .thenAnswer((_) async => tDetailModel);
@@ -57,7 +57,7 @@ void main() {
       expect(result.right, equals(tDetail));
     });
 
-    test('returns server failure when a call to data source is unsuccessful',
+    test('returns a server failure when a call to datasource is unsuccessful',
         () async {
       when(mockDetailRemoteDataSource.getDetail(id))
           .thenThrow(ServerException());

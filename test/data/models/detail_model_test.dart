@@ -58,6 +58,7 @@ void main() {
         'amount': 1615,
         'to': 'Karen Amidala',
         'from': null,
+        'bankName': null,
         'description': 'Transferência PIX recebida',
         'id': '49E27207-F3A7-4264-B021-0188690F7D43',
         'tType': 'PIXCASHIN'

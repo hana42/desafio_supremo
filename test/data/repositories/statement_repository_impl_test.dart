@@ -43,8 +43,8 @@ void main() {
         statementRemoteDataSource: mockStatementRemoteDataSource);
   });
 
-  group('get current statement', () {
-    test('returns current statement when a call to datasource is successful',
+  group('get statement', () {
+    test('returns a list of statement when a call to datasource is successful',
         () async {
       when(mockStatementRemoteDataSource.getStatement(offset))
           .thenAnswer((_) async => [tStatementModel]);
@@ -57,7 +57,7 @@ void main() {
       expect(result.right, equals([tStatement]));
     });
 
-    test('returns server failure when a call to data source is unsuccessful',
+    test('returns a server failure when a call to datasource is unsuccessful',
         () async {
       when(mockStatementRemoteDataSource.getStatement(offset))
           .thenThrow(ServerException());
