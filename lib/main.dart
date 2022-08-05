@@ -1,6 +1,21 @@
+import 'package:desafio_supremo/presentation/page/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:desafio_supremo/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
+import 'package:desafio_supremo/injection.dart' as di;
+import '../../domain/entities/user.dart';
+import '../../domain/services/authentication.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+
+  );
+di.init();
+
+
   runApp(const MyApp());
 }
 
@@ -14,11 +29,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginPage(),
     );
   }
 }
 
+/*
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -64,3 +80,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/
