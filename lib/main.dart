@@ -1,7 +1,8 @@
-import 'package:desafio_supremo/core/theme/theme.dart';
-import 'package:desafio_supremo/presentation/pages/statement_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'package:desafio_supremo/core/theme/theme.dart';
 import 'package:desafio_supremo/injection.dart' as di;
+import 'package:desafio_supremo/presentation/pages/home_screen.dart';
 
 void main() {
   di.init();
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nobank',
       theme: CustomTheme().lightTheme,
-      home: const StatementScreen(),
+      home: HomeScreen(),
     );
   }
 }
