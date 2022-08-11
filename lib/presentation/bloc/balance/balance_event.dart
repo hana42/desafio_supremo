@@ -7,6 +7,6 @@ abstract class BalanceEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class FetchBalance extends BalanceEvent {
-  const FetchBalance();
-}
+class FetchBalance extends BalanceEvent {}
+
+class ChangeVisibility extends BalanceEvent {}

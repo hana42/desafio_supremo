@@ -1,32 +1,23 @@
-import 'package:equatable/equatable.dart';
+part of 'detail_bloc.dart';
 
-import '../../../domain/entities/detail.dart';
+enum DetailStatus { initial, success, failure }
 
-abstract class DetailState extends Equatable {
-  const DetailState();
+class DetailState extends Equatable {
+  const DetailState({this.detail, this.status = DetailStatus.initial});
+
+  final Detail? detail;
+  final DetailStatus status;
+
+  DetailState copyWith({
+    DetailStatus? status,
+    Detail? detail,
+  }) {
+    return DetailState(
+      detail: detail ?? this.detail,
+      status: status ?? this.status,
+    );
+  }
 
   @override
   List<Object?> get props => [];
-}
-
-class DetailEmpty extends DetailState {}
-
-class DetailLoading extends DetailState {}
-
-class DetailError extends DetailState {
-  final String message;
-
-  const DetailError(this.message);
-
-  @override
-  List<Object?> get props => [message];
-}
-
-class DetailHasData extends DetailState {
-  final Detail result;
-
-  const DetailHasData(this.result);
-
-  @override
-  List<Object?> get props => [result];
 }

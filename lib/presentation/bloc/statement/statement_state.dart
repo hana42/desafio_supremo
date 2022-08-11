@@ -1,44 +1,29 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:equatable/equatable.dart';
-
-import '../../../domain/entities/statement.dart';
+part of 'statement_bloc.dart';
 
 class StatementState extends Equatable {
-  final List<Statement> statements;
-  const StatementState({
-    this.statements = const <Statement>[],
-  });
+  const StatementState();
 
   @override
   List<Object?> get props => [];
 }
 
-class StatementEmpty extends StatementState {}
-
-class StatementError extends StatementState {
-  final String message;
-  const StatementError(this.message);
-
-  @override
-  List<Object?> get props => [message];
+class StatementInitial extends StatementState {
+  const StatementInitial();
 }
 
-class StatementHasData extends StatementState {
-  final List<Statement> statement;
-  final bool hasReachedMax;
+class StatementError extends StatementState {
+  const StatementError();
+}
 
-  const StatementHasData({
-    this.statement = const <Statement>[],
+class StatementLoaded extends StatementState {
+  const StatementLoaded({
+    this.statements = const <Statement>[],
     this.hasReachedMax = false,
   });
 
-  StatementHasData copyWith({List<Statement>? statement, bool? hasReachedMax}) {
-    return StatementHasData(
-      statement: statement ?? this.statement,
-      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
-    );
-  }
+  final List<Statement> statements;
+  final bool hasReachedMax;
 
   @override
-  List<Object?> get props => [statement, hasReachedMax];
+  List<Object?> get props => [statements, hasReachedMax];
 }

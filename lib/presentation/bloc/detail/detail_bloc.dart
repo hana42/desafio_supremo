@@ -1,26 +1,31 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 
-import 'package:desafio_supremo/presentation/bloc/detail/detail_state.dart';
+import 'package:desafio_supremo/domain/entities/detail.dart';
+import 'package:desafio_supremo/domain/usecases/get_detail.dart';
 
-import '../../../domain/usecases/get_detail.dart';
-import 'detail_event.dart';
+part 'detail_state.dart';
 
-class DetailBloc extends Bloc<DetailEvent, DetailState> {
+class DetailBloc extends Cubit<DetailState> {
+  DetailBloc(this._getDetail) : super(const DetailState());
+
   final GetDetail _getDetail;
 
-  DetailBloc(this._getDetail) : super(DetailEmpty()) {
-    on<FetchDetail>((event, emit) async {
-      emit(DetailLoading());
+  void onFetchDetail(String id) async {
+    final detail = await _getDetail.get(id);
 
-      final result = await _getDetail.get(event.id);
-      result.fold(
-        (failure) {
-          emit(DetailError(failure.message));
-        },
-        (data) {
-          emit(DetailHasData(data));
-        },
-      );
-    });
+    detail.fold(
+      (failure) => emit(
+        state.copyWith(
+          status: DetailStatus.failure,
+        ),
+      ),
+      (data) => emit(
+        state.copyWith(
+          status: DetailStatus.success,
+          detail: data,
+        ),
+      ),
+    );
   }
 }

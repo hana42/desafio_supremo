@@ -1,43 +1,43 @@
 import 'package:flutter/material.dart';
 
-import 'custom_text.dart';
+import 'package:desafio_supremo/core/theme/constants.dart';
 
 class CustomAppBar extends StatelessWidget {
-  final String? userName;
+  final String userName;
 
   const CustomAppBar({super.key, required this.userName});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[200],
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 18,
-          vertical: 25,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const CustomText(
+    return Padding(
+      padding: kDefaultPadding,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          RichText(
+            text: TextSpan(
               text: 'Hello, ',
-              color: Colors.black,
-              fontSize: 18,
+              style: Theme.of(context).textTheme.bodyText2,
+              children: [
+                TextSpan(
+                  text: userName,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: '!',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ],
             ),
-            CustomText(
-              text: userName!,
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-            SizedBox(
-              width: 179,
-            ),
-            Icon(
-              Icons.menu,
-              size: 40,
-            )
-          ],
-        ),
+          ),
+          const Icon(
+            Icons.menu,
+            size: 32,
+          )
+        ],
       ),
     );
   }

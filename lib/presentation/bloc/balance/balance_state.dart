@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 import '../../../domain/entities/balance.dart';
@@ -9,9 +10,7 @@ abstract class BalanceState extends Equatable {
   List<Object?> get props => [];
 }
 
-class BalanceEmpty extends BalanceState {}
-
-class BalanceLoading extends BalanceState {}
+class BalanceInitial extends BalanceState {}
 
 class BalanceError extends BalanceState {
   final String message;
@@ -23,7 +22,8 @@ class BalanceError extends BalanceState {
 
 class BalanceHasData extends BalanceState {
   final Balance result;
-  const BalanceHasData(this.result);
+  final bool isVisible;
+  const BalanceHasData(this.result, {this.isVisible = true});
 
   @override
   List<Object?> get props => [result];
