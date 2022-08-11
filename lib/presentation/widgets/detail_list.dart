@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:desafio_supremo/core/utils/utils.dart';
-import 'package:desafio_supremo/injection.dart';
-import 'package:desafio_supremo/presentation/bloc/detail/detail_event.dart';
-import 'package:desafio_supremo/presentation/widgets/detail_widget.dart';
-
-import '../../core/theme/constants.dart';
-import '../bloc/detail/detail_bloc.dart';
-import '../bloc/detail/detail_state.dart';
 
 class DetailList extends StatefulWidget {
   final String id;
@@ -19,11 +11,7 @@ class DetailList extends StatefulWidget {
 }
 
 class _DetailListState extends State<DetailList> {
-  @override
-  void initState() {
-    locator.get<DetailBloc>().add(FetchDetail(widget.id));
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +61,7 @@ class _DetailListState extends State<DetailList> {
           );
         } else {
           return const SizedBox();
+
         }
       },
     );

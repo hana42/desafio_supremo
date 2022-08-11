@@ -17,7 +17,9 @@ void main() {
     usecase = GetStatement(mockStatementRepository);
   });
 
-  String offset = '1';
+
+  int limit = 10;
+  int offset = 1;
 
   Statement testStatement = Statement(
     createdAt: DateTime.parse('2020-10-22T03:00:00Z'),

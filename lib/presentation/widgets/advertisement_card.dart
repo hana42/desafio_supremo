@@ -12,6 +12,7 @@ class AdvertisementCard extends StatefulWidget {
   final String title;
   final String text;
   final String? buttonText;
+  const AdvertisementCard({Key? key, required this.title, required this.text, this.buttonText}) : super(key: key);
 
   @override
   State<AdvertisementCard> createState() => _AdvertisementCardState();

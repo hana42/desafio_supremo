@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:desafio_supremo/core/theme/colors.dart';
+import 'package:desafio_supremo/core/theme/constants.dart';
 import 'package:desafio_supremo/core/theme/text_styles.dart';
 
 class CustomTheme {
@@ -14,6 +15,13 @@ class CustomTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(kPurple),
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(kPaddingButton),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(2))),
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        textStyle: MaterialStateProperty.all<TextStyle>(kTextButton),
+        minimumSize: MaterialStateProperty.all<Size>(const Size(200, 40)),
+        maximumSize: MaterialStateProperty.all<Size>(const Size(280, 60)),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(

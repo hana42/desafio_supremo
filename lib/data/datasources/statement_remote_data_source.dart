@@ -7,7 +7,7 @@ import '../../core/utils/api.utils.dart';
 import '../models/statement_model.dart';
 
 abstract class StatementRemoteDataSource {
-  Future<List<StatementModel>> getStatement(String offset);
+  Future<List<StatementModel>> getStatement(int limit, int offset);
 }
 
 class StatementRemoteDataSourceImpl implements StatementRemoteDataSource {
@@ -17,7 +17,7 @@ class StatementRemoteDataSourceImpl implements StatementRemoteDataSource {
   final String limit = '10';
 
   @override
-  Future<List<StatementModel>> getStatement(String offset) async {
+  Future<List<StatementModel>> getStatement(int limit, int offset) async {
     final response = await client.get(
       Uri.parse(API.statement(limit, offset)),
       headers: API.defaultHeaders,

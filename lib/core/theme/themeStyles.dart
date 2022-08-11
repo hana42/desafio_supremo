@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'themeColors.dart';
+import 'theme_colors.dart';
 
 class ThemeStyles {
   static TextStyle primaryTitle = TextStyle(
@@ -12,12 +12,12 @@ class ThemeStyles {
     fontSize: 17.0,
     color: ThemeColors.black,
   );
-  static TextStyle cardDetails = TextStyle(
+  static TextStyle cardDetails = const TextStyle(
     fontSize: 17.0,
     color: Color(0xff66646d),
     fontWeight: FontWeight.w600,
   );
-  static TextStyle cardMoney = TextStyle(
+  static TextStyle cardMoney = const TextStyle(
     color: Color(0xff66646d),
     fontWeight: FontWeight.w600,
     fontSize: 22.0,
@@ -31,7 +31,7 @@ class ThemeStyles {
     fontSize: 16.0,
     color: ThemeColors.black,
   );
-  static TextStyle otherDetailsSecondary = TextStyle(
+  static TextStyle otherDetailsSecondary = const TextStyle(
     fontSize: 12.0,
     color: Colors.grey,
   );

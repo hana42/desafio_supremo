@@ -6,9 +6,6 @@ class API {
   };
 
   static String balance = '$baseUrl/myBalance';
-
-  static String statement(String limit, String offset) =>
-      '$baseUrl/myStatement/$limit/$offset';
-
+  static String statement(int limit, int offset) => '$baseUrl/myStatement/$limit/$offset';
   static String detail(String id) => '$baseUrl/myStatement/detail/$id';
 }

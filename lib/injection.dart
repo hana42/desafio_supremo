@@ -1,8 +1,11 @@
+import 'package:desafio_supremo/data/repositories/goals_repository_impl.dart';
+import 'package:desafio_supremo/presentation/bloc/goals/goals_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:desafio_supremo/domain/usecases/get_detail.dart';
 import 'package:desafio_supremo/domain/usecases/get_statement.dart';
+import 'package:desafio_supremo/presentation/bloc/balance/balance_visibility_bloc.dart';
 
 import 'data/datasources/balance_remote_data_source.dart';
 import 'data/datasources/detail_remote_data_source.dart';
@@ -22,12 +25,22 @@ final locator = GetIt.instance;
 
 void init() {
   // bloc
-  locator.registerFactory(
+  locator.registerLazySingleton(
     () => BalanceBloc(locator()),
   );
-  locator.registerFactory(
-    () => StatementBloc(locator()),
+
+  locator.registerLazySingleton(
+    () => SavingsBloc(locator()),
   );
+
+  locator.registerLazySingleton(
+    () => BalanceVisibilityBloc(),
+  );
+
+  locator.registerFactory(
+    () => StatementCubit(locator()),
+  );
+
   locator.registerFactory(
     () => DetailBloc(locator()),
   );
@@ -45,16 +58,20 @@ void init() {
 
   // repository
   locator.registerLazySingleton<BalanceRepository>(
-    () => BalanceRepositoryImpl(balanceRemoteDataSource: locator()),
+    () => BalanceRepositoryImpl(locator()),
   );
   locator.registerLazySingleton<StatementRepository>(
     () => StatementRepositoryImpl(statementRemoteDataSource: locator()),
   );
   locator.registerLazySingleton<DetailRepository>(
-    () => DetailRepositoryImpl(detailRemoteDataSource: locator()),
+    () => DetailRepositoryImpl(locator()),
   );
 
-  // datasources
+  locator.registerLazySingleton(
+    () => SavingsRepository(),
+  );
+
+  // data source
   locator.registerLazySingleton<BalanceRemoteDataSource>(
     () => BalanceRemoteDataSourceImpl(client: locator()),
   );

@@ -16,12 +16,6 @@ class GoalModel extends Equatable {
         goal = json['goal'],
         completed = json['completed'];
 
-  Map<String, dynamic> toJson() => {
-        'title': title,
-        'description': description,
-        'goal': goal,
-        'completed': completed,
-      };
 
   Goal toEntity() => Goal(title, description, goal, completed: completed);
 

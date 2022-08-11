@@ -35,7 +35,8 @@ void main() {
     tType: 'PIXCASHIN',
   );
 
-  const String offset = '1';
+  const int limit = 10;
+  const int offset = 1;
 
   setUp(() {
     mockStatementRemoteDataSource = MockStatementRemoteDataSourceImpl();

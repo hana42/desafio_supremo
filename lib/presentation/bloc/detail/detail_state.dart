@@ -1,6 +1,6 @@
 part of 'detail_cubit.dart';
 
-abstract class DetailState extends Equatable {
+class DetailState extends Equatable {
   const DetailState();
 
   @override

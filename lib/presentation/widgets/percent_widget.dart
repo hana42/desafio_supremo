@@ -1,48 +1,28 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import 'custom_text.dart';
+import 'package:desafio_supremo/core/theme/colors.dart';
 
 class PercentWidget extends StatelessWidget {
-  final double? value;
-  final String? text;
-  final String? textvalue;
+  final double value;
 
-  const PercentWidget({super.key, this.value, this.text, this.textvalue});
+  const PercentWidget({Key? key, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 130,
-          child: CircularPercentIndicator(
-            radius: 58,
-            lineWidth: 6,
-            percent: value!,
-            animation: true,
-            animationDuration: 1500,
-            center: CustomText(
-              text: textvalue!,
-              fontSize: 16,
-              color: Colors.grey,
-              fontWeight: FontWeight.bold,
-            ),
-            footer: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Text(
-                text!,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey, fontSize: 16),
-              ),
-            ),
-            progressColor: Colors.blueGrey,
-            circularStrokeCap: CircularStrokeCap.round,
-          ),
-        )
-      ],
+    return CircularPercentIndicator(
+      radius: 30,
+      lineWidth: 4,
+      percent: value,
+      animation: true,
+      animationDuration: 1500,
+      center: Text(
+        '${(value*100)}%',
+        style:
+            Theme.of(context).textTheme.bodyText1!.copyWith(color: kDarkGrey),
+      ),
+      progressColor: kPurple,
+      circularStrokeCap: CircularStrokeCap.round,
     );
   }
 }
