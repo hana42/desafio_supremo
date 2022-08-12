@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const Color kLightGrey = Color.fromARGB(255, 248, 248, 248);
 const Color kDarkGrey = Color.fromARGB(255, 130, 130, 130);
-const Color kPurple = Color.fromARGB(255, 163, 90, 212);
+const Color kPurple = Color.fromARGB(255, 235, 96, 80);
 const Color kBlack = Color.fromARGB(255, 32, 32, 33);
 
 const kColorScheme = ColorScheme(
