@@ -1,23 +1,23 @@
-part of 'goals_bloc.dart';
+part of 'goals_cubit.dart';
 
-abstract class SavingsState extends Equatable {
-  const SavingsState();
+abstract class GoalState extends Equatable {
+  const GoalState();
 
   @override
   List<Object> get props => [];
 }
 
-class SavingsLoading extends SavingsState {}
+class GoalLoading extends GoalState {}
 
-class SavingsLoaded extends SavingsState {
-  final List<Savings> listOfSavings;
+class GoalLoaded extends GoalState {
+  final List<Goal> listOfGoal;
 
-  const SavingsLoaded(this.listOfSavings);
+  const GoalLoaded(this.listOfGoal);
 
   Map<String, dynamic> toJson() {
-    return {'savings': listOfSavings};
+    return {'goals': listOfGoal};
   }
 
   @override
-  List<Object> get props => [listOfSavings];
+  List<Object> get props => [listOfGoal];
 }
