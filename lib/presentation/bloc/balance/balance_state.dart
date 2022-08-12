@@ -1,7 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:equatable/equatable.dart';
-
-import '../../../domain/entities/balance.dart';
+part of 'balance_cubit.dart';
 
 abstract class BalanceState extends Equatable {
   const BalanceState();
@@ -10,7 +7,12 @@ abstract class BalanceState extends Equatable {
   List<Object?> get props => [];
 }
 
-class BalanceInitial extends BalanceState {}
+class BalanceInitial extends BalanceState {
+  const BalanceInitial();
+
+  @override
+  List<Object?> get props => [];
+}
 
 class BalanceError extends BalanceState {
   final String message;
@@ -20,11 +22,10 @@ class BalanceError extends BalanceState {
   List<Object?> get props => [message];
 }
 
-class BalanceHasData extends BalanceState {
-  final Balance result;
-  final bool isVisible;
-  const BalanceHasData(this.result, {this.isVisible = true});
+class BalanceSuccess extends BalanceState {
+  final Balance balance;
+  const BalanceSuccess(this.balance);
 
   @override
-  List<Object?> get props => [result];
+  List<Object?> get props => [balance];
 }

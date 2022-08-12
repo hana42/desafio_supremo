@@ -39,8 +39,7 @@ void main() {
 
   setUp(() {
     mockStatementRemoteDataSource = MockStatementRemoteDataSourceImpl();
-    repository = StatementRepositoryImpl(
-        statementRemoteDataSource: mockStatementRemoteDataSource);
+    repository = StatementRepositoryImpl(mockStatementRemoteDataSource);
   });
 
   group('get statement', () {

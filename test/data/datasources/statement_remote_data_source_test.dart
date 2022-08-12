@@ -18,7 +18,7 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    dataSource = StatementRemoteDataSourceImpl(client: mockHttpClient);
+    dataSource = StatementRemoteDataSourceImpl(mockHttpClient);
   });
 
   const int limit = 10;

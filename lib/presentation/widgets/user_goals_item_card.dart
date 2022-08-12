@@ -10,13 +10,11 @@ class UserGoalsCard extends StatelessWidget {
     Key? key,
     required this.title,
     this.subtitle,
-    required this.savings,
     required this.goal,
   }) : super(key: key);
 
   final String title;
   final String? subtitle;
-  final num savings;
   final num goal;
 
   @override
@@ -55,7 +53,7 @@ class UserGoalsCard extends StatelessWidget {
                 ],
               ),
             ),
-            PercentWidget(value: savings / goal),
+            PercentWidget(value: 1 / goal),
           ],
         ),
       ),

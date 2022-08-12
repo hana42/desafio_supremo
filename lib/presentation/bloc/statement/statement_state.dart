@@ -1,4 +1,4 @@
-part of 'statement_bloc.dart';
+part of 'statement_cubit.dart';
 
 class StatementState extends Equatable {
   const StatementState();
@@ -9,14 +9,21 @@ class StatementState extends Equatable {
 
 class StatementInitial extends StatementState {
   const StatementInitial();
+
+  @override
+  List<Object?> get props => [];
 }
 
 class StatementError extends StatementState {
-  const StatementError();
+  const StatementError(this.message);
+  final String message;
+
+  @override
+  List<Object?> get props => [message];
 }
 
-class StatementLoaded extends StatementState {
-  const StatementLoaded({
+class StatementSuccess extends StatementState {
+  const StatementSuccess({
     this.statements = const <Statement>[],
     this.hasReachedMax = false,
   });

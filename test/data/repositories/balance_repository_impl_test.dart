@@ -20,8 +20,7 @@ void main() {
 
   setUp(() {
     mockBalanceRemoteDataSource = MockBalanceRemoteDataSourceImpl();
-    repository = BalanceRepositoryImpl(
-        balanceRemoteDataSource: mockBalanceRemoteDataSource);
+    repository = BalanceRepositoryImpl(mockBalanceRemoteDataSource);
   });
 
   group('get balance', () {

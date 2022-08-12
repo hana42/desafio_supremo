@@ -1,23 +1,17 @@
-import 'package:desafio_supremo/presentation/bloc/savings/savings_state.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SavingsBloc extends Cubit<SavingsState> {
+import 'package:desafio_supremo/domain/entities/savings.dart';
+import 'package:desafio_supremo/domain/usecases/get_savings.dart';
+
+part 'savings_state.dart';
+
+class SavingsCubit extends Cubit<SavingsState> {
+  SavingsCubit(this._getSavings) : super(SavingsInitial());
   final GetSavings _getSavings;
-  int amount = 0;
 
-  SavingsBloc(this._getSavings) : super(SavingsInitial()) {
-    void fetchSavings() async {
-      final result = await _getSavings.get();
-
-      result.fold(
-        (failure) {
-          emit(SavingsError(failure.message));
-        },
-        (data) {
-          amount = data.amount;
-          emit(SavingsHasData(data));
-        },
-      );
-    }
+  void getSavings() {
+    final Savings result = _getSavings.get();
+    emit(SavingsSuccess(result));
   }
 }

@@ -46,7 +46,6 @@ class UserGoalsList extends StatelessWidget {
                 return UserGoalsCard(
                   title: goalsList[index]['title'].toString(),
                   subtitle: goalsList[index]['subtitle'].toString(),
-                  savings: 10,
                   goal: 100,
                 );
               },

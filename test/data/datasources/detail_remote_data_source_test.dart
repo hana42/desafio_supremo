@@ -18,7 +18,7 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    dataSource = DetailRemoteDataSourceImpl(client: mockHttpClient);
+    dataSource = DetailRemoteDataSourceImpl(mockHttpClient);
   });
 
   const String id = '49E27207-F3A7-4264-B021-0188690F7D43';

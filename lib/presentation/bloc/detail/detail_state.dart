@@ -1,23 +1,31 @@
-part of 'detail_bloc.dart';
+part of 'detail_cubit.dart';
 
-enum DetailStatus { initial, success, failure }
-
-class DetailState extends Equatable {
-  const DetailState({this.detail, this.status = DetailStatus.initial});
-
-  final Detail? detail;
-  final DetailStatus status;
-
-  DetailState copyWith({
-    DetailStatus? status,
-    Detail? detail,
-  }) {
-    return DetailState(
-      detail: detail ?? this.detail,
-      status: status ?? this.status,
-    );
-  }
+abstract class DetailState extends Equatable {
+  const DetailState();
 
   @override
   List<Object?> get props => [];
+}
+
+class DetailInitial extends DetailState {
+  const DetailInitial();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class DetailError extends DetailState {
+  const DetailError(this.message);
+  final String message;
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class DetailSuccess extends DetailState {
+  const DetailSuccess(this.detail);
+  final Detail detail;
+
+  @override
+  List<Object?> get props => [detail];
 }

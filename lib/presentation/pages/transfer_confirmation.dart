@@ -1,5 +1,4 @@
-import 'package:desafio_supremo/presentation/pages/backup/home_page.dart';
-import 'package:desafio_supremo/presentation/pages/transfer_completed.dart';
+import 'package:desafio_supremo/presentation/pages/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -28,11 +27,11 @@ class TransferConfirmation extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Transferindo",
+                  'Transferindo',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
+                const Padding(
+                  padding: EdgeInsets.only(
                     top: 16,
                     bottom: 8,
                   ),
@@ -43,31 +42,31 @@ class TransferConfirmation extends StatelessWidget {
                 ),
                 Text.rich(
                   TextSpan(
-                    text: "para ",
+                    text: 'para ',
                     style: Theme.of(context).textTheme.bodyText1,
                     children: [
                       TextSpan(
-                        text: "PIX NAME",
+                        text: 'PIX NAME',
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ],
                   ),
                 ),
                 getRow(
-                  "Quando",
-                  "Agora",
+                  'Quando',
+                  'Agora',
                 ),
                 getRow(
-                  "Forma de transferência",
-                  "NOME Pix",
+                  'Forma de transferência',
+                  'NOME Pix',
                 ),
                 getRow(
-                  "CPF",
-                  "NOME ***.xxx.xxx-**",
+                  'CPF',
+                  'NOME ***.xxx.xxx-**',
                 ),
                 getRow(
-                  "Instituição",
-                  "NOME INSTITUiÇÃO",
+                  'Instituição',
+                  'NOME INSTITUiÇÃO',
                 ),
               ],
             ),
@@ -161,7 +160,7 @@ _showConfimrationDialog(BuildContext context) {
         height: 430,
         width: 327,
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 10,
           ),
           child: Column(
@@ -179,8 +178,8 @@ _showConfimrationDialog(BuildContext context) {
                 // ),
               ),
               const SizedBox(height: 30),
-              Text(
-                "Transação realizada com sucesso!",
+              const Text(
+                'Transação realizada com sucesso!',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 20,
@@ -194,7 +193,7 @@ _showConfimrationDialog(BuildContext context) {
                     MaterialPageRoute(builder: (_) => const HomeScreen()),
                   );
                 },
-                child: Center(
+                child: const Center(
                     child: Text(
                   'Voltar para Home',
                 )),

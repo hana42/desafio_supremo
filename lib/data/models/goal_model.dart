@@ -1,30 +1,30 @@
-class Savings {
+import 'package:desafio_supremo/domain/entities/goal.dart';
+import 'package:equatable/equatable.dart';
+
+// ignore: must_be_immutable
+class GoalModel extends Equatable {
   final String title;
-  final String description;
-  final double savings;
+  final String? description;
   final double goal;
-  bool isCompleted;
+  bool completed;
 
-  Savings(
-    this.title,
-    this.description,
-    this.savings,
-    this.goal, {
-    this.isCompleted = false,
-  });
+  GoalModel(this.title, this.description, this.goal, {this.completed = false});
 
-  Savings.fromJson(Map<String, dynamic> json)
+  GoalModel.fromJson(Map<String, dynamic> json)
       : title = json['title'],
         description = json['description'],
-        savings = json['savings'],
         goal = json['goal'],
-        isCompleted = json['isCompleted'];
+        completed = json['completed'];
 
   Map<String, dynamic> toJson() => {
         'title': title,
         'description': description,
-        'savings': savings,
         'goal': goal,
-        'isCompleted': isCompleted
+        'completed': completed,
       };
+
+  Goal toEntity() => Goal(title, description, goal, completed: completed);
+
+  @override
+  List<Object?> get props => [title, description, goal, completed];
 }

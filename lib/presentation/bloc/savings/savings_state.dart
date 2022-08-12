@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-import 'package:desafio_supremo/domain/entities/balance.dart';
+part of 'savings_cubit.dart';
 
 abstract class SavingsState extends Equatable {
   const SavingsState();
@@ -19,11 +17,10 @@ class SavingsError extends SavingsState {
   List<Object?> get props => [message];
 }
 
-class SavingsHasData extends SavingsState {
-  final Balance result;
-  final bool isVisible;
-  const SavingsHasData(this.result, {this.isVisible = true});
+class SavingsSuccess extends SavingsState {
+  final Savings amount;
+  const SavingsSuccess(this.amount);
 
   @override
-  List<Object?> get props => [result];
+  List<Object?> get props => [amount];
 }
