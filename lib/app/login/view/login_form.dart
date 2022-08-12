@@ -8,7 +8,6 @@ import '../../../core/theme/constants.dart';
 import '../../sign_up/view/sign_up_page.dart';
 import '../cubit/login_cubit.dart';
 
-
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
 
@@ -20,7 +19,7 @@ class LoginForm extends StatelessWidget {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-               SnackBar(
+              SnackBar(
                 content: Text(state.errorMessage ?? 'Authentication Failure'),
               ),
             );
@@ -32,8 +31,6 @@ class LoginForm extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-
-
               const SizedBox(height: 16),
               _EmailInput(),
               const SizedBox(height: 8),
@@ -103,42 +100,30 @@ class _LoginButton extends StatelessWidget {
         return state.status.isSubmissionInProgress
             ? const CircularProgressIndicator()
             : ElevatedButton(
-              key: const Key('loginForm_passwordInput_textField'),
-              onPressed: state.status.isValidated
-              ? () => context.read<LoginCubit>().logInWithCredentials()
-              : null,
-
-
-                   child:  Text(
-                     'Login',
-                     style: Theme.of(context).textTheme.button,
-                   ),
-
-
-        );
+                key: const Key('loginForm_passwordInput_textField'),
+                onPressed: state.status.isValidated
+                    ? () => context.read<LoginCubit>().logInWithCredentials()
+                    : null,
+                child: Text(
+                  'Login',
+                  style: Theme.of(context).textTheme.button,
+                ),
+              );
       },
     );
   }
 }
 
-
-
 class _SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return ElevatedButton(
       key: const Key('signUpForm_continue_raisedButton'),
-
       onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
-
-        child:  Text(
-          'Sign Up',
-          style: Theme.of(context).textTheme.button,
-        ),
-
-
-      );
-
+      child: Text(
+        'Sign Up',
+        style: Theme.of(context).textTheme.button,
+      ),
+    );
   }
 }
