@@ -1,9 +1,13 @@
 import 'package:desafio_supremo/data/datasources/goal_local_data_source.dart';
+
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'package:desafio_supremo/data/models/goal_model.dart';
+
 // import 'package:desafio_supremo/domain/entities/goal.dart';
+
+import 'package:desafio_supremo/domain/entities/goal.dart';
 import 'package:desafio_supremo/domain/usecases/add_goal.dart';
 import 'package:desafio_supremo/domain/usecases/get_goal.dart';
 import 'package:desafio_supremo/domain/usecases/remove_goal.dart';
