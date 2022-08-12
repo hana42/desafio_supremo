@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-import '../../../domain/entities/detail.dart';
+part of 'detail_cubit.dart';
 
 abstract class DetailState extends Equatable {
   const DetailState();
@@ -9,24 +7,25 @@ abstract class DetailState extends Equatable {
   List<Object?> get props => [];
 }
 
-class DetailEmpty extends DetailState {}
+class DetailInitial extends DetailState {
+  const DetailInitial();
 
-class DetailLoading extends DetailState {}
+  @override
+  List<Object?> get props => [];
+}
 
 class DetailError extends DetailState {
-  final String message;
-
   const DetailError(this.message);
+  final String message;
 
   @override
   List<Object?> get props => [message];
 }
 
-class DetailHasData extends DetailState {
-  final Detail result;
-
-  const DetailHasData(this.result);
+class DetailSuccess extends DetailState {
+  const DetailSuccess(this.detail);
+  final Detail detail;
 
   @override
-  List<Object?> get props => [result];
+  List<Object?> get props => [detail];
 }

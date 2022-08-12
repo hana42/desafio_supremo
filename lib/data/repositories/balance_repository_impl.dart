@@ -11,7 +11,7 @@ import '../datasources/balance_remote_data_source.dart';
 class BalanceRepositoryImpl implements BalanceRepository {
   final BalanceRemoteDataSource balanceRemoteDataSource;
 
-  BalanceRepositoryImpl({required this.balanceRemoteDataSource});
+  BalanceRepositoryImpl(this.balanceRemoteDataSource);
 
   @override
   Future<Either<Failure, Balance>> getBalance() async {

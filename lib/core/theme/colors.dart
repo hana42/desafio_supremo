@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-const Color kLightGrey = Color.fromARGB(255, 248, 248, 248);
-const Color kDarkGrey = Color.fromARGB(255, 130, 130, 130);
-const Color kPurple = Color.fromARGB(255, 163, 90, 212);
-const Color kBlack = Color.fromARGB(255, 32, 32, 33);
+const Color kLightGrey = Color(0xfff8f8f8);
+const Color kDarkGrey = Color(0xff828282);
+const Color kPurple = Color.fromARGB(255, 235, 96, 80);
+// const Color kOrange = Color.fromARGB(255, 194, 68, 54);
+// const Color kOrange2 = Color.fromARGB(255, 221, 66, 50);
+// const Color kPurple = Color.fromARGB(255, 163, 90, 212);
+const Color kBlack = Color(0xff202021);
+const Color kTextBlack = Color(0xff23232e);
 
 const kColorScheme = ColorScheme(
   brightness: Brightness.light,

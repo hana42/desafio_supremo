@@ -39,8 +39,7 @@ void main() {
 
   setUp(() {
     mockDetailRemoteDataSource = MockDetailRemoteDataSourceImpl();
-    repository = DetailRepositoryImpl(
-        detailRemoteDataSource: mockDetailRemoteDataSource);
+    repository = DetailRepositoryImpl(mockDetailRemoteDataSource);
   });
 
   group('get detail', () {

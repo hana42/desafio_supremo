@@ -18,11 +18,11 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    dataSource = StatementRemoteDataSourceImpl(client: mockHttpClient);
+    dataSource = StatementRemoteDataSourceImpl(mockHttpClient);
   });
 
-  const String limit = '10';
-  const String offset = '1';
+  const int limit = 10;
+  const int offset = 1;
 
   group('get statement', () {
     final decodedJson = json.decode(

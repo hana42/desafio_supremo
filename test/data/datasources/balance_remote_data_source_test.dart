@@ -18,7 +18,7 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    dataSource = BalanceRemoteDataSourceImpl(client: mockHttpClient);
+    dataSource = BalanceRemoteDataSourceImpl(mockHttpClient);
   });
 
   group('get balance', () {
