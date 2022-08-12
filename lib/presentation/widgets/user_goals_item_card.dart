@@ -5,6 +5,7 @@ import 'package:desafio_supremo/core/theme/colors.dart';
 import 'package:desafio_supremo/core/theme/constants.dart';
 import 'package:desafio_supremo/presentation/widgets/percent_indicator.dart';
 import 'package:desafio_supremo/presentation/widgets/percent_widget.dart';
+import 'package:flutter_svg/svg.dart';
 
 class UserGoalsCard extends StatelessWidget {
   const UserGoalsCard({
