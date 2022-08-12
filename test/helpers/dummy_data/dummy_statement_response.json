@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "createdAt": "2020-11-26T03:00:00Z",
+      "bankName": "Bank XPTO",
+      "id": "BAF91302-3E25-4E5E-89A6-0F6CD4BEC5B6",
+      "description": "Transferência PIX recebida",
+      "amount": 1674,
+      "from": "Tiago Windu",
+      "tType": "PIXCASHIN"
+    }
+  ]
+}
