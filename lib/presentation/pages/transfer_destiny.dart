@@ -1,15 +1,18 @@
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/presentation/pages/transfer_destiny.dart';
+import 'package:desafio_supremo/presentation/pages/backup/home_page.dart';
 import 'package:flutter/material.dart';
 
-class TransferScreen extends StatelessWidget {
-  const TransferScreen({super.key, required this.amount});
+import '../../core/theme/colors.dart';
+import '../../core/theme/constants.dart';
+import 'transfer_confirmation.dart';
+
+class TransferDestiny extends StatelessWidget {
+  const TransferDestiny({
+    super.key,
+  });
 
   // final valueTextController = MoneyMaskedTextController(
   //   leftSymbol: r'R$ ',
   // );
-  final int amount;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +21,9 @@ class TransferScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.close, color: kBlack),
+          icon: const Icon(Icons.navigate_before, color: kBlack),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.qr_code, color: kPurple),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Padding(
         padding: kDefaultPadding,
@@ -34,17 +31,18 @@ class TransferScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Qual é o valor da transferência?',
+              'Para quem você quer transferir?',
               style: Theme.of(context).textTheme.headline4,
             ),
             const SizedBox(height: 15),
             Text.rich(
               TextSpan(
-                text: 'Saldo disponível em conta ',
+                text:
+                    'Encontre um contato na sua lista ou inicie uma nova transferência',
                 style: Theme.of(context).textTheme.bodyText2,
                 children: [
                   TextSpan(
-                    text: 'R\$$amount',
+                    text: '',
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ],
@@ -54,7 +52,8 @@ class TransferScreen extends StatelessWidget {
             const Flexible(
               child: NuInputField(
                 autoFocus: true,
-                textInputType: TextInputType.number,
+                textInputType: TextInputType.text,
+                hint: 'Nome, CPF/CNPJ ou chave Pix',
                 // controller: valueTextController,
               ),
             ),
@@ -62,10 +61,11 @@ class TransferScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const TransferDestiny()),
+                    MaterialPageRoute(
+                        builder: (_) => const TransferConfirmation()),
                   );
                 },
-                child: const Text('Confirmar'),
+                child: const Text('Transferir'),
               ),
             ),
           ],

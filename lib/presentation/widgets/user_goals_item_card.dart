@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:desafio_supremo/core/theme/colors.dart';
 import 'package:desafio_supremo/core/theme/constants.dart';
 import 'package:desafio_supremo/presentation/widgets/percent_widget.dart';
+import 'package:flutter_svg/svg.dart';
 
 class UserGoalsCard extends StatelessWidget {
   const UserGoalsCard({
@@ -33,7 +34,11 @@ class UserGoalsCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Icon(Icons.savings, size: 32),
+            SvgPicture.asset(
+              'assets/icons/piggybank.svg',
+              width: 30,
+              color: kPurple,
+            ),
             const SizedBox(width: 25),
             Expanded(
               flex: 3,
