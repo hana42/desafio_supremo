@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:desafio_supremo/core/theme/colors.dart';
 import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/presentation/pages/cards/components/block_card_container.dart';
+import 'package:desafio_supremo/presentation/pages/cards/components/block_card_alert.dart';
 
 import 'package:desafio_supremo/presentation/widgets/credit_card.dart';
 
@@ -29,7 +29,7 @@ class _CardsListState extends State<CardsList> {
       constraints: BoxConstraints(maxHeight: size.height * 0.5),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 2,
+        itemCount: 1,
         itemBuilder: (context, index) {
           return Padding(
             padding: kDefaultPadding / 2,
@@ -50,7 +50,7 @@ class _CardsListState extends State<CardsList> {
                   ),
                   onPressed: () => showDialog(
                     context: context,
-                    builder: (context) => const AlertDialog(content: BlockCardContainer()),
+                    builder: (context) => const AlertDialog(content: BlockCardAlert()),
                   ),
                   child: const Text(
                     'Bloquear',

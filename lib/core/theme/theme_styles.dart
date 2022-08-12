@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'theme_colors.dart';
+import 'package:desafio_supremo/core/theme/theme_colors.dart';
 
 class ThemeStyles {
   static TextStyle primaryTitle = TextStyle(

@@ -1,4 +1,4 @@
-import 'package:desafio_supremo/presentation/pages/home/components/advertisement_card.dart';
+import 'package:desafio_supremo/presentation/widgets/advertisement_card.dart';
 import 'package:desafio_supremo/presentation/widgets/header.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class _CardsHeaderState extends State<CardsHeader> {
         Header(
           title: 'Cartões',
           text:
-              'Seu crédito é sempre sem anuidade! Solicite uma análise agora mesmo.',
+              'Na nobank seu crédito é sempre sem anuidade! Solicite uma análise agora mesmo.',
         ),
       ],
     );

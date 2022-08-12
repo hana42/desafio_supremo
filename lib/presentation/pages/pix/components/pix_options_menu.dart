@@ -1,4 +1,3 @@
-import 'package:desafio_supremo/presentation/pages/payment/payment_menu.dart';
 import 'package:flutter/material.dart';
 
 import 'package:desafio_supremo/presentation/pages/pix/components/pix_label_button.dart';

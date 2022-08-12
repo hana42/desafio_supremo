@@ -16,5 +16,21 @@ class CustomTheme {
         backgroundColor: MaterialStateProperty.all<Color>(kPurple),
       ),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: const UnderlineInputBorder(),
+      hintStyle: const TextStyle(color: Colors.black),
+      enabledBorder:
+          const UnderlineInputBorder(borderSide: BorderSide(color: kDarkGrey)),
+      focusedBorder:
+          const UnderlineInputBorder(borderSide: BorderSide(color: kDarkGrey)),
+      errorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 2)),
+      focusedErrorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 2)),
+      fillColor: Colors.black,
+      contentPadding: kDefaultPadding / 2,
+      labelStyle: kBodyText2,
+      prefixStyle: kBodyText2,
+    ),
   );
 }

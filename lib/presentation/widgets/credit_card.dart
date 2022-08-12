@@ -20,42 +20,34 @@ class CreditCard extends StatelessWidget {
 
     return GlassMorphism(
       width: vertical ? size.width * 0.5 : size.width * 0.7,
-      height: vertical ?  size.height * 0.4 :  size.height * 0.2,
+      height: vertical ? size.height * 0.4 : size.height * 0.2,
       color: color,
       child: Padding(
         padding: kDefaultPadding,
-        child: Column(
+        child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Align(
-              alignment: Alignment.center,
-              child: Text(
-                'nobank',
-                style: TextStyle(
-                  color: kBlack.withOpacity(0.6),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Image.asset(
-                    'assets/images/onboarding_5.png',
-                    width: 20,
-                    height: 20,
-                  ),
-                ),
-              ],
-            ),
-            Align(
-              alignment: Alignment.bottomLeft,
+              alignment: Alignment.topLeft,
               child: Image.asset(
                 'assets/images/chip.png',
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.rotationZ(4.7),
+                child: const Text(
+                  'David Bond',
+                  style: TextStyle(
+                    color: kLightGrey,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    letterSpacing: 1.2,
+                  ),
+                ),
               ),
             ),
           ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/presentation/widgets/balance_widget.dart';
+import 'package:desafio_supremo/presentation/widgets/balance/balance_widget.dart';
 import 'package:desafio_supremo/presentation/widgets/credit_card.dart';
-import 'package:desafio_supremo/presentation/widgets/custom_app_bar.dart';
+import 'package:desafio_supremo/presentation/pages/home/components/home_app_bar.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({Key? key}) : super(key: key);
@@ -27,12 +27,12 @@ class HomeHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomAppBar(userName: 'David Bond'),
+            const HomeAppBar(userName: 'David Bond'),
             const BalanceWidget(),
             Expanded(
               child: Container(
                 alignment: Alignment.center,
-                child: const CreditCard(color: kPurple, vertical: false),
+                child: const CreditCard(color: kBlack, vertical: false),
               ),
             ),
           ],

@@ -1,16 +1,17 @@
-import 'package:desafio_supremo/domain/entities/goal.dart';
+import 'package:desafio_supremo/data/models/goal_model.dart';
+// import 'package:desafio_supremo/domain/entities/goal.dart';
 
 abstract class GoalRepository {
-  List<Goal> getGoal();
+  List<GoalModel> getGoal();
 
-  List<Goal> addGoal(
+  List<GoalModel> addGoal(
     String title,
     String? description,
     double goal, [
     bool completed = false,
   ]);
 
-  List<Goal> removeGoal(String title);
+  List<GoalModel> removeGoal(String title);
 
-  List<Goal> updateGoal(String title);
+  List<GoalModel> updateGoal(String title);
 }

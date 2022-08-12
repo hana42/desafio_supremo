@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:desafio_supremo/core/utils/utils.dart';
 import 'package:desafio_supremo/injection.dart';
 import 'package:desafio_supremo/presentation/widgets/bottom_loader.dart';
-import 'package:desafio_supremo/presentation/pages/detail/components/detail_widget.dart';
+import 'package:desafio_supremo/presentation/pages/detail/components/detail_list_item.dart';
 
 import '../../../bloc/detail/detail_cubit.dart';
 
@@ -31,29 +31,29 @@ class _DetailListState extends State<DetailList> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DetailWidget(
+              DetailListItem(
                 title: 'Tipo de movimentação',
                 subtitle: detail.description.toString(),
               ),
-              DetailWidget(
+              DetailListItem(
                 title: 'Valor',
                 subtitle: Utils().formatCurrency(detail.amount, detail.tType),
               ),
-              DetailWidget(
+              DetailListItem(
                 title: 'Recebedor',
                 subtitle: detail.to ?? 'Sua Conta',
               ),
-              DetailWidget(
+              DetailListItem(
                 title: 'Instituição bancária',
                 subtitle: detail.bankName ?? 'Nobank',
               ),
-              DetailWidget(
+              DetailListItem(
                 title: 'Data/Hora',
                 subtitle: DateFormat(
                   'd/M/y - HH:mm:ss',
                 ).format(detail.createdAt),
               ),
-              DetailWidget(
+              DetailListItem(
                 title: 'Autenticação',
                 subtitle: detail.authentication,
               ),

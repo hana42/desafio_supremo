@@ -5,7 +5,8 @@ class BalanceVisibilityCubit extends HydratedCubit<bool> {
   bool isVisible = true;
 
   changeVisibility() {
-    emit(!isVisible);
+    isVisible = !isVisible;
+    emit(isVisible);
   }
 
   @override

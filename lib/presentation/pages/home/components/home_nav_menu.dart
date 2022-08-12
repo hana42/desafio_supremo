@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
 import 'package:desafio_supremo/presentation/pages/cards/cards_screen.dart';
-import 'package:desafio_supremo/presentation/pages/payment/payment_menu.dart';
+import 'package:desafio_supremo/presentation/pages/deposit/deposit_screen.dart';
+import 'package:desafio_supremo/presentation/pages/home/components/home_nav_menu_item.dart';
 import 'package:desafio_supremo/presentation/pages/pix/pix_screen.dart';
 import 'package:desafio_supremo/presentation/pages/savings/savings_screen.dart';
 import 'package:desafio_supremo/presentation/pages/statement/statement_screen.dart';
 import 'package:desafio_supremo/presentation/pages/transfer/transfer_screen.dart';
 
-class HomeNavigationMenu extends StatelessWidget {
-  const HomeNavigationMenu({Key? key}) : super(key: key);
+class HomeNavMenu extends StatelessWidget {
+  const HomeNavMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,33 +26,33 @@ class HomeNavigationMenu extends StatelessWidget {
               child: Wrap(
                 runSpacing: 15.0,
                 spacing: 15.0,
-                children: const [
-                  HomeNavigationMenuItem(
+                children:  [
+                  const HomeNavMenuItem(
                     Icons.receipt,
                     'Extrato',
                     StatementScreen(),
                   ),
-                  HomeNavigationMenuItem(
+                  HomeNavMenuItem(
                     Icons.currency_exchange,
                     'Transferências',
-                    TransferScreen(amount: 1345),
+                    TransferScreen(),
                   ),
-                  HomeNavigationMenuItem(
+                  const HomeNavMenuItem(
                     Icons.pix,
                     'Pix',
                     PixScreen(),
                   ),
-                  HomeNavigationMenuItem(
+                  const HomeNavMenuItem(
                     Icons.document_scanner,
-                    'Pagamentos',
-                    PaymentScreen(),
+                    'Depositar',
+                    DepositScreen(),
                   ),
-                  HomeNavigationMenuItem(
+                  const HomeNavMenuItem(
                     Icons.credit_card,
                     'Cartão',
                     CardsScreen(),
                   ),
-                  HomeNavigationMenuItem(
+                  const HomeNavMenuItem(
                     Icons.inventory_sharp,
                     'Poupança',
                     SavingsScreen(),
@@ -63,75 +63,6 @@ class HomeNavigationMenu extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class HomeNavigationMenuItem extends StatelessWidget {
-  const HomeNavigationMenuItem(this.icon, this.name, this.page, {Key? key})
-      : super(key: key);
-
-  final IconData icon;
-  final String name;
-  final Widget page;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        OutlinedButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                PageRouteBuilder(
-                    opaque: false,
-                    pageBuilder: (context, _, __) {
-                      return page;
-                    },
-                    transitionsBuilder:
-                        (___, Animation<double> animation, ____, Widget child) {
-                      return SizeTransition(
-                        sizeFactor: Tween<double>(begin: 0.5, end: 1.0)
-                            .animate(animation),
-                        child: child,
-                      );
-                    }));
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(builder: (_) => page),
-            // );
-          },
-          style: OutlinedButton.styleFrom(
-            padding: const EdgeInsets.only(top: 15),
-            backgroundColor: Colors.white,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(6))),
-            textStyle:
-                Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
-            primary: kDarkGrey,
-            onSurface: kPurple,
-            shadowColor: kLightGrey,
-            elevation: 8,
-            fixedSize: const Size(110, 110),
-            side: const BorderSide(width: 1, color: kLightGrey),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: kLightGrey,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: Icon(icon, color: kPurple, size: 28),
-              ),
-              Text(name),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

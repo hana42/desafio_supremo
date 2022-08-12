@@ -10,14 +10,14 @@ abstract class GoalState extends Equatable {
 class GoalLoading extends GoalState {}
 
 class GoalLoaded extends GoalState {
-  final List<Goal> listOfGoal;
+  final List<GoalModel> goalsList;
 
-  const GoalLoaded(this.listOfGoal);
+  const GoalLoaded(this.goalsList);
 
   Map<String, dynamic> toJson() {
-    return {'goals': listOfGoal};
+    return {'goals': goalsList};
   }
 
   @override
-  List<Object> get props => [listOfGoal];
+  List<Object> get props => [goalsList];
 }

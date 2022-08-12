@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:desafio_supremo/core/theme/colors.dart';
 
-class BlockCardContainer extends StatelessWidget {
-  const BlockCardContainer({super.key});
+class BlockCardAlert extends StatelessWidget {
+  const BlockCardAlert({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class BlockCardContainer extends StatelessWidget {
                 onPressed: () {},
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent)),
-                child: Text('Bloquear'),
+                child: const Text('Bloquear'),
               ),
             ],
           ),

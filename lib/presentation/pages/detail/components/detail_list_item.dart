@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class DetailWidget extends StatelessWidget {
+class DetailListItem extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const DetailWidget({Key? key, required this.title, required this.subtitle})
+  const DetailListItem({Key? key, required this.title, required this.subtitle})
       : super(key: key);
 
   @override

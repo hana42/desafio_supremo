@@ -3,8 +3,8 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:desafio_supremo/core/theme/colors.dart';
 
-class PageLoading extends StatelessWidget {
-  const PageLoading({Key? key, required this.child}) : super(key: key);
+class ShimmerLoading extends StatelessWidget {
+  const ShimmerLoading({Key? key, required this.child}) : super(key: key);
   final Widget child;
 
   @override

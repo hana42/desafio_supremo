@@ -3,21 +3,24 @@ import 'package:percent_indicator/percent_indicator.dart';
 
 import 'package:desafio_supremo/core/theme/colors.dart';
 
-class PercentWidget extends StatelessWidget {
+class PercentIndicator extends StatelessWidget {
+  const PercentIndicator({Key? key, required this.value}) : super(key: key);
   final double value;
-
-  const PercentWidget({Key? key, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double percent = (1345 / 100 * value).truncateToDouble();
+    if (percent > 1) {
+      percent = 1;
+    }
     return CircularPercentIndicator(
       radius: 30,
       lineWidth: 4,
-      percent: value,
+      percent: percent,
       animation: true,
       animationDuration: 1500,
       center: Text(
-        '${(value*100)}%',
+        '${(percent * 100).toInt()}%',
         style:
             Theme.of(context).textTheme.bodyText1!.copyWith(color: kDarkGrey),
       ),

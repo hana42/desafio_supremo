@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:desafio_supremo/core/theme/colors.dart';
 import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/presentation/widgets/percent_widget.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:desafio_supremo/presentation/widgets/percent_indicator.dart';
 
 class UserGoalsCard extends StatelessWidget {
   const UserGoalsCard({
@@ -15,7 +15,7 @@ class UserGoalsCard extends StatelessWidget {
 
   final String title;
   final String? subtitle;
-  final num goal;
+  final double goal;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class UserGoalsCard extends StatelessWidget {
                 ],
               ),
             ),
-            PercentWidget(value: 1 / goal),
+            PercentIndicator(value: goal),
           ],
         ),
       ),

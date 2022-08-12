@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:desafio_supremo/core/theme/constants.dart';
 
-class CustomAppBar extends StatelessWidget {
+class HomeAppBar extends StatelessWidget {
   final String userName;
 
-  const CustomAppBar({super.key, required this.userName});
+  const HomeAppBar({super.key, required this.userName});
   @override
   Widget build(BuildContext context) {
     return Padding(

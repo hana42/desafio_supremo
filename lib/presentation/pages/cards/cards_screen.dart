@@ -14,7 +14,10 @@ class _CardsScreenState extends State<CardsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Cartões'),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: const [

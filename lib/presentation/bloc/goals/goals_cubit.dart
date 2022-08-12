@@ -1,8 +1,9 @@
+import 'package:desafio_supremo/data/datasources/goal_local_data_source.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'package:desafio_supremo/data/models/goal_model.dart';
-import 'package:desafio_supremo/domain/entities/goal.dart';
+// import 'package:desafio_supremo/domain/entities/goal.dart';
 import 'package:desafio_supremo/domain/usecases/add_goal.dart';
 import 'package:desafio_supremo/domain/usecases/get_goal.dart';
 import 'package:desafio_supremo/domain/usecases/remove_goal.dart';
@@ -52,16 +53,11 @@ class GoalCubit extends HydratedCubit<GoalState> {
   @override
   GoalState? fromJson(Map<String, dynamic> json) {
     try {
-      final listOfGoal = (json['goals'] as List<Goal>);
+      final List<GoalModel> listOfGoal = (json['goals'] as List)
+          .map((e) => GoalModel.fromJson(e as Map<String, dynamic>))
+          .toList();
 
-      listOfGoal.isEmpty
-          ? null
-          : listOfGoal
-              .map((e) =>
-                  GoalModel.fromJson(e as Map<String, dynamic>).toEntity())
-              .toList();
-
-      getGoal.goalList = listOfGoal;
+      GoalLocalDataSourceImpl().goalList = listOfGoal;
       return GoalLoaded(listOfGoal);
     } catch (e) {
       return null;

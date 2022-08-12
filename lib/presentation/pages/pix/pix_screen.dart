@@ -1,7 +1,8 @@
-import 'package:desafio_supremo/presentation/pages/pix/components/pix_header.dart';
-import 'package:desafio_supremo/presentation/pages/pix/components/pix_menu.dart';
-import 'package:desafio_supremo/presentation/pages/pix/components/pix_menu_item.dart';
 import 'package:flutter/material.dart';
+
+import 'package:desafio_supremo/presentation/pages/pix/components/pix_header.dart';
+import 'package:desafio_supremo/presentation/pages/pix/components/pix_options_menu.dart';
+import 'package:desafio_supremo/presentation/widgets/nav_menu_item.dart';
 
 class PixScreen extends StatelessWidget {
   const PixScreen({Key? key}) : super(key: key);
@@ -16,9 +17,9 @@ class PixScreen extends StatelessWidget {
         children: const [
           PixHeader(),
           PixOptionsMenu(),
-          PixMenuItem('Minhas chaves', Icons.key),
-          PixMenuItem('Meu limite Pix', Icons.settings),
-          PixMenuItem('Me ajuda', Icons.help),
+          NavMenuItem('Minhas chaves', Icons.key),
+          NavMenuItem('Meu limite Pix', Icons.settings),
+          NavMenuItem('Me ajuda', Icons.help),
         ],
       ),
     );
