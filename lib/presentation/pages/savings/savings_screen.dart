@@ -1,22 +1,21 @@
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/injection.dart';
-import 'package:desafio_supremo/presentation/bloc/goals/goals_bloc.dart';
-import 'package:desafio_supremo/presentation/pages/backup/balance_widget.dart';
-import 'package:desafio_supremo/presentation/widgets/balance_widget_2.dart';
-import 'package:desafio_supremo/presentation/widgets/user_goals_item_card.dart';
-import 'package:desafio_supremo/presentation/widgets/user_goals_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SavingsHome extends StatefulWidget {
-  const SavingsHome({Key? key}) : super(key: key);
+import 'package:desafio_supremo/core/theme/constants.dart';
+import 'package:desafio_supremo/injection.dart';
+import 'package:desafio_supremo/presentation/bloc/goals/goals_cubit.dart';
+import 'package:desafio_supremo/presentation/widgets/balance_widget.dart';
+import 'package:desafio_supremo/presentation/widgets/user_goals_item_card.dart';
+
+class SavingsScreen extends StatefulWidget {
+  const SavingsScreen({Key? key}) : super(key: key);
 
   @override
-  State<SavingsHome> createState() => _SavingsHomeState();
+  State<SavingsScreen> createState() => _SavingsScreenState();
 }
 
-class _SavingsHomeState extends State<SavingsHome> {
+class _SavingsScreenState extends State<SavingsScreen> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
   final _goalController = TextEditingController();
@@ -74,7 +73,12 @@ class _SavingsHomeState extends State<SavingsHome> {
                               ),
                             ),
                             TextFormField(
-                              keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                      decimal: true),
                               controller: _goalController,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
@@ -89,9 +93,13 @@ class _SavingsHomeState extends State<SavingsHome> {
                             ElevatedButton(
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    locator
-                                        .get<SavingsBloc>()
-                                        .add(AddSavings(_titleController.text));
+                                    locator.get<GoalCubit>().add(
+                                          _titleController.text,
+                                          _descriptionController.text.isNotEmpty
+                                              ? _descriptionController.text
+                                              : null,
+                                          double.parse(_goalController.text),
+                                        );
                                     _titleController.clear();
 
                                     Navigator.pop(context);
@@ -119,51 +127,50 @@ class SavingsList extends StatelessWidget {
     return Column(
       children: [
         const BalanceWidget(),
-        BlocBuilder<SavingsBloc, SavingsState>(
-          bloc: locator.get<SavingsBloc>(),
+        BlocBuilder<GoalCubit, GoalState>(
+          bloc: locator.get<GoalCubit>(),
           builder: (context, state) {
-            if (state is SavingsLoaded) {
-              if (state.listOfSavings.isEmpty) {
-                return const Padding(
-                  padding: kDefaultPadding,
-                  child: Center(
-                    child: Text(
-                        'Você não possui nenhum objetivo definido até o momento. Que tal começar?'),
-                  ),
-                );
-              }
-              return Expanded(
-                child: ListView.builder(
-                  itemCount: state.listOfSavings.length,
-                  itemBuilder: (context, index) {
-                    return Dismissible(
-                      background: Container(color: Colors.red),
-                      key: Key(state.listOfSavings[index].title),
-                      onDismissed: (direction) {
-                        locator.get<SavingsBloc>().add(
-                            RemoveSavings(state.listOfSavings[index].title));
-                      },
-                      child: UserGoalsCard(
-                        title: state.listOfSavings[index].title,
-                        subtitle: 'Tomar açaí',
-                        savings: 500,
-                        goal: 500,
+            if (state is GoalLoaded) {
+              state.listOfGoal.isEmpty
+                  ? const Padding(
+                      padding: kDefaultPadding,
+                      child: Center(
+                        child: Text(
+                            'Você não possui nenhum objetivo definido até o momento. Que tal começar?'),
                       ),
-                      // child: CheckboxListTile(
-                      //     tileColor: Colors.blueAccent.shade100,
-                      //     activeColor: kPurple,
-                      //     title: Text(state.listOfSavings[index].title),
-                      //     value: state.listOfSavings[index].isCompleted,
-                      //     onChanged: (value) {
-                      //       locator.get<SavingsBloc>().add(
-                      //             UpdateSavingsState(
-                      //                 value!, state.listOfSavings[index].title),
-                      //           );
-                      //     }),
+                    )
+                  : Expanded(
+                      child: ListView.builder(
+                        itemCount: state.listOfGoal.length,
+                        itemBuilder: (context, index) {
+                          return Dismissible(
+                            background: Container(color: Colors.red),
+                            key: Key(state.listOfGoal[index].title),
+                            onDismissed: (direction) {
+                              locator
+                                  .get<GoalCubit>()
+                                  .remove(state.listOfGoal[index].title);
+                            },
+                            child: UserGoalsCard(
+                              title: state.listOfGoal[index].title,
+                              subtitle: state.listOfGoal[index].description,
+                              goal: state.listOfGoal[index].goal,
+                            ),
+                            // child: CheckboxListTile(
+                            //     tileColor: Colors.blueAccent.shade100,
+                            //     activeColor: kPurple,
+                            //     title: Text(state.listOfGoal[index].title),
+                            //     value: state.listOfGoal[index].isCompleted,
+                            //     onChanged: (value) {
+                            //       locator.get<SavingsBloc>().add(
+                            //             UpdateSavingsState(
+                            //                 value!, state.listOfGoal[index].title),
+                            //           );
+                            //     }),
+                          );
+                        },
+                      ),
                     );
-                  },
-                ),
-              );
             }
             return Container();
           },
