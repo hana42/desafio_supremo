@@ -70,7 +70,7 @@ flutter:
 
   assets:
     - assets/lottie/progress.json
-    - assets/images/error_image.png
+    - assets/images/
 
   fonts:
     - family: Roboto
