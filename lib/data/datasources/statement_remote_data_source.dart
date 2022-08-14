@@ -1,18 +1,18 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
-import '../../core/error/exception.dart';
-import '../../core/utils/api.utils.dart';
-
-import '../models/statement_model.dart';
+import '/core/error/exception.dart';
+import '/core/utils/api.utils.dart';
+import '/data/models/statement_model.dart';
 
 abstract class StatementRemoteDataSource {
   Future<List<StatementModel>> getStatement(int limit, int offset);
 }
 
 class StatementRemoteDataSourceImpl implements StatementRemoteDataSource {
+  StatementRemoteDataSourceImpl(this.client);
   final http.Client client;
-  StatementRemoteDataSourceImpl({required this.client});
 
   final String limit = '10';
 
@@ -25,9 +25,9 @@ class StatementRemoteDataSourceImpl implements StatementRemoteDataSource {
 
     if (response.statusCode == 200) {
       var decodedResponse = await json.decode(response.body);
-      List items = decodedResponse['items'] as List;
+      var items = decodedResponse['items'] as List;
       List<StatementModel> statements = [
-        for (final item in items) StatementModel.fromJson(item)
+        for (var item in items) StatementModel.fromJson(item)
       ];
       return statements;
     } else {

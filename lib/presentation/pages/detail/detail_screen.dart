@@ -1,15 +1,14 @@
-import 'package:desafio_supremo/core/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 
-import 'package:desafio_supremo/core/utils/utils.dart';
-import 'package:desafio_supremo/presentation/pages/detail/components/detail_list.dart';
-
-import '../../core/theme/colors.dart';
+import '../../../core/theme/colors.dart';
+import '../../../core/theme/constants.dart';
+import '../../../core/utils/utils.dart';
+import 'components/detail_list.dart';
 
 class DetailScreen extends StatefulWidget {
-  final String id;
   const DetailScreen({Key? key, required this.id}) : super(key: key);
+  final String id;
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -48,7 +47,7 @@ class _DetailScreenState extends State<DetailScreen> {
               thickness: 1.2,
             ),
             Expanded(
-              child: Screenshot(
+              child: Screenshot<Widget>(
                 controller: _screenshotController,
                 child: DetailList(id: widget.id),
               ),

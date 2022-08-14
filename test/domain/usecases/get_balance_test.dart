@@ -4,7 +4,8 @@ import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/domain/entities/balance.dart';
-import 'package:desafio_supremo/domain/usecases/get_balance.dart';
+import 'package:desafio_supremo/domain/usecases/balance/get_balance.dart';
+import 'package:desafio_supremo/domain/usecases/balance/get_balance_impl.dart';
 
 import '../../helpers/test_helper.mocks.dart';
 
@@ -14,7 +15,7 @@ void main() {
 
   setUp(() {
     mockBalanceRepository = MockBalanceRepository();
-    usecase = GetBalance(mockBalanceRepository);
+    usecase = GetBalanceImpl(mockBalanceRepository);
   });
 
   const testBalance = Balance(amount: 1245);

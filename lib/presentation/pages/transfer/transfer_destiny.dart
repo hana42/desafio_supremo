@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/presentation/pages/transfer/components/transfer_confirmation.dart';
-import 'package:desafio_supremo/presentation/widgets/header.dart';
+import '../../../core/theme/colors.dart';
+import '../../../core/theme/constants.dart';
+import 'components/transfer_confirmation.dart';
+import '../../widgets/header.dart';
 
 class TransferDestiny extends StatelessWidget {
   const TransferDestiny({Key? key}) : super(key: key);

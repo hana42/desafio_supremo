@@ -2,11 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/presentation/widgets/credit_card.dart';
+import 'credit_card.dart';
 
 class MyTransform extends StatefulWidget {
-  final Color cardColor;
   const MyTransform({Key? key, required this.cardColor}) : super(key: key);
+  
+  final Color cardColor;
 
   @override
   State<MyTransform> createState() => _MyTransformState();

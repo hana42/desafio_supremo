@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/presentation/pages/home/home_screen.dart';
+import '../../../../core/theme/colors.dart';
+import '../../home/home_screen.dart';
 
 class TransferConfirmation extends StatelessWidget {
   const TransferConfirmation({Key? key}) : super(key: key);

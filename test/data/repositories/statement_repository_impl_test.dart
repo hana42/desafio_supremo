@@ -46,12 +46,12 @@ void main() {
   group('get statement', () {
     test('returns a list of statement when a call to datasource is successful',
         () async {
-      when(mockStatementRemoteDataSource.getStatement(offset))
+      when(mockStatementRemoteDataSource.getStatement(limit, offset))
           .thenAnswer((_) async => [tStatementModel]);
 
-      final result = await repository.getStatement(offset);
+      final result = await repository.getStatement(limit, offset);
 
-      verify(mockStatementRemoteDataSource.getStatement(offset));
+      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
 
       expect(result.isRight, true);
       expect(result.right, equals([tStatement]));
@@ -59,12 +59,12 @@ void main() {
 
     test('returns a server failure when a call to datasource is unsuccessful',
         () async {
-      when(mockStatementRemoteDataSource.getStatement(offset))
+      when(mockStatementRemoteDataSource.getStatement(limit, offset))
           .thenThrow(ServerException());
 
-      final result = await repository.getStatement(offset);
+      final result = await repository.getStatement(limit, offset);
 
-      verify(mockStatementRemoteDataSource.getStatement(offset));
+      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
 
       expect(result.isLeft, true);
       expect(result.left, equals(const ServerFailure('')));
@@ -75,7 +75,7 @@ void main() {
       when(mockStatementRemoteDataSource.getStatement(offset))
           .thenThrow(const SocketException('Connection failed'));
 
-      final result = await repository.getStatement(offset);
+      final result = await repository.getStatement(limit, offset);
 
       verify(mockStatementRemoteDataSource.getStatement(offset));
 

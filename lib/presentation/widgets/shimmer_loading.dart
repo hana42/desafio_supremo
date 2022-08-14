@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
+import '../../core/theme/colors.dart';
 
 class ShimmerLoading extends StatelessWidget {
   const ShimmerLoading({Key? key, required this.child}) : super(key: key);

@@ -1,5 +1,5 @@
-import 'package:desafio_supremo/presentation/widgets/advertisement_card.dart';
-import 'package:desafio_supremo/presentation/widgets/header.dart';
+import '../../../widgets/advertisement_card.dart';
+import '../../../widgets/header.dart';
 import 'package:flutter/material.dart';
 
 class CardsHeader extends StatefulWidget {

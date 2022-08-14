@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
+import '../../core/theme/colors.dart';
 
 class BottomLoader extends StatelessWidget {
   const BottomLoader({Key? key}) : super(key: key);

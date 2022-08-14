@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import 'package:desafio_supremo/core/utils/utils.dart';
-import 'package:desafio_supremo/injection.dart';
-import 'package:desafio_supremo/presentation/widgets/bottom_loader.dart';
-import 'package:desafio_supremo/presentation/pages/detail/components/detail_list_item.dart';
-
+import '../../../../core/utils/utils.dart';
+import '../../../../injection.dart';
 import '../../../bloc/detail/detail_cubit.dart';
+import '../../../widgets/bottom_loader.dart';
+import 'detail_list_item.dart';
 
 class DetailList extends StatefulWidget {
-  final String id;
   const DetailList({Key? key, required this.id}) : super(key: key);
+  
+  final String id;
 
   @override
   State<DetailList> createState() => _DetailListState();

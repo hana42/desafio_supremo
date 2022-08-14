@@ -9,16 +9,14 @@ import '../../domain/repositories/statement_repository.dart';
 import '../datasources/statement_remote_data_source.dart';
 
 class StatementRepositoryImpl implements StatementRepository {
+  StatementRepositoryImpl(this.statementRemoteDataSource);
   final StatementRemoteDataSource statementRemoteDataSource;
 
-  StatementRepositoryImpl({required this.statementRemoteDataSource});
-
   @override
-
-  Future<Either<Failure, List<Statement>>> getStatement(
+  Future<Either<Failure, List<Statement>>> call(
       int limit, int offset) async {
     try {
-      final result = await statementRemoteDataSource.getStatement(offset);
+      final result = await statementRemoteDataSource.getStatement(limit, offset);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
       return const Left(ServerFailure(''));

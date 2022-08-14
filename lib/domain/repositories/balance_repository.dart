@@ -4,5 +4,5 @@ import '../../core/error/failure.dart';
 import '../entities/balance.dart';
 
 abstract class BalanceRepository {
-  Future<Either<Failure, Balance>> getBalance();
+  Future<Either<Failure, Balance>> call();
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
+import '../../core/theme/colors.dart';
 
 class PercentWidget extends StatelessWidget {
-  final double value;
-
   const PercentWidget({Key? key, required this.value}) : super(key: key);
+  
+  final double value;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class PercentWidget extends StatelessWidget {
       animation: true,
       animationDuration: 1500,
       center: Text(
-        '${(value*100)}%',
+        '${(value * 100)}%',
         style:
             Theme.of(context).textTheme.bodyText1!.copyWith(color: kDarkGrey),
       ),

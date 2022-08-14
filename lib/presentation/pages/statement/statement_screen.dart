@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/injection.dart';
-import 'package:desafio_supremo/presentation/widgets/balance_widget.dart';
+import '/core/theme/constants.dart';
+import '/presentation/widgets/balance/balance_widget.dart';
+import 'components/statement_list.dart';
 
 
 class StatementScreen extends StatelessWidget {
@@ -28,7 +27,7 @@ class StatementScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
-            Expanded(child: StatementBody()),
+            Expanded(child: StatementList()),
           ],
         ));
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/core/theme/text_styles.dart';
+import 'colors.dart';
+import 'constants.dart';
+import 'text_styles.dart';
 
 class CustomTheme {
   ThemeData lightTheme = ThemeData.light().copyWith(

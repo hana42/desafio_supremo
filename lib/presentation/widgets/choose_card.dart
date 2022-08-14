@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/presentation/widgets/card_transform.dart';
+import '../../core/theme/colors.dart';
+import 'card_transform.dart';
 
 class CardPicker extends StatefulWidget {
   const CardPicker({Key? key}) : super(key: key);

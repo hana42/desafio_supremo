@@ -1,5 +1,15 @@
-include: package:flutter_lints/flutter.yaml
+# include: package:flutter_lints/flutter.yaml, 
+include: package:lints/recommended.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "test/.test_coverage.dart"
+    - "bin/cache/**"
+    - "lib/generated_plugin_registrant.dart"
 
 linter:
   rules:
     prefer_single_quotes: true
+    sort_constructors_first: true

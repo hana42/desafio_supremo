@@ -16,16 +16,16 @@ class BalanceInitial extends BalanceState {
 }
 
 class BalanceError extends BalanceState {
-  final String message;
   const BalanceError(this.message);
+  final String message;
 
   @override
   List<Object?> get props => [message];
 }
 
 class BalanceSuccess extends BalanceState {
-  final Balance balance;
   const BalanceSuccess(this.balance);
+  final Balance balance;
 
   @override
   List<Object?> get props => [balance];

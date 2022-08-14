@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/presentation/pages/cards/components/block_card_alert.dart';
-
-import 'package:desafio_supremo/presentation/widgets/credit_card.dart';
+import '../../../../core/theme/colors.dart';
+import '../../../../core/theme/constants.dart';
+import '../../../widgets/credit_card.dart';
+import 'block_card_alert.dart';
 
 class CardsList extends StatefulWidget {
   const CardsList({Key? key}) : super(key: key);
@@ -48,7 +47,7 @@ class _CardsListState extends State<CardsList> {
                     maximumSize:
                         MaterialStateProperty.all<Size>(const Size(280, 50)),
                   ),
-                  onPressed: () => showDialog(
+                  onPressed: () => showDialog<AlertDialog>(
                     context: context,
                     builder: (context) => const AlertDialog(content: BlockCardAlert()),
                   ),

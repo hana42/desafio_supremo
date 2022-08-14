@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'custom_text.dart';
 
 class ProgressCard extends StatelessWidget {
+  const ProgressCard({super.key, this.value, this.text, this.textvalue});
+
   final double? value;
   final String? text;
   final String? textvalue;
 
-  const ProgressCard({super.key, this.value, this.text, this.textvalue});
   @override
   Widget build(BuildContext context) {
     return Column(

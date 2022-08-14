@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 import '../../core/error/exception.dart';
@@ -10,8 +11,8 @@ abstract class DetailRemoteDataSource {
 }
 
 class DetailRemoteDataSourceImpl implements DetailRemoteDataSource {
+  DetailRemoteDataSourceImpl(this.client);
   final http.Client client;
-  DetailRemoteDataSourceImpl({required this.client});
 
   @override
   Future<DetailModel> getDetail(String id) async {

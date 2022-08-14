@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
+import '../../../../core/theme/colors.dart';
 
 class BlockCardAlert extends StatelessWidget {
   const BlockCardAlert({super.key});
@@ -58,7 +58,8 @@ class BlockCardAlert extends StatelessWidget {
               OutlinedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.redAccent)),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.redAccent)),
                 child: const Text('Bloquear'),
               ),
             ],
@@ -70,16 +71,16 @@ class BlockCardAlert extends StatelessWidget {
 }
 
 class ExpandedButton extends StatelessWidget {
-  final String text;
-  final Color? color;
-  final Function()? onTap;
-
   const ExpandedButton(
     this.text, {
     this.onTap,
     this.color,
     super.key,
   });
+  
+  final String text;
+  final Color? color;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {

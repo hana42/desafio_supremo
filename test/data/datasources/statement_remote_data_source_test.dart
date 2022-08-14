@@ -40,7 +40,7 @@ void main() {
       )).thenAnswer((_) async => http.Response(
           readJson('helpers/dummy_data/dummy_statement_response.json'), 200));
 
-      final result = await dataSource.getStatement(offset);
+      final result = await dataSource.getStatement(limit, offset);
 
       expect(result, equals(tStatementModel));
     });
@@ -54,7 +54,7 @@ void main() {
         ),
       ).thenAnswer((_) async => http.Response('Not found', 404));
 
-      final call = dataSource.getStatement(offset);
+      final call = dataSource.getStatement(limit, offset);
 
       expect(() => call, throwsA(isA<ServerException>()));
     });

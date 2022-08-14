@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/presentation/widgets/glass.dart';
+import '../../core/theme/colors.dart';
+import 'glass.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({Key? key, required this.onPress}) : super(key: key);

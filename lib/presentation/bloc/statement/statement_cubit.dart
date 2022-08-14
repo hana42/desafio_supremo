@@ -1,42 +1,40 @@
-import 'package:desafio_supremo/domain/entities/statement.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 
-import 'package:desafio_supremo/domain/usecases/get_statement.dart';
-import 'package:desafio_supremo/presentation/bloc/statement/statement_event.dart';
-import 'package:desafio_supremo/presentation/bloc/statement/statement_state.dart';
+import '../../../domain/entities/statement.dart';
+import '../../../domain/usecases/statement/get_statement.dart';
 
-class StatementBloc extends Bloc<StatementEvent, StatementState> {
+part 'statement_state.dart';
+
+class StatementCubit extends Cubit<StatementState> {
+  StatementCubit(this._getStatement) : super(const StatementInitial());
+
   final GetStatement _getStatement;
+  int page = 1;
+  List<Statement> statements = <Statement>[];
 
-  StatementBloc(this._getStatement) : super(StatementEmpty()) {
-    on<FetchStatement>((event, emit) async {
-      if (state is StatementEmpty) {
-        final result = await _getStatement.get(event.offset.toString());
+  void getStatement() async {
+    if (const StatementLoaded().hasReachedMax == true) return;
 
-        result.fold(
-          (failure) {
-            emit(StatementError(failure.message));
-          },
-          (data) {
-            emit(StatementHasData(statement: data));
-          },
-        );
-      }
+    final currentState = state;
+    if (currentState is StatementLoaded) {
+      statements = List.of(currentState.statements);
+    }
 
-      if (state is StatementHasData) {
-        final result = await _getStatement.get(event.offset.toString());
+    await _getStatement(10, page).then((newStatement) {
+      page++;
 
-        result.fold(
-          (failure) {
-            emit(StatementError(failure.message));
-          },
-          (data) {
-            data.isEmpty
-                ? data
-                : List.of((state as StatementHasData).statement..addAll(data));
-          },
-        );
-      }
+      newStatement.fold(
+        (left) => emit(const StatementError('Failure()')),
+        (right) => right.isEmpty
+            ? emit(StatementLoaded(statements: statements, hasReachedMax: true))
+            : {
+                statements..addAll(right),
+                emit(StatementLoaded(statements: statements)),
+              },
+      );
     });
   }
+
+  // }
 }

@@ -1,5 +1,5 @@
-import 'package:desafio_supremo/domain/entities/savings.dart';
+import '../entities/savings.dart';
 
 abstract class SavingsRepository {
-  Savings getSavings();
+  Savings call();
 }

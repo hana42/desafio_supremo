@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
+import '../../core/theme/colors.dart';
 
 import '../../core/theme/theme_colors.dart';
 import 'credit_card.dart';
@@ -27,8 +27,10 @@ class _CardsListState extends State<CardsList> {
 }
 
 class DotIndicator extends StatefulWidget {
-  final bool isActive;
   const DotIndicator(this.isActive, {Key? key}) : super(key: key);
+
+  final bool isActive;
+
   @override
   State<DotIndicator> createState() => _DotIndicatorState();
 }

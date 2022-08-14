@@ -2,10 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class GlassMorphism2 extends StatelessWidget {
-  final Widget child;
-  final double start;
-  final double end;
-  final Color color;
   const GlassMorphism2({
     Key? key,
     required this.child,
@@ -13,6 +9,11 @@ class GlassMorphism2 extends StatelessWidget {
     required this.end,
     required this.color,
   }) : super(key: key);
+  
+  final Widget child;
+  final double start;
+  final double end;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/presentation/pages/cards/components/cards_header.dart';
-import 'package:desafio_supremo/presentation/pages/cards/components/cards_list.dart';
+import 'components/cards_header.dart';
+import 'components/cards_list.dart';
 
 class CardsScreen extends StatefulWidget {
   const CardsScreen({Key? key}) : super(key: key);

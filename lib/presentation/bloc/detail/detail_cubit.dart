@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:desafio_supremo/domain/entities/detail.dart';
-import 'package:desafio_supremo/domain/usecases/get_detail.dart';
+import '../../../domain/entities/detail.dart';
+import '../../../domain/usecases/detail/get_detail.dart';
 
 part 'detail_state.dart';
 
@@ -12,7 +12,7 @@ class DetailCubit extends Cubit<DetailState> {
   final GetDetail _getDetail;
 
   void getDetail(String id) async {
-    final result = await _getDetail.get(id);
+    final result = await _getDetail(id);
 
     result.fold(
       (failure) => emit(DetailError(failure.message)),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/injection.dart';
-import 'package:desafio_supremo/presentation/bloc/balance/balance_cubit.dart';
-import 'package:desafio_supremo/presentation/pages/transfer/transfer_destiny.dart';
-import 'package:desafio_supremo/presentation/widgets/header.dart';
+import '../../../core/theme/colors.dart';
+import '../../../core/theme/constants.dart';
+import '../../../injection.dart';
+import '../../bloc/balance/balance_cubit.dart';
+import 'transfer_destiny.dart';
+import '../../widgets/header.dart';
 
 class TransferScreen extends StatelessWidget {
   TransferScreen({Key? key}) : super(key: key);

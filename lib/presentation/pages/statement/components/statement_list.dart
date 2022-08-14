@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:desafio_supremo/injection.dart';
-import 'package:desafio_supremo/presentation/bloc/statement/statement_cubit.dart';
-import 'package:desafio_supremo/presentation/pages/statement/components/statement_connector.dart';
-import 'package:desafio_supremo/presentation/widgets/bottom_loader.dart';
+import '../../../../injection.dart';
+import '../../../bloc/statement/statement_cubit.dart';
+import '../../../widgets/bottom_loader.dart';
+
+import 'statement_connector.dart';
 
 class StatementList extends StatefulWidget {
   const StatementList({Key? key}) : super(key: key);
@@ -43,7 +45,7 @@ class _StatementListState extends State<StatementList> {
     return BlocBuilder<StatementCubit, StatementState>(
       bloc: cubit..getStatement(),
       builder: (context, state) {
-        if (state is StatementSuccess) {
+        if (state is StatementLoaded) {
           return ListView.builder(
             controller: scrollController,
             itemExtent: MediaQuery.of(context).size.height * 0.16,

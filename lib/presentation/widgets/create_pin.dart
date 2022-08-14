@@ -42,6 +42,81 @@ class _CreatePinState extends State<CreatePin> {
 }
 
 class PinCodeFields extends StatefulWidget {
+
+  const PinCodeFields({
+    Key? key,
+
+    /// Default length is 4.
+    this.length = 4,
+    this.controller,
+
+    /// autofocus is false by default.
+    this.autofocus = false,
+
+    /// Default border style is bottom.
+    this.fieldBorderStyle = FieldBorderStyle.Bottom,
+
+    /// Default width for border is 2.0.
+    this.borderWidth = 2.0,
+
+    /// Default border color is grey.
+    this.borderColor = Colors.grey,
+    this.fieldHeight,
+    this.fieldWidth,
+    this.borderRadius,
+
+    /// Default active border color is blue.
+    this.activeBorderColor = Colors.blue,
+    this.fieldBackgroundColor,
+    this.activeBackgroundColor,
+    this.focusNode,
+
+    /// Text fields are enabled by default.
+    this.enabled = true,
+
+    /// Responsive is true by default.
+    this.responsive = true,
+
+    /// Obscure text is false by default.
+    this.obscureText = false,
+
+    /// Default character for obscure text is *.
+    this.obscureCharacter = '*',
+
+    /// Default margin between fields is 5.0.
+    this.margin = const EdgeInsets.all(5.0),
+
+    /// Default padding in the fields is 5.0.
+    this.padding = const EdgeInsets.only(bottom: 5.0),
+
+    /// Default text style for the fields.
+    this.textStyle = const TextStyle(
+      fontSize: 20.0,
+    ),
+
+    /// Default keyboard type is visiblePassword by default.
+    this.keyboardType = TextInputType.visiblePassword,
+
+    /// Auto hide keyboard is true by default.
+    this.autoHideKeyboard = true,
+
+    /// Default animation for text is Fade.
+    this.animation = Animations.Fade,
+
+    /// Default duration for animation on text is 150ms.
+    this.animationDuration = const Duration(milliseconds: 150),
+
+    /// Default animation curve for animation on text is Curves.easeInOut.
+    this.animationCurve = Curves.easeInOut,
+
+    /// Default switch in animation curve for animation on text is Curves.easeIn.
+    this.switchInAnimationCurve = Curves.easeIn,
+
+    /// Default switch out animation curve for animation on text is Curves.easeOut.
+    this.switchOutAnimationCurve = Curves.easeOut,
+    this.onChange,
+    required this.onComplete,
+  }) : super(key: key);
   /// Total number of pin code fields.
   final int length;
 
@@ -129,81 +204,6 @@ class PinCodeFields extends StatefulWidget {
   /// Callback that returns text on filling all the fields.
   @required
   final ValueChanged<String> onComplete;
-
-  const PinCodeFields({
-    Key? key,
-
-    /// Default length is 4.
-    this.length = 4,
-    this.controller,
-
-    /// autofocus is false by default.
-    this.autofocus = false,
-
-    /// Default border style is bottom.
-    this.fieldBorderStyle = FieldBorderStyle.Bottom,
-
-    /// Default width for border is 2.0.
-    this.borderWidth = 2.0,
-
-    /// Default border color is grey.
-    this.borderColor = Colors.grey,
-    this.fieldHeight,
-    this.fieldWidth,
-    this.borderRadius,
-
-    /// Default active border color is blue.
-    this.activeBorderColor = Colors.blue,
-    this.fieldBackgroundColor,
-    this.activeBackgroundColor,
-    this.focusNode,
-
-    /// Text fields are enabled by default.
-    this.enabled = true,
-
-    /// Responsive is true by default.
-    this.responsive = true,
-
-    /// Obscure text is false by default.
-    this.obscureText = false,
-
-    /// Default character for obscure text is *.
-    this.obscureCharacter = '*',
-
-    /// Default margin between fields is 5.0.
-    this.margin = const EdgeInsets.all(5.0),
-
-    /// Default padding in the fields is 5.0.
-    this.padding = const EdgeInsets.only(bottom: 5.0),
-
-    /// Default text style for the fields.
-    this.textStyle = const TextStyle(
-      fontSize: 20.0,
-    ),
-
-    /// Default keyboard type is visiblePassword by default.
-    this.keyboardType = TextInputType.visiblePassword,
-
-    /// Auto hide keyboard is true by default.
-    this.autoHideKeyboard = true,
-
-    /// Default animation for text is Fade.
-    this.animation = Animations.Fade,
-
-    /// Default duration for animation on text is 150ms.
-    this.animationDuration = const Duration(milliseconds: 150),
-
-    /// Default animation curve for animation on text is Curves.easeInOut.
-    this.animationCurve = Curves.easeInOut,
-
-    /// Default switch in animation curve for animation on text is Curves.easeIn.
-    this.switchInAnimationCurve = Curves.easeIn,
-
-    /// Default switch out animation curve for animation on text is Curves.easeOut.
-    this.switchOutAnimationCurve = Curves.easeOut,
-    this.onChange,
-    required this.onComplete,
-  }) : super(key: key);
 
   @override
   State<PinCodeFields> createState() => _PinCodeFieldsState();

@@ -1,6 +1,7 @@
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/presentation/widgets/user_goals_item_card.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/theme/constants.dart';
+import 'user_goals_item_card.dart';
 
 class UserGoalsList extends StatelessWidget {
   const UserGoalsList({Key? key}) : super(key: key);

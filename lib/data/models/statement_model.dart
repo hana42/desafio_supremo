@@ -1,9 +1,20 @@
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
-import 'package:desafio_supremo/domain/entities/statement.dart';
+import '../../domain/entities/statement.dart';
 
 class StatementModel extends Equatable {
+  factory StatementModel.fromJson(Map<String, dynamic> json) => StatementModel(
+        createdAt: DateTime.parse(json['createdAt'] as String),
+        id: json['id'] as String,
+        amount: json['amount'] as int,
+        to: json['to'],
+        description: json['description'] as String,
+        tType: json['tType'] as String,
+        from: json['from'],
+        bankName: json['bankName'],
+      );
+      
   const StatementModel({
     required this.createdAt,
     required this.id,
@@ -43,17 +54,6 @@ class StatementModel extends Equatable {
         tType: tType,
         from: from,
         bankName: bankName,
-      );
-
-  factory StatementModel.fromJson(Map<String, dynamic> json) => StatementModel(
-        createdAt: DateTime.parse(json['createdAt']),
-        id: json['id'],
-        amount: json['amount'],
-        to: json['to'],
-        description: json['description'],
-        tType: json['tType'],
-        from: json['from'],
-        bankName: json['bankName'],
       );
 
   Map<String, dynamic> toJson() => {

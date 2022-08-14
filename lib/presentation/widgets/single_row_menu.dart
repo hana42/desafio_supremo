@@ -4,10 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'custom_text.dart';
 
 class SingleRowMenu extends StatelessWidget {
+  const SingleRowMenu({super.key, this.onTap, this.iconUrl, this.text});
+
   final VoidCallback? onTap;
   final String? iconUrl;
   final String? text;
-  const SingleRowMenu({super.key, this.onTap, this.iconUrl, this.text});
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/utils/utils.dart';
-import 'package:desafio_supremo/domain/entities/statement.dart';
-import 'package:desafio_supremo/presentation/pages/detail/detail_screen.dart';
+import '../../../../core/theme/colors.dart';
+import '../../../../core/utils/utils.dart';
+import '../../../../domain/entities/statement.dart';
+import '../../detail/detail_screen.dart';
 
 class StatementListItem extends StatelessWidget {
   const StatementListItem(this.statement, {Key? key}) : super(key: key);

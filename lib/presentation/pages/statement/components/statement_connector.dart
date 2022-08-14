@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/domain/entities/statement.dart';
-import 'package:desafio_supremo/presentation/pages/statement/components/statement_list_item.dart';
+import '../../../../core/theme/colors.dart';
+import '../../../../core/theme/constants.dart';
+import '../../../../domain/entities/statement.dart';
+import 'statement_list_item.dart';
 
 class StatementConnector extends StatelessWidget {
   const StatementConnector(this.statement, {Key? key}) : super(key: key);

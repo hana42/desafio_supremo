@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/presentation/pages/statement/statement_screen.dart';
-import 'package:desafio_supremo/presentation/pages/onboarding/components/choose_card.dart';
-import 'package:desafio_supremo/presentation/pages/onboarding/components/create_pin.dart';
+import '../../../core/theme/colors.dart';
+import '../../../core/theme/constants.dart';
+import '../statement/statement_screen.dart';
+import 'components/choose_card.dart';
+import 'components/create_pin.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);

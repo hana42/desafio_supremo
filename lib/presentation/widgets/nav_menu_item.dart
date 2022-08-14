@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
+import '../../core/theme/colors.dart';
 
 class NavMenuItem extends StatelessWidget {
   const NavMenuItem(this.title, this.icon,
@@ -10,7 +10,7 @@ class NavMenuItem extends StatelessWidget {
   final String title;
   final String? subtitle;
   final IconData icon;
-  final Function()? onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {

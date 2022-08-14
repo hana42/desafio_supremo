@@ -1,11 +1,13 @@
-import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/presentation/pages/home/components/home_header.dart';
-import 'package:desafio_supremo/presentation/pages/home/components/home_nav_menu.dart';
-import 'package:desafio_supremo/presentation/pages/home/components/home_scrollable_item.dart';
-import 'package:desafio_supremo/presentation/widgets/advertisement_card.dart';
-import 'package:desafio_supremo/presentation/widgets/user_goals_list.dart';
+import 'package:confetti/confetti.dart';
+
+import '../../widgets/advertisement_card.dart';
+import '../../widgets/user_goals_list.dart';
+
+import 'components/home_header.dart';
+import 'components/home_nav_menu.dart';
+import 'components/home_scrollable_item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,9 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final ScrollController scrollController = ScrollController();
   final ConfettiController confettiController = ConfettiController();
 
+  static Page<void> page() => const MaterialPage<void>(child: HomeScreen());
+
   int timesScrolled = 0;
 
-  void setupScrollController(context) {
+  void setupScrollController(dynamic context) {
     scrollController.addListener(() {
       if (scrollController.position.atEdge) {
         timesScrolled++;

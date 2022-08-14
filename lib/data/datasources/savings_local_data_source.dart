@@ -1,4 +1,4 @@
-import 'package:desafio_supremo/data/models/savings_model.dart';
+import '../models/savings_model.dart';
 
 abstract class SavingsLocalDataSource {
   SavingsModel getSavings();

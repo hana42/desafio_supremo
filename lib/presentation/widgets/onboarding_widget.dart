@@ -1,5 +1,6 @@
-import 'package:desafio_supremo/core/theme/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/theme/constants.dart';
 
 class OnboardingWidget extends StatelessWidget {
   const OnboardingWidget({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/utils/utils.dart';
+import '../../../core/theme/colors.dart';
+import '../../../core/utils/utils.dart';
 
 class AnimatedBalanceContainer extends StatelessWidget {
   const AnimatedBalanceContainer(

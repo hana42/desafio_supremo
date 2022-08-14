@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DetailListItem extends StatelessWidget {
-  final String title;
-  final String subtitle;
-
   const DetailListItem({Key? key, required this.title, required this.subtitle})
       : super(key: key);
+
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/core/theme/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/theme/colors.dart';
+import '../../core/theme/constants.dart';
 
 class AdvertisementCard extends StatefulWidget {
   const AdvertisementCard(
@@ -9,10 +10,10 @@ class AdvertisementCard extends StatefulWidget {
     Key? key,
     this.buttonText,
   }) : super(key: key);
+
   final String title;
   final String text;
   final String? buttonText;
-  const AdvertisementCard({Key? key, required this.title, required this.text, this.buttonText}) : super(key: key);
 
   @override
   State<AdvertisementCard> createState() => _AdvertisementCardState();

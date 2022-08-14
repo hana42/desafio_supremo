@@ -1,9 +1,21 @@
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
-import 'package:desafio_supremo/domain/entities/detail.dart';
+import '../../domain/entities/detail.dart';
 
 class DetailModel extends Equatable {
+  factory DetailModel.fromJson(Map<String, dynamic> json) => DetailModel(
+        amount: json['amount'] as int,
+        id: json['id'] as String,
+        authentication: json['authentication'] as String,
+        tType: json['tType'] as String,
+        createdAt: DateTime.parse(json['createdAt'] as String),
+        to: json['to'],
+        from: json['from'],
+        bankName: json['bankName'],
+        description: json['description'] as String,
+      );
+
   const DetailModel({
     required this.amount,
     required this.id,
@@ -47,18 +59,6 @@ class DetailModel extends Equatable {
         from: from,
         bankName: bankName,
         description: description,
-      );
-
-  factory DetailModel.fromJson(Map<String, dynamic> json) => DetailModel(
-        amount: json['amount'],
-        id: json['id'],
-        authentication: json['authentication'],
-        tType: json['tType'],
-        createdAt: DateTime.parse(json['createdAt']),
-        to: json['to'],
-        from: json['from'],
-        bankName: json['bankName'],
-        description: json['description'],
       );
 
   Map<String, dynamic> toJson() => {

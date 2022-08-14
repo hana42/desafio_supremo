@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/domain/entities/statement.dart';
-import 'package:desafio_supremo/domain/usecases/get_statement.dart';
+import 'package:desafio_supremo/domain/usecases/statement/get_statement.dart';
 
 import '../../helpers/test_helper.mocks.dart';
 
@@ -13,7 +13,7 @@ void main() {
   late GetStatement usecase;
 
   setUp(() {
-    mockStatementRepository = MockStatementRepository();
+    mockStatementRepository = MockStatementRepositoryImpl();
     usecase = GetStatement(mockStatementRepository);
   });
 
@@ -32,7 +32,7 @@ void main() {
 
   group('getStatement', () {
     test('returns a Statement when successful', () async {
-      when(mockStatementRepository.getStatement(offset))
+      when(mockStatementRepository.getStatement(limit, offset))
           .thenAnswer((_) async => Right([testStatement]));
 
       final result = await usecase.get(offset);
@@ -43,10 +43,10 @@ void main() {
     });
 
     test('throws an exception when server fails', () async {
-      when(mockStatementRepository.getStatement(offset))
+      when(mockStatementRepository.getStatement(limit, offset))
           .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
 
-      final result = await usecase.get(offset);
+      final result = await usecase.get(limit, offset);
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());
@@ -54,7 +54,7 @@ void main() {
     });
 
     test('throws an exception when connection fails', () async {
-      when(mockStatementRepository.getStatement(offset)).thenAnswer(
+      when(mockStatementRepository.getStatement(limit, offset)).thenAnswer(
           (_) async => const Left(ConnectionFailure('No connection')));
 
       final result = await usecase.get(offset);

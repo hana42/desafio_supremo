@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/presentation/pages/pix/components/pix_header.dart';
-import 'package:desafio_supremo/presentation/pages/pix/components/pix_options_menu.dart';
-import 'package:desafio_supremo/presentation/widgets/nav_menu_item.dart';
+import 'components/pix_header.dart';
+import 'components/pix_options_menu.dart';
+import '../../widgets/nav_menu_item.dart';
 
 class PixScreen extends StatelessWidget {
   const PixScreen({Key? key}) : super(key: key);

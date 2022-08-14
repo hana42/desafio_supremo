@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
+import '../../../../core/theme/colors.dart';
 
 class LabelButton extends StatelessWidget {
   const LabelButton(this.label, this.icon, {Key? key, this.onPressed})
@@ -8,7 +8,7 @@ class LabelButton extends StatelessWidget {
 
   final String label;
   final IconData icon;
-  final Function()? onPressed;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {

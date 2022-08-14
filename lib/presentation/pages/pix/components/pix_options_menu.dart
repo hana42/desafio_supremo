@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/presentation/pages/pix/components/pix_label_button.dart';
+import 'pix_label_button.dart';
 
 class PixOptionsMenu extends StatefulWidget {
   const PixOptionsMenu({Key? key}) : super(key: key);

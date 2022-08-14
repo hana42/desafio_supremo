@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer/shimmer.dart';
 
-import 'package:desafio_supremo/core/theme/constants.dart';
-import 'package:desafio_supremo/core/utils/utils.dart';
-import 'package:desafio_supremo/injection.dart';
-import 'package:desafio_supremo/presentation/bloc/balance/balance_event.dart';
-
-import '../../core/theme/colors.dart';
-import '../bloc/balance/balance_bloc.dart';
-import '../bloc/balance/balance_state.dart';
+import '../../../core/theme/colors.dart';
+import '../../../core/theme/constants.dart';
+import '../../../core/utils/utils.dart';
+import '../../../injection.dart';
+import '../../bloc/balance/balance_cubit.dart';
 
 class BalanceWidget extends StatelessWidget {
   const BalanceWidget({Key? key}) : super(key: key);
@@ -20,35 +17,14 @@ class BalanceWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 7,
       width: MediaQuery.of(context).size.width,
       color: kLightGrey,
-      padding: kHorizontalPadding,
-      child: BlocBuilder<BalanceBloc, BalanceState>(
-        bloc: locator.get<BalanceBloc>()..add(const FetchBalance()),
+      padding: kDefaultPadding,
+      child: BlocBuilder<BalanceCubit, BalanceState>(
+        bloc: locator.get<BalanceCubit>()..getBalance(),
         builder: (context, state) {
-          if (state is BalanceEmpty) {
+          if (state is BalanceInitial) {
             return const Text('Empty');
-          } else if (state is BalanceLoading) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const Text('Seu saldo'),
-                    IconButton(
-                      icon: const Icon(Icons.remove_red_eye_rounded),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-                Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.white,
-                  child: Container(color: kLightGrey, height: 30, width: 100),
-                ),
-              ],
-            );
-          } else if (state is BalanceHasData) {
-            var balance = state.result.amount;
+          } else if (state is BalanceSuccess) {
+            var balance = state.balance.amount;
             return Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,

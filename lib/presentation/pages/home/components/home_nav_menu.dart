@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/presentation/pages/cards/cards_screen.dart';
-import 'package:desafio_supremo/presentation/pages/deposit/deposit_screen.dart';
-import 'package:desafio_supremo/presentation/pages/home/components/home_nav_menu_item.dart';
-import 'package:desafio_supremo/presentation/pages/pix/pix_screen.dart';
-import 'package:desafio_supremo/presentation/pages/savings/savings_screen.dart';
-import 'package:desafio_supremo/presentation/pages/statement/statement_screen.dart';
-import 'package:desafio_supremo/presentation/pages/transfer/transfer_screen.dart';
+import '../../cards/cards_screen.dart';
+import '../../deposit/deposit_screen.dart';
+import 'home_nav_menu_item.dart';
+import '../../pix/pix_screen.dart';
+import '../../savings/savings_screen.dart';
+import '../../statement/statement_screen.dart';
+import '../../transfer/transfer_screen.dart';
 
 class HomeNavMenu extends StatelessWidget {
   const HomeNavMenu({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
-import 'package:desafio_supremo/presentation/widgets/balance/balance_widget.dart';
-import 'package:desafio_supremo/presentation/widgets/credit_card.dart';
-import 'package:desafio_supremo/presentation/pages/home/components/home_app_bar.dart';
+import '../../../../core/theme/colors.dart';
+import '../../../widgets/balance/balance_widget.dart';
+import '../../../widgets/credit_card.dart';
+import 'home_app_bar.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import 'package:desafio_supremo/core/theme/colors.dart';
+import '../../core/theme/colors.dart';
 
 class PercentIndicator extends StatelessWidget {
   const PercentIndicator({Key? key, required this.value}) : super(key: key);
