@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1021179714288",
+    "project_id": "nobank",
+    "storage_bucket": "nobank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021179714288:android:8fa23031e13f85102c0035",
+        "android_client_info": {
+          "package_name": "com.example.desafio_supremo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021179714288-qom5hsurj403aqethirkh3879icl28fi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXxRlyqRAqav18hL5OseLkxM0LrGOnrAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021179714288-qom5hsurj403aqethirkh3879icl28fi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

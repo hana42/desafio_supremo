@@ -4,7 +4,6 @@ description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-
 version: 1.0.0+1
 
 environment:
@@ -13,7 +12,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  authentication_repository:
+    path: packages/authentication_repository
+  bloc:
 
+  equatable: ^2.0.3
+  flow_builder: ^0.0.9
+  flutter_bloc:
+
+
+  font_awesome_flutter: ^10.1.0
+  form_inputs:
+      path: packages/form_inputs
+  formz: ^0.4.0
+  google_fonts: ^3.0.1
+  meta: ^1.7.0
   cupertino_icons: ^1.0.2
   http: ^0.13.4
   equatable: ^2.0.3
@@ -50,6 +63,34 @@ dependencies:
   hydrated_bloc: ^8.1.0
   confetti: ^0.7.0
 
+  firebase_auth:
+
+  firebase_core:
+
+
+
+
+
+
+
+
+
+  http: ^0.13.4
+  either_dart: ^0.1.4
+  intl: ^0.17.0
+
+
+
+  get_it: ^7.2.0
+  timelines: ^0.1.0
+  shimmer: ^2.0.0
+  screenshot: ^1.2.3
+  share_plus: ^4.0.10
+  path_provider: ^2.0.11
+  lottie: ^1.4.0
+  rxdart: ^0.27.5
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -58,8 +99,27 @@ dev_dependencies:
   mockito: ^5.2.0
   build_runner: ^2.2.0
 
+
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
     - assets/icons/
+  bloc_test: ^9.0.0
+  mocktail: ^0.3.0
+  very_good_analysis: ^3.0.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/lottie/progress.json
+    - assets/images/
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Bold.ttf
+    - family: RobotoRegular
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
