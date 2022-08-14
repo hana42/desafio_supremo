@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/colors.dart';
-
-import '../../core/theme/theme_colors.dart';
+import '/core/theme/colors.dart';
 import 'credit_card.dart';
 
 class CardsList extends StatefulWidget {
@@ -45,7 +43,7 @@ class _DotIndicatorState extends State<DotIndicator> {
         width: 8.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4.0),
-          color: widget.isActive ? ThemeColors.black : ThemeColors.grey,
+          color: widget.isActive ? kBlack : kDarkGrey,
         ),
       ),
     );

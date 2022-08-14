@@ -48,7 +48,7 @@ void main() {
       when(mockDetailRemoteDataSource.getDetail(id))
           .thenAnswer((_) async => tDetailModel);
 
-      final result = await repository.getDetail(id);
+      final result = await repository(id);
 
       verify(mockDetailRemoteDataSource.getDetail(id));
 
@@ -61,7 +61,7 @@ void main() {
       when(mockDetailRemoteDataSource.getDetail(id))
           .thenThrow(ServerException());
 
-      final result = await repository.getDetail(id);
+      final result = await repository(id);
 
       verify(mockDetailRemoteDataSource.getDetail(id));
 
@@ -74,7 +74,7 @@ void main() {
       when(mockDetailRemoteDataSource.getDetail(id))
           .thenThrow(const SocketException('Connection failed'));
 
-      final result = await repository.getDetail(id);
+      final result = await repository(id);
 
       verify(mockDetailRemoteDataSource.getDetail(id));
 

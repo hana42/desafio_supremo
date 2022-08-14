@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../widgets/balance/balance_widget.dart';
 import '../../../widgets/credit_card.dart';
+
 import 'home_app_bar.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -27,7 +28,7 @@ class HomeHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const HomeAppBar(userName: 'David Bond'),
+            HomeAppBar(),
             const BalanceWidget(),
             Expanded(
               child: Container(

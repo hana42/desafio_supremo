@@ -9,14 +9,13 @@ import 'package:desafio_supremo/domain/usecases/statement/get_statement.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late MockStatementRepository mockStatementRepository;
+  late MockStatementRepositoryImpl mockStatementRepository;
   late GetStatement usecase;
 
   setUp(() {
     mockStatementRepository = MockStatementRepositoryImpl();
     usecase = GetStatement(mockStatementRepository);
   });
-
 
   int limit = 10;
   int offset = 1;
@@ -35,7 +34,7 @@ void main() {
       when(mockStatementRepository.getStatement(limit, offset))
           .thenAnswer((_) async => Right([testStatement]));
 
-      final result = await usecase.get(offset);
+      final result = await usecase(offset);
 
       expect(result.isRight, true);
       expect(result.right, isA<List<Statement>>());
@@ -46,7 +45,7 @@ void main() {
       when(mockStatementRepository.getStatement(limit, offset))
           .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
 
-      final result = await usecase.get(limit, offset);
+      final result = await usecase(limit, offset);
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());
@@ -57,7 +56,7 @@ void main() {
       when(mockStatementRepository.getStatement(limit, offset)).thenAnswer(
           (_) async => const Left(ConnectionFailure('No connection')));
 
-      final result = await usecase.get(offset);
+      final result = await usecase(offset);
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());

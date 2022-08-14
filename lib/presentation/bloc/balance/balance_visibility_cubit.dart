@@ -1,4 +1,4 @@
-import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:bloc/bloc.dart';
 
 class BalanceVisibilityCubit extends Cubit<bool> {
   BalanceVisibilityCubit() : super(true);

@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app_bloc.dart';
@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final user = context.select((AppBloc bloc) => bloc.state.user);
     return Scaffold(
+      backgroundColor: Colors.red,
       appBar: AppBar(
         title: const Text('Home'),
         actions: <Widget>[
@@ -24,7 +25,7 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: Container(),
+      body: Container(color: Colors.amber),
     );
   }
 }

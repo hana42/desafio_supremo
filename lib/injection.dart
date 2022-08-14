@@ -1,3 +1,4 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,9 +23,9 @@ import 'presentation/bloc/app/app_bloc.dart';
 import 'presentation/bloc/balance/balance_cubit.dart';
 import 'presentation/bloc/balance/balance_visibility_cubit.dart';
 import 'presentation/bloc/detail/detail_cubit.dart';
+import 'presentation/bloc/login/login_cubit.dart';
 import 'presentation/bloc/savings/savings_cubit.dart';
 import 'presentation/bloc/statement/statement_cubit.dart';
-import 'presentation/pages/login/cubit/login_cubit.dart';
 import 'presentation/pages/sign_up/cubit/sign_up_cubit.dart';
 
 final locator = GetIt.instance;
@@ -57,29 +58,22 @@ void init() {
   );
 
   // bloc
-  locator.registerFactory(
+  locator.registerLazySingleton(
     () => AppBloc(authenticationRepository: locator()),
   );
+
+  locator.registerLazySingleton(
+    () => AuthenticationRepository(),
+  );
+
   locator.registerFactory(
     () => SignUpCubit(locator()),
   );
-  locator.registerFactory(
+  locator.registerLazySingleton(
     () => LoginCubit(locator()),
   );
 
   // usecase
-  locator.registerLazySingleton(
-    () => GetBalanceImpl(locator()),
-  );
-  
-  locator.registerLazySingleton(
-    () => GetStatement(locator()),
-  );
-
-  locator.registerLazySingleton(
-    () => GetDetail(locator()),
-  );
-
   locator.registerFactory<DetailCubit>(
     () => DetailCubit(locator<GetDetail>()),
   );
@@ -118,28 +112,9 @@ void init() {
     () => SavingsRepositoryImpl(locator<SavingsLocalDataSource>()),
   );
 
-  // repository
-  locator.registerLazySingleton<BalanceRepository>(
-    () => BalanceRepositoryImpl(locator()),
-  );
-  locator.registerLazySingleton<StatementRepository>(
-    () => StatementRepositoryImpl(locator()),
-  );
-  locator.registerLazySingleton<DetailRepository>(
-    () => DetailRepositoryImpl(locator()),
-  );
-
   // datasources
   locator.registerLazySingleton<BalanceRemoteDataSource>(
     () => BalanceRemoteDataSourceImpl(locator()),
-  );
-
-  locator.registerLazySingleton<StatementRemoteDataSource>(
-    () => StatementRemoteDataSourceImpl(locator()),
-  );
-
-  locator.registerLazySingleton<DetailRemoteDataSource>(
-    () => DetailRemoteDataSourceImpl(locator()),
   );
 
   locator.registerLazySingleton<StatementRemoteDataSource>(

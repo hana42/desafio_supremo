@@ -1,11 +1,14 @@
 import 'dart:async';
+
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:meta/meta.dart';
 
+// Sign Up Failure
 class SignUpWithEmailAndPasswordFailure implements Exception {
   const SignUpWithEmailAndPasswordFailure([
     this.message = 'An unknown exception occurred.',
@@ -42,11 +45,9 @@ class SignUpWithEmailAndPasswordFailure implements Exception {
 }
 
 class LogInWithEmailAndPasswordFailure implements Exception {
-
   const LogInWithEmailAndPasswordFailure([
     this.message = 'An unknown exception occurred.',
   ]);
-
 
   factory LogInWithEmailAndPasswordFailure.fromCode(String code) {
     switch (code) {
@@ -73,10 +74,10 @@ class LogInWithEmailAndPasswordFailure implements Exception {
 
   final String message;
 }
+
 class LogOutFailure implements Exception {}
 
 class AuthenticationRepository {
-
   AuthenticationRepository({
     CacheClient? cache,
     firebase_auth.FirebaseAuth? firebaseAuth,
@@ -84,16 +85,13 @@ class AuthenticationRepository {
         _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance;
 
   final CacheClient _cache;
- final firebase_auth.FirebaseAuth _firebaseAuth;
-
+  final firebase_auth.FirebaseAuth _firebaseAuth;
 
   @visibleForTesting
   bool isWeb = kIsWeb;
 
-
   @visibleForTesting
   static const userCacheKey = '__user_cache_key__';
-
 
   Stream<User> get user {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
@@ -103,11 +101,9 @@ class AuthenticationRepository {
     });
   }
 
-
   User get currentUser {
     return _cache.read<User>(key: userCacheKey) ?? User.empty;
   }
-
 
   Future<void> signUp({required String email, required String password}) async {
     try {
@@ -121,9 +117,6 @@ class AuthenticationRepository {
       throw const SignUpWithEmailAndPasswordFailure();
     }
   }
-
-
-
 
   Future<void> logInWithEmailAndPassword({
     required String email,
@@ -141,12 +134,10 @@ class AuthenticationRepository {
     }
   }
 
-
   Future<void> logOut() async {
     try {
       await Future.wait([
         _firebaseAuth.signOut(),
-
       ]);
     } catch (_) {
       throw LogOutFailure();

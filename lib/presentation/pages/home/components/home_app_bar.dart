@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../../../core/theme/constants.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key, required this.userName});
-
-  final String userName;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class HomeAppBar extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyText2,
               children: [
                 TextSpan(
-                  text: userName,
+                  text: _auth.currentUser!.displayName,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2!

@@ -34,7 +34,7 @@ void main() {
       when(mockDetailRepository.getDetail(tId))
           .thenAnswer((_) async => Right(testDetail));
 
-      final result = await usecase.get(tId);
+      final result = await usecase(tId);
 
       expect(result.isRight, true);
       expect(result.right, isA<Detail>());
@@ -45,7 +45,7 @@ void main() {
       when(mockDetailRepository.getDetail(tId))
           .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
 
-      final result = await usecase.get(tId);
+      final result = await usecase(tId);
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());
@@ -56,7 +56,7 @@ void main() {
       when(mockDetailRepository.getDetail(tId)).thenAnswer(
           (_) async => const Left(ConnectionFailure('No connection')));
 
-      final result = await usecase.get(tId);
+      final result = await usecase(tId);
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());

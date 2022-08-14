@@ -29,7 +29,7 @@ void main() {
       when(mockBalanceRemoteDataSource.getBalance())
           .thenAnswer((_) async => tBalanceModel);
 
-      final result = await repository.getBalance();
+      final result = await repository();
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
@@ -42,7 +42,7 @@ void main() {
       when(mockBalanceRemoteDataSource.getBalance())
           .thenThrow(ServerException());
 
-      final result = await repository.getBalance();
+      final result = await repository();
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
@@ -55,7 +55,7 @@ void main() {
       when(mockBalanceRemoteDataSource.getBalance())
           .thenThrow(const SocketException('Connection failed'));
 
-      final result = await repository.getBalance();
+      final result = await repository();
 
       verify(mockBalanceRemoteDataSource.getBalance());
 

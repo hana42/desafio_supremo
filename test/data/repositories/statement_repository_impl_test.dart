@@ -49,7 +49,7 @@ void main() {
       when(mockStatementRemoteDataSource.getStatement(limit, offset))
           .thenAnswer((_) async => [tStatementModel]);
 
-      final result = await repository.getStatement(limit, offset);
+      final result = await repository(limit, offset);
 
       verify(mockStatementRemoteDataSource.getStatement(limit, offset));
 
@@ -62,7 +62,7 @@ void main() {
       when(mockStatementRemoteDataSource.getStatement(limit, offset))
           .thenThrow(ServerException());
 
-      final result = await repository.getStatement(limit, offset);
+      final result = await repository(limit, offset);
 
       verify(mockStatementRemoteDataSource.getStatement(limit, offset));
 
@@ -72,12 +72,12 @@ void main() {
 
     test('returns connection failure when the device has no internet',
         () async {
-      when(mockStatementRemoteDataSource.getStatement(offset))
+      when(mockStatementRemoteDataSource.getStatement(limit, offset))
           .thenThrow(const SocketException('Connection failed'));
 
-      final result = await repository.getStatement(limit, offset);
+      final result = await repository(limit, offset);
 
-      verify(mockStatementRemoteDataSource.getStatement(offset));
+      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
 
       expect(result.isLeft, true);
       expect(result.left, equals(const ConnectionFailure('Connection failed')));

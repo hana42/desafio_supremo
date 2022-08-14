@@ -38,6 +38,7 @@ import 'package:desafio_supremo/domain/usecases/statement/get_statement.dart';
   BalanceRemoteDataSourceImpl,
   StatementRemoteDataSourceImpl,
   DetailRemoteDataSourceImpl,
+
 ], customMocks: [
   MockSpec<http.Client>(as: #MockHttpClient)
 ])

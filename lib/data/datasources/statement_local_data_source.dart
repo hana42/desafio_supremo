@@ -1,6 +1,3 @@
-// import 'package:ghibli/models/movie_model.dart';
-// import 'package:ghibli/services/hive_service.dart';
-
 // abstract class StatementLocalDataSource {
 //   Future<void> saveCache(List<Movie> statement);
 //   Future<List<Movie>?> getCache();

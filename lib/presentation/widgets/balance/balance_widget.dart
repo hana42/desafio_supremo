@@ -17,7 +17,7 @@ class BalanceWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 7,
       width: MediaQuery.of(context).size.width,
       color: kLightGrey,
-      padding: kDefaultPadding,
+      padding: kBalancePadding,
       child: BlocBuilder<BalanceCubit, BalanceState>(
         bloc: locator.get<BalanceCubit>()..getBalance(),
         builder: (context, state) {

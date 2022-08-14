@@ -25,7 +25,7 @@ void main() {
       when(mockBalanceRepository.getBalance())
           .thenAnswer((_) async => const Right(testBalance));
 
-      final result = await usecase.get();
+      final result = await usecase();
 
       expect(result.isRight, true);
       expect(result.right, isA<Balance>());
@@ -36,7 +36,7 @@ void main() {
       when(mockBalanceRepository.getBalance())
           .thenAnswer((_) async => const Left(ServerFailure('Not Found')));
 
-      final result = await usecase.get();
+      final result = await usecase();
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());
@@ -47,7 +47,7 @@ void main() {
       when(mockBalanceRepository.getBalance()).thenAnswer(
           (_) async => const Left(ConnectionFailure('No connection')));
 
-      final result = await usecase.get();
+      final result = await usecase();
 
       expect(result.isLeft, true);
       expect(result.left, isA<Failure>());
