@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/theme/constants.dart';
+import '../../../shared/theme/constants.dart';
 import '../cubit/sign_up_cubit.dart';
 
 import 'sign_up_form.dart';
