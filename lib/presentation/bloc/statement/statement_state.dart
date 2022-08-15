@@ -15,11 +15,11 @@ class StatementInitial extends StatementState {
 }
 
 class StatementError extends StatementState {
-  const StatementError(this.message);
-  final String message;
+  const StatementError(this.error);
+   final ErrorObject error;
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [error];
 }
 
 class StatementLoaded extends StatementState {

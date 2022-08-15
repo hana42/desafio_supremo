@@ -14,15 +14,27 @@ class DetailRemoteDataSourceImpl implements DetailRemoteDataSource {
 
   @override
   Future<DetailModel> getDetail(String id) async {
-    final response = await client.get(
-      Uri.parse(API.detail(id)),
-      headers: API.defaultHeaders,
-    );
+    try {
+      final response = await client.get(
+        Uri.parse(API.detail(id)),
+        headers: API.defaultHeaders,
+      );
 
-    if (response.statusCode == 200) {
-      return DetailModel.fromJson(json.decode(response.body));
-    } else {
-      throw ServerException();
+      if (response.statusCode == 200) {
+        try {
+          return DetailModel.fromJson(json.decode(response.body));
+        } on Exception {
+          throw DataParsingException();
+        }
+      } else {
+        throw ServerException();
+      }
+    } catch (error) {
+      if ((error is ServerException) || (error is DataParsingException)) {
+        rethrow;
+      } else {
+        throw ConnectionException();
+      }
     }
   }
 }

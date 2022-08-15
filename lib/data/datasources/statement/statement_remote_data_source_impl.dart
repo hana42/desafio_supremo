@@ -15,20 +15,32 @@ class StatementRemoteDataSourceImpl implements StatementRemoteDataSource {
 
   @override
   Future<List<StatementModel>> getStatement(int limit, int offset) async {
-    final response = await client.get(
-      Uri.parse(API.statement(limit, offset)),
-      headers: API.defaultHeaders,
-    );
+    try {
+      final response = await client.get(
+        Uri.parse(API.statement(limit, offset)),
+        headers: API.defaultHeaders,
+      );
 
-    if (response.statusCode == 200) {
-      var decodedResponse = await json.decode(response.body);
-      var items = decodedResponse['items'] as List;
-      List<StatementModel> statements = [
-        for (var item in items) StatementModel.fromJson(item)
-      ];
-      return statements;
-    } else {
-      throw ServerException();
+      if (response.statusCode == 200) {
+        try {
+          var decodedResponse = await json.decode(response.body);
+          var items = decodedResponse['items'] as List;
+          List<StatementModel> statements = [
+            for (var item in items) StatementModel.fromJson(item)
+          ];
+          return statements;
+        } on Exception {
+          throw DataParsingException();
+        }
+      } else {
+        throw ServerException();
+      }
+    } catch (error) {
+      if ((error is ServerException) || (error is DataParsingException)) {
+        rethrow;
+      } else {
+        throw ConnectionException();
+      }
     }
   }
 }

@@ -1,15 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../core/error/error_object.dart';
 import '../../../domain/entities/statement.dart';
-import '../../../domain/usecases/statement/get_statement.dart';
+import '../../../domain/usecases/statement/get_statement_impl.dart';
 
 part 'statement_state.dart';
 
 class StatementCubit extends Cubit<StatementState> {
   StatementCubit(this._getStatement) : super(const StatementInitial());
+  final GetStatementImpl _getStatement;
 
-  final GetStatement _getStatement;
   int page = 1;
   List<Statement> statements = <Statement>[];
 
@@ -25,11 +26,12 @@ class StatementCubit extends Cubit<StatementState> {
       page++;
 
       newStatement.fold(
-        (left) => emit(const StatementError('Failure()')),
-        (right) => right.isEmpty
+        (failure) => emit(
+            StatementError(ErrorObject.mapFailureToError(failure: failure))),
+        (data) => data.isEmpty
             ? emit(StatementLoaded(statements: statements, hasReachedMax: true))
             : {
-                statements..addAll(right),
+                statements..addAll(data),
                 emit(StatementLoaded(statements: statements)),
               },
       );

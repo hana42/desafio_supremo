@@ -14,7 +14,7 @@ class ErrorObject extends Equatable {
   @override
   List<Object?> get props => [title, message];
 
-  static ErrorObject mapFailureToErrorObject({required Failure failure}) {
+  static ErrorObject mapFailureToError({required Failure failure}) {
     return failure.when(
       serverFailure: () => const ErrorObject(
         title: 'Erro: INTERNAL_SERVER_FAILURE',
@@ -25,7 +25,8 @@ class ErrorObject extends Equatable {
       dataParsingFailure: () => const ErrorObject(
         title: 'Erro: PARSING_FAILURE',
         message:
-            'Parece que o aplicativo precisa ser atualizado para refletir a estrutura de dados do servidor alterada. Se nenhuma atualização estiver disponível na loja, entre em contato com o desenvolvedor em suporte@nobank.com,',
+            'Parece que o aplicativo precisa ser atualizado para refletir a estrutura de dados do servidor alterada. '
+            'Se nenhuma atualização estiver disponível na loja, entre em contato com o desenvolvedor em suporte@nobank.com,',
       ),
       connectionFailure: () => const ErrorObject(
         title: 'Erro: NO_CONNECTION',

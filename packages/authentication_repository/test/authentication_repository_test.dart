@@ -92,7 +92,11 @@ void main() {
 
       test('calls createUserWithEmailAndPassword', () async {
         await authenticationRepository.signUp(
-            email: email, password: password, cpf: '', name: '');
+          email: email,
+          password: password,
+          cpf: '',
+          name: '',
+        );
         verify(
           () => firebaseAuth.createUserWithEmailAndPassword(
             email: email,
@@ -104,7 +108,11 @@ void main() {
       test('succeeds when createUserWithEmailAndPassword succeeds', () async {
         expect(
           authenticationRepository.signUp(
-              email: email, password: password, cpf: '', name: ''),
+            email: email,
+            password: password,
+            cpf: '',
+            name: '',
+          ),
           completes,
         );
       });
@@ -120,7 +128,11 @@ void main() {
         ).thenThrow(Exception());
         expect(
           authenticationRepository.signUp(
-              email: email, password: password, cpf: '', name: ''),
+            email: email,
+            password: password,
+            cpf: '',
+            name: '',
+          ),
           throwsA(isA<SignUpWithEmailAndPasswordFailure>()),
         );
       });

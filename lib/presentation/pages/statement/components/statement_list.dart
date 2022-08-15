@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../injection.dart';
 import '../../../bloc/statement/statement_cubit.dart';
+import '../../../shared/theme/constants.dart';
 import '../../../shared/widgets/bottom_loader.dart';
+import '../../../shared/widgets/error_dialog.dart';
 
 import 'statement_connector.dart';
 
@@ -42,26 +44,39 @@ class _StatementListState extends State<StatementList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<StatementCubit, StatementState>(
-      bloc: cubit..getStatement(),
-      builder: (context, state) {
-        if (state is StatementLoaded) {
-          return ListView.builder(
-            controller: scrollController,
-            itemExtent: MediaQuery.of(context).size.height * 0.16,
-            itemBuilder: (context, index) {
-              return index >= state.statements.length
-                  ? const BottomLoader()
-                  : StatementConnector(state.statements[index]);
-            },
-            itemCount: state.hasReachedMax
-                ? state.statements.length
-                : state.statements.length + 1,
+    return BlocListener<StatementCubit, StatementState>(
+      bloc: locator.get<StatementCubit>(),
+      listener: (context, state) {
+        if (state is StatementError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              margin: kDefaultPadding / 2,
+              content: ErrorDialog(error: state.error),
+            ),
           );
-        } else {
-          return const BottomLoader();
         }
       },
+      child: BlocBuilder<StatementCubit, StatementState>(
+        bloc: cubit..getStatement(),
+        builder: (context, state) {
+          if (state is StatementLoaded) {
+            return ListView.builder(
+              controller: scrollController,
+              itemExtent: MediaQuery.of(context).size.height * 0.16,
+              itemBuilder: (context, index) {
+                return index >= state.statements.length
+                    ? const BottomLoader()
+                    : StatementConnector(state.statements[index]);
+              },
+              itemCount: state.hasReachedMax
+                  ? state.statements.length
+                  : state.statements.length + 1,
+            );
+          } else {
+            return const BottomLoader();
+          }
+        },
+      ),
     );
   }
 }

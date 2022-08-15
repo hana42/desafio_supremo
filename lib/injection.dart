@@ -10,9 +10,6 @@ import 'data/repositories/balance_repository_impl.dart';
 import 'data/repositories/detail_repository_impl.dart';
 import 'data/repositories/savings_repository_impl.dart';
 import 'data/repositories/statement_repository_impl.dart';
-import 'domain/repositories/balance_repository.dart';
-import 'domain/repositories/detail_repository.dart';
-import 'domain/repositories/savings_repository.dart';
 import 'domain/usecases/balance/get_balance_impl.dart';
 import 'domain/usecases/detail/get_detail_impl.dart';
 import 'domain/usecases/savings/get_savings_impl.dart';
@@ -38,6 +35,10 @@ void init() {
     () => BalanceVisibilityCubit(),
   );
 
+  locator.registerFactory<DetailCubit>(
+    () => DetailCubit(locator<GetDetailImpl>()),
+  );
+
   locator.registerLazySingleton<SavingsCubit>(
     () => SavingsCubit(locator<GetSavingsImpl>()),
   );
@@ -46,30 +47,26 @@ void init() {
     () => StatementCubit(locator<GetStatementImpl>()),
   );
 
-  // bloc
-  locator.registerLazySingleton(
-    () => AppBloc(authenticationRepository: locator()),
+  locator.registerLazySingleton<AppBloc>(
+    () =>
+        AppBloc(authenticationRepository: locator<AuthenticationRepository>()),
   );
 
-  locator.registerLazySingleton(
+  locator.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepository(),
   );
 
-  locator.registerFactory(
-    () => SignUpCubit(locator()),
-  );
-  locator.registerLazySingleton(
-    () => LoginCubit(locator()),
+  locator.registerFactory<SignUpCubit>(
+    () => SignUpCubit(locator<AuthenticationRepository>()),
   );
 
-  // usecase
-  locator.registerFactory<DetailCubit>(
-    () => DetailCubit(locator<GetDetailImpl>()),
+  locator.registerLazySingleton<LoginCubit>(
+    () => LoginCubit(locator<AuthenticationRepository>()),
   );
 
   // usecases
   locator.registerLazySingleton<GetBalanceImpl>(
-    () => GetBalanceImpl(locator()),
+    () => GetBalanceImpl(locator<BalanceRepositoryImpl>()),
   );
 
   locator.registerLazySingleton<GetStatementImpl>(
@@ -84,9 +81,8 @@ void init() {
     () => GetSavingsImpl(locator<SavingsRepositoryImpl>()),
   );
 
-  // repositories
-
-  locator.registerLazySingleton<BalanceRepository>(
+  // repositories impl
+  locator.registerLazySingleton<BalanceRepositoryImpl>(
     () => BalanceRepositoryImpl(locator<BalanceRemoteDataSourceImpl>()),
   );
 
@@ -94,15 +90,15 @@ void init() {
     () => StatementRepositoryImpl(locator<StatementRemoteDataSourceImpl>()),
   );
 
-  locator.registerLazySingleton<DetailRepository>(
+  locator.registerLazySingleton<DetailRepositoryImpl>(
     () => DetailRepositoryImpl(locator<DetailRemoteDataSourceImpl>()),
   );
 
-  locator.registerLazySingleton<SavingsRepository>(
+  locator.registerLazySingleton<SavingsRepositoryImpl>(
     () => SavingsRepositoryImpl(locator<SavingsLocalDataSourceImpl>()),
   );
 
-  // datasources
+  // datasources impl
   locator.registerLazySingleton<BalanceRemoteDataSourceImpl>(
     () => BalanceRemoteDataSourceImpl(locator()),
   );

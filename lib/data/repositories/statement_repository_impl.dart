@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:either_dart/either.dart';
 
 import '../../core/error/exception.dart';
@@ -20,7 +18,7 @@ class StatementRepositoryImpl implements StatementRepository {
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
       return const Left(ServerFailure());
-    } on SocketException {
+    } on ConnectionException {
       return const Left(ConnectionFailure());
     }
   }

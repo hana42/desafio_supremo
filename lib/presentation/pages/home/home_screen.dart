@@ -55,13 +55,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello, ${FirebaseAuth.instance.currentUser!.displayName}')
+        title: Text('Hello, ${FirebaseAuth.instance.currentUser!.displayName}'),
+        centerTitle: false,
       ),
-      drawer: Drawer(
-        child: IconButton(
-          key: const Key('homePage_logout_iconButton'),
-          icon: const Icon(Icons.exit_to_app),
-          onPressed: () => locator.get<AppBloc>().add(AppLogoutRequested()),
+      endDrawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text('dsada'),
+              accountEmail: Text('dhusiahd'),
+            ),
+            DrawerHeader(child: Text('aaa')),
+            IconButton(
+              key: const Key('homePage_logout_iconButton'),
+              icon: const Icon(Icons.exit_to_app),
+              onPressed: () => locator.get<AppBloc>().add(AppLogoutRequested()),
+            ),
+          ],
         ),
       ),
       body: SingleChildScrollView(
