@@ -105,7 +105,11 @@ class AuthenticationRepository {
     return _cache.read<User>(key: userCacheKey) ?? User.empty;
   }
 
-  Future<void> signUp({required String email, required String password}) async {
+  Future<void> signUp(
+      {required String email,
+      required String password,
+      required String name,
+      required String cpf}) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,

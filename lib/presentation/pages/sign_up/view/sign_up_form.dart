@@ -24,20 +24,61 @@ class SignUpForm extends StatelessWidget {
       },
       child: Align(
         alignment: const Alignment(0, -1 / 3),
-
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children:<Widget>[
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SizedBox(height: 8),
+            _NameInput(),
+            _CpfInput(),
             _EmailInput(),
-            const SizedBox(height: 8),
             _PasswordInput(),
-            const SizedBox(height: 8),
             _ConfirmPasswordInput(),
-            const SizedBox(height: 8),
             _SignUpButton(),
-           ],
-          ),
+          ],
+        ),
       ),
+    );
+  }
+}
+
+class _NameInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      buildWhen: (previous, current) => previous.name != current.name,
+      builder: (context, state) {
+        return TextFormField(
+          key: const Key('signUpForm_nameInput_textField'),
+          onChanged: (name) => context.read<SignUpCubit>().nameChanged(name),
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+            labelText: 'name',
+            helperText: '',
+            errorText: state.name.invalid ? 'invalid name' : null,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _CpfInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      buildWhen: (previous, current) => previous.cpf != current.cpf,
+      builder: (context, state) {
+        return TextFormField(
+          key: const Key('signUpForm_cpfInput_textField'),
+          onChanged: (cpf) => context.read<SignUpCubit>().cpfChanged(cpf),
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            labelText: 'CPF',
+            helperText: '',
+            errorText: state.cpf.invalid ? 'invalid cpf' : null,
+          ),
+        );
+      },
     );
   }
 }
@@ -53,7 +94,6 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) => context.read<SignUpCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-
             labelText: 'email',
             helperText: '',
             errorText: state.email.invalid ? 'invalid email' : null,
@@ -91,7 +131,7 @@ class _ConfirmPasswordInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpCubit, SignUpState>(
       buildWhen: (previous, current) =>
-      previous.password != current.password ||
+          previous.password != current.password ||
           previous.confirmedPassword != current.confirmedPassword,
       builder: (context, state) {
         return TextField(
@@ -122,16 +162,18 @@ class _SignUpButton extends StatelessWidget {
         return state.status.isSubmissionInProgress
             ? const CircularProgressIndicator()
             : ElevatedButton(
-             key: const Key('signUpForm_continue_elevate_button'),
-             style: ElevatedButton.styleFrom(
-             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),),
-              primary: Colors.indigo,),
-              onPressed: state.status.isValidated
-              ? () => context.read<SignUpCubit>().signUpFormSubmitted()
-              : null,
-             child: const Text('Sign Up'),
-        );
+                key: const Key('signUpForm_continue_elevate_button'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  primary: Colors.indigo,
+                ),
+                onPressed: state.status.isValidated
+                    ? () => context.read<SignUpCubit>().signUpFormSubmitted()
+                    : null,
+                child: const Text('Sign Up'),
+              );
       },
     );
   }

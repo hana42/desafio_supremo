@@ -9,8 +9,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-
-
 const _mockFirebaseUserUid = 'mock-uid';
 const _mockFirebaseUserEmail = 'mock-email';
 
@@ -63,7 +61,7 @@ void main() {
       when(() => firebaseCore.apps).thenReturn([platformApp]);
       when(firebaseCore.app).thenReturn(platformApp);
       when(
-            () => firebaseCore.initializeApp(
+        () => firebaseCore.initializeApp(
           name: defaultFirebaseAppName,
           options: options,
         ),
@@ -86,7 +84,7 @@ void main() {
     group('signUp', () {
       setUp(() {
         when(
-              () => firebaseAuth.createUserWithEmailAndPassword(
+          () => firebaseAuth.createUserWithEmailAndPassword(
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
@@ -94,9 +92,10 @@ void main() {
       });
 
       test('calls createUserWithEmailAndPassword', () async {
-        await authenticationRepository.signUp(email: email, password: password);
+        await authenticationRepository.signUp(
+            email: email, password: password, cpf: '', name: '');
         verify(
-              () => firebaseAuth.createUserWithEmailAndPassword(
+          () => firebaseAuth.createUserWithEmailAndPassword(
             email: email,
             password: password,
           ),
@@ -105,33 +104,33 @@ void main() {
 
       test('succeeds when createUserWithEmailAndPassword succeeds', () async {
         expect(
-          authenticationRepository.signUp(email: email, password: password),
+          authenticationRepository.signUp(
+              email: email, password: password, cpf: '', name: ''),
           completes,
         );
       });
 
       test(
           'throws SignUpWithEmailAndPasswordFailure '
-              'when createUserWithEmailAndPassword throws', () async {
+          'when createUserWithEmailAndPassword throws', () async {
         when(
-              () => firebaseAuth.createUserWithEmailAndPassword(
+          () => firebaseAuth.createUserWithEmailAndPassword(
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
         ).thenThrow(Exception());
         expect(
-          authenticationRepository.signUp(email: email, password: password),
+          authenticationRepository.signUp(
+              email: email, password: password, cpf: '', name: ''),
           throwsA(isA<SignUpWithEmailAndPasswordFailure>()),
         );
       });
     });
 
-
-
     group('logInWithEmailAndPassword', () {
       setUp(() {
         when(
-              () => firebaseAuth.signInWithEmailAndPassword(
+          () => firebaseAuth.signInWithEmailAndPassword(
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
@@ -144,7 +143,7 @@ void main() {
           password: password,
         );
         verify(
-              () => firebaseAuth.signInWithEmailAndPassword(
+          () => firebaseAuth.signInWithEmailAndPassword(
             email: email,
             password: password,
           ),
@@ -163,9 +162,9 @@ void main() {
 
       test(
           'throws LogInWithEmailAndPasswordFailure '
-              'when signInWithEmailAndPassword throws', () async {
+          'when signInWithEmailAndPassword throws', () async {
         when(
-              () => firebaseAuth.signInWithEmailAndPassword(
+          () => firebaseAuth.signInWithEmailAndPassword(
             email: any(named: 'email'),
             password: any(named: 'password'),
           ),
@@ -185,7 +184,6 @@ void main() {
         when(() => firebaseAuth.signOut()).thenAnswer((_) async {});
         await authenticationRepository.logOut();
         verify(() => firebaseAuth.signOut()).called(1);
-
       });
 
       test('throws LogOutFailure when signOut throws', () async {
@@ -219,7 +217,7 @@ void main() {
           emitsInOrder(const <User>[user]),
         );
         verify(
-              () => cache.write(
+          () => cache.write(
             key: AuthenticationRepository.userCacheKey,
             value: user,
           ),
@@ -230,7 +228,7 @@ void main() {
     group('currentUser', () {
       test('returns User.empty when cached user is null', () {
         when(
-              () => cache.read(key: AuthenticationRepository.userCacheKey),
+          () => cache.read(key: AuthenticationRepository.userCacheKey),
         ).thenReturn(null);
         expect(
           authenticationRepository.currentUser,
@@ -240,7 +238,7 @@ void main() {
 
       test('returns User when cached user is not null', () async {
         when(
-              () => cache.read<User>(key: AuthenticationRepository.userCacheKey),
+          () => cache.read<User>(key: AuthenticationRepository.userCacheKey),
         ).thenReturn(user);
         expect(authenticationRepository.currentUser, equals(user));
       });
