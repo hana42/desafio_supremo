@@ -6,7 +6,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class Utils {
-  /// Returns if statements is cash in or cash out
   bool statementType(String tType) {
     final String cleanedString = tType.trim().toLowerCase();
     final bool cashOut = cleanedString.contains('cashout') ||

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:lottie/lottie.dart';
 
-import '../../../../core/theme/colors.dart';
+import '../../../shared/theme/colors.dart';
 import '../../home/home_screen.dart';
 
 class TransferConfirmation extends StatelessWidget {

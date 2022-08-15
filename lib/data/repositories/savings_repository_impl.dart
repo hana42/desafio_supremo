@@ -1,13 +1,26 @@
+import 'dart:io';
+
+import 'package:either_dart/either.dart';
+
+import '../../core/error/exception.dart';
+import '../../core/error/failure.dart';
 import '../../domain/entities/savings.dart';
 import '../../domain/repositories/savings_repository.dart';
-import '../datasources/savings_local_data_source.dart';
+import '../datasources/savings/savings_local_data_source_impl.dart';
 
 class SavingsRepositoryImpl implements SavingsRepository {
-  SavingsRepositoryImpl(this.savingsLocalDataSource);
-  final SavingsLocalDataSource savingsLocalDataSource;
+  SavingsRepositoryImpl(this._savingsLocalDataSource);
+  final SavingsLocalDataSourceImpl _savingsLocalDataSource;
 
   @override
-  Savings call() {
-    return savingsLocalDataSource.getSavings().toEntity();
+  Future<Either<Failure, Savings>> call() async {
+    try {
+      final result = await _savingsLocalDataSource.getSavings();
+      return Right(result.toEntity());
+    } on ServerException {
+      return const Left(ServerFailure());
+    } on SocketException {
+      return const Left(ConnectionFailure());
+    }
   }
 }

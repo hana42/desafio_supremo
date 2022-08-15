@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:screenshot/screenshot.dart';
 
-import '../../../core/theme/colors.dart';
-import '../../../core/theme/constants.dart';
 import '../../../core/utils/utils.dart';
+import '../../shared/theme/colors.dart';
+import '../../shared/theme/constants.dart';
+
 import 'components/detail_list.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -59,7 +61,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   Utils().saveAndShare(proof);
                 },
                 child: Padding(
-                  padding: kPaddingButton,
+                  padding: kButtonPadding,
                   child: Text(
                     'Compartilhar',
                     style: Theme.of(context).textTheme.button,

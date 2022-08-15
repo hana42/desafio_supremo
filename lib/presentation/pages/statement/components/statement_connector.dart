@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/colors.dart';
-import '../../../../core/theme/constants.dart';
+import '../../../shared/theme/colors.dart';
+import '../../../shared/theme/constants.dart';
 import '../../../../domain/entities/statement.dart';
 import 'statement_list_item.dart';
 

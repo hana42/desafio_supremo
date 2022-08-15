@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../injection.dart';
 import '../../../bloc/statement/statement_cubit.dart';
-import '../../../widgets/bottom_loader.dart';
+import '../../../shared/widgets/bottom_loader.dart';
 
 import 'statement_connector.dart';
 

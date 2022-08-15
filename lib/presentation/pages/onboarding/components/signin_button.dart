@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/colors.dart';
-import '../../../widgets/glass.dart';
+import '../../../shared/theme/colors.dart';
+import '../../../shared/widgets/glass.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({Key? key, required this.onPress}) : super(key: key);

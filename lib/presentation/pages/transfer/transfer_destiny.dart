@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/colors.dart';
-import '../../../core/theme/constants.dart';
+import '../../shared/theme/colors.dart';
+import '../../shared/theme/constants.dart';
+import '../../shared/widgets/header.dart';
+
 import 'components/transfer_confirmation.dart';
-import '../../widgets/header.dart';
 
 class TransferDestiny extends StatelessWidget {
   const TransferDestiny({Key? key}) : super(key: key);

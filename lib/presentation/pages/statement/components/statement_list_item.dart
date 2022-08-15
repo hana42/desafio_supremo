@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../core/theme/colors.dart';
+import '../../../shared/theme/colors.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../domain/entities/statement.dart';
 import '../../detail/detail_screen.dart';

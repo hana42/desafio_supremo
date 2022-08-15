@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/constants.dart';
+import '../../../shared/theme/constants.dart';
 
 class PixHeader extends StatelessWidget {
   const PixHeader({Key? key}) : super(key: key);

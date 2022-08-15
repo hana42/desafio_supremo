@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/colors.dart';
+import '../../../shared/theme/colors.dart';
 
 class LabelButton extends StatelessWidget {
   const LabelButton(this.label, this.icon, {Key? key, this.onPressed})

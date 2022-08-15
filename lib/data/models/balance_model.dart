@@ -3,10 +3,11 @@ import 'package:equatable/equatable.dart';
 import '../../domain/entities/balance.dart';
 
 class BalanceModel extends Equatable {
-
-  factory BalanceModel.fromJson(Map<String, dynamic> json) =>
-      BalanceModel(amount: json['amount'] as int);
   const BalanceModel({required this.amount});
+
+  factory BalanceModel.fromJson(Map<String, dynamic> json) {
+    return BalanceModel(amount: json['amount'] as int);
+  }
 
   final int amount;
 

@@ -1,7 +1,7 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/colors.dart';
+import '../../../shared/theme/colors.dart';
 
 class HomeScrollableItem extends StatefulWidget {
   const HomeScrollableItem({Key? key, required this.confettiController}) : super(key: key);

@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:confetti/confetti.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
-import 'package:desafio_supremo/app.dart';
-import 'package:desafio_supremo/injection.dart';
+import '../../../injection.dart';
+import '../../bloc/app/app_bloc.dart';
+import '../../shared/widgets/user_goals_list.dart';
 
-import '../../widgets/advertisement_card.dart';
-import '../../widgets/user_goals_list.dart';
-
+import 'components/advertisement_card.dart';
 import 'components/home_header.dart';
 import 'components/home_nav_menu.dart';
 import 'components/home_scrollable_item.dart';

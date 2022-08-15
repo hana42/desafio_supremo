@@ -6,7 +6,8 @@ import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/exception.dart';
 import 'package:desafio_supremo/core/utils/api.utils.dart';
-import 'package:desafio_supremo/data/datasources/detail_remote_data_source.dart';
+import 'package:desafio_supremo/data/datasources/detail/detail_remote_data_source.dart';
+import 'package:desafio_supremo/data/datasources/detail/detail_remote_data_source_impl.dart';
 import 'package:desafio_supremo/data/models/detail_model.dart';
 
 import '../../helpers/json_reader.dart';

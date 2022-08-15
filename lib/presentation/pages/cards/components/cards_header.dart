@@ -1,6 +1,6 @@
-import '../../../widgets/advertisement_card.dart';
-import '../../../widgets/header.dart';
 import 'package:flutter/material.dart';
+
+import '../../../shared/widgets/header.dart';
 
 class CardsHeader extends StatefulWidget {
   const CardsHeader({Key? key}) : super(key: key);
@@ -14,11 +14,6 @@ class _CardsHeaderState extends State<CardsHeader> {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        AdvertisementCard(
-          'Crédito sem anuidade',
-          'Seu crédito é sempre sem anuidade! Solicite uma análise agora mesmo.',
-          buttonText: 'Solicitar',
-        ),
         Header(
           title: 'Cartões',
           text:

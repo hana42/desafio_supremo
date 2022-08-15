@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/colors.dart';
+import '../../../shared/theme/colors.dart';
 
 class BlockCardAlert extends StatelessWidget {
   const BlockCardAlert({super.key});

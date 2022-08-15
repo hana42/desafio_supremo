@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../widgets/header.dart';
-import '../../widgets/nav_menu_item.dart';
+
+import '../../shared/widgets/header.dart';
+import '../../shared/widgets/nav_menu_item.dart';
 
 class DepositScreen extends StatelessWidget {
   const DepositScreen({super.key});

@@ -1,4 +1,4 @@
-class API {
+abstract class API {
   static const String baseUrl = 'https://bank-statement-bff.herokuapp.com';
   static const Map<String, String> defaultHeaders = {
     'token':

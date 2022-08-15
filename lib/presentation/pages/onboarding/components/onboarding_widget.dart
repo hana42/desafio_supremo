@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/constants.dart';
+import '../../../shared/theme/constants.dart';
 
 class OnboardingWidget extends StatelessWidget {
   const OnboardingWidget({

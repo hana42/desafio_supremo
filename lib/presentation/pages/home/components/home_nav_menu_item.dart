@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/colors.dart';
+import '../../../shared/theme/colors.dart';
 
 class HomeNavMenuItem extends StatelessWidget {
   const HomeNavMenuItem(this.icon, this.name, this.page, {Key? key})

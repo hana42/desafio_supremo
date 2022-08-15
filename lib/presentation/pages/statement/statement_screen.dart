@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '/core/theme/constants.dart';
-import '/presentation/widgets/balance/balance_widget.dart';
+import '../../shared/theme/constants.dart';
+import '../../shared/widgets/balance/balance_widget.dart';
+
 import 'components/statement_list.dart';
 
 

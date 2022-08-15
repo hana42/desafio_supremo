@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../cards/cards_screen.dart';
 import '../../deposit/deposit_screen.dart';
-import 'home_nav_menu_item.dart';
 import '../../pix/pix_screen.dart';
 import '../../savings/savings_screen.dart';
 import '../../statement/statement_screen.dart';
 import '../../transfer/transfer_screen.dart';
+
+import 'home_nav_menu_item.dart';
 
 class HomeNavMenu extends StatelessWidget {
   const HomeNavMenu({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class HomeNavMenu extends StatelessWidget {
                     'Cartão',
                     CardsScreen(),
                   ),
-                  const HomeNavMenuItem(
+                  HomeNavMenuItem(
                     Icons.inventory_sharp,
                     'Poupança',
                     SavingsScreen(),

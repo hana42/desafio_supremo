@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:desafio_supremo/core/theme/constants.dart';
+import '../../../shared/theme/constants.dart';
 
 class CreatePin extends StatefulWidget {
   const CreatePin({Key? key}) : super(key: key);

@@ -4,18 +4,6 @@ import 'package:intl/intl.dart';
 import '../../domain/entities/detail.dart';
 
 class DetailModel extends Equatable {
-  factory DetailModel.fromJson(Map<String, dynamic> json) => DetailModel(
-        amount: json['amount'] as int,
-        id: json['id'] as String,
-        authentication: json['authentication'] as String,
-        tType: json['tType'] as String,
-        createdAt: DateTime.parse(json['createdAt'] as String),
-        to: json['to'],
-        from: json['from'],
-        bankName: json['bankName'],
-        description: json['description'] as String,
-      );
-
   const DetailModel({
     required this.amount,
     required this.id,
@@ -27,6 +15,20 @@ class DetailModel extends Equatable {
     this.bankName,
     required this.description,
   });
+
+  factory DetailModel.fromJson(Map<String, dynamic> json) {
+    return DetailModel(
+      amount: json['amount'] as int,
+      id: json['id'] as String,
+      authentication: json['authentication'] as String,
+      tType: json['tType'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      to: json['to'],
+      from: json['from'],
+      bankName: json['bankName'],
+      description: json['description'] as String,
+    );
+  }
 
   final int amount;
   final String id;
@@ -48,42 +50,47 @@ class DetailModel extends Equatable {
     String? from,
     String? bankName,
     required String description,
-  }) =>
-      DetailModel(
-        amount: amount,
-        id: id,
-        authentication: authentication,
-        tType: tType,
-        createdAt: createdAt,
-        to: to,
-        from: from,
-        bankName: bankName,
-        description: description,
-      );
+  }) {
+    return DetailModel(
+      amount: amount,
+      id: id,
+      authentication: authentication,
+      tType: tType,
+      createdAt: createdAt,
+      to: to,
+      from: from,
+      bankName: bankName,
+      description: description,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        'amount': amount,
-        'id': id,
-        'authentication': authentication,
-        'tType': tType,
-        'createdAt': DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt),
-        'to': to,
-        'from': from,
-        'bankName': bankName,
-        'description': description,
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      'amount': amount,
+      'id': id,
+      'authentication': authentication,
+      'tType': tType,
+      'createdAt': DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt),
+      'to': to,
+      'from': from,
+      'bankName': bankName,
+      'description': description,
+    };
+  }
 
-  Detail toEntity() => Detail(
-        amount: amount,
-        id: id,
-        authentication: authentication,
-        tType: tType,
-        createdAt: createdAt,
-        to: to,
-        from: from,
-        bankName: bankName,
-        description: description,
-      );
+  Detail toEntity() {
+    return Detail(
+      amount: amount,
+      id: id,
+      authentication: authentication,
+      tType: tType,
+      createdAt: createdAt,
+      to: to,
+      from: from,
+      bankName: bankName,
+      description: description,
+    );
+  }
 
   @override
   List<Object?> get props => [
@@ -95,6 +102,6 @@ class DetailModel extends Equatable {
         to,
         from,
         bankName,
-        description
+        description,
       ];
 }

@@ -4,17 +4,17 @@ import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/domain/entities/statement.dart';
-import 'package:desafio_supremo/domain/usecases/statement/get_statement.dart';
+import 'package:desafio_supremo/domain/usecases/statement/get_statement_impl.dart';
 
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MockStatementRepositoryImpl mockStatementRepository;
-  late GetStatement usecase;
+  late GetStatementImpl usecase;
 
   setUp(() {
     mockStatementRepository = MockStatementRepositoryImpl();
-    usecase = GetStatement(mockStatementRepository);
+    usecase = GetStatementImpl(mockStatementRepository);
   });
 
   int limit = 10;

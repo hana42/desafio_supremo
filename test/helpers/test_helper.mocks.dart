@@ -3,37 +3,57 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i10;
-import 'dart:convert' as _i21;
-import 'dart:typed_data' as _i22;
+import 'dart:async' as _i11;
+import 'dart:convert' as _i32;
+import 'dart:typed_data' as _i33;
 
-import 'package:desafio_supremo/core/error/failure.dart' as _i11;
-import 'package:desafio_supremo/data/datasources/balance_remote_data_source.dart'
-    as _i5;
-import 'package:desafio_supremo/data/datasources/detail_remote_data_source.dart'
+import 'package:desafio_supremo/core/error/failure.dart' as _i12;
+import 'package:desafio_supremo/data/datasources/balance/balance_remote_data_source_impl.dart'
     as _i7;
-import 'package:desafio_supremo/data/datasources/statement_remote_data_source.dart'
-    as _i6;
-import 'package:desafio_supremo/data/models/balance_model.dart' as _i3;
-import 'package:desafio_supremo/data/models/detail_model.dart' as _i4;
-import 'package:desafio_supremo/data/models/statement_model.dart' as _i17;
-import 'package:desafio_supremo/data/repositories/balance_repository_impl.dart'
-    as _i18;
-import 'package:desafio_supremo/data/repositories/detail_repository_impl.dart'
-    as _i20;
-import 'package:desafio_supremo/data/repositories/statement_repository_impl.dart'
-    as _i19;
-import 'package:desafio_supremo/domain/entities/balance.dart' as _i12;
-import 'package:desafio_supremo/domain/entities/detail.dart' as _i16;
-import 'package:desafio_supremo/domain/entities/statement.dart' as _i14;
-import 'package:desafio_supremo/domain/repositories/balance_repository.dart'
+import 'package:desafio_supremo/data/datasources/detail/detail_remote_data_source.dart'
     as _i9;
+import 'package:desafio_supremo/data/datasources/detail/detail_remote_data_source_impl.dart'
+    as _i26;
+import 'package:desafio_supremo/data/datasources/savings/savings_local_data_source_impl.dart'
+    as _i27;
+import 'package:desafio_supremo/data/datasources/statement/statement_remote_data_source.dart'
+    as _i8;
+import 'package:desafio_supremo/data/datasources/statement/statement_remote_data_source_impl.dart'
+    as _i24;
+import 'package:desafio_supremo/data/models/balance_model.dart' as _i4;
+import 'package:desafio_supremo/data/models/detail_model.dart' as _i5;
+import 'package:desafio_supremo/data/models/savings_model.dart' as _i6;
+import 'package:desafio_supremo/data/models/statement_model.dart' as _i25;
+import 'package:desafio_supremo/data/repositories/balance_repository_impl.dart'
+    as _i28;
+import 'package:desafio_supremo/data/repositories/detail_repository_impl.dart'
+    as _i30;
+import 'package:desafio_supremo/data/repositories/savings_repository_impl.dart'
+    as _i31;
+import 'package:desafio_supremo/data/repositories/statement_repository_impl.dart'
+    as _i29;
+import 'package:desafio_supremo/domain/entities/balance.dart' as _i13;
+import 'package:desafio_supremo/domain/entities/detail.dart' as _i17;
+import 'package:desafio_supremo/domain/entities/savings.dart' as _i19;
+import 'package:desafio_supremo/domain/entities/statement.dart' as _i15;
+import 'package:desafio_supremo/domain/repositories/balance_repository.dart'
+    as _i20;
 import 'package:desafio_supremo/domain/repositories/detail_repository.dart'
-    as _i15;
+    as _i22;
+import 'package:desafio_supremo/domain/repositories/savings_repository.dart'
+    as _i23;
 import 'package:desafio_supremo/domain/repositories/statement_repository.dart'
-    as _i13;
+    as _i21;
+import 'package:desafio_supremo/domain/usecases/balance/get_balance_impl.dart'
+    as _i10;
+import 'package:desafio_supremo/domain/usecases/detail/get_detail_impl.dart'
+    as _i16;
+import 'package:desafio_supremo/domain/usecases/savings/get_savings_impl.dart'
+    as _i18;
+import 'package:desafio_supremo/domain/usecases/statement/get_statement_impl.dart'
+    as _i14;
 import 'package:either_dart/either.dart' as _i2;
-import 'package:http/http.dart' as _i8;
+import 'package:http/http.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -52,328 +72,407 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
       : super(parent, parentInvocation);
 }
 
-class _FakeBalanceModel_1 extends _i1.SmartFake implements _i3.BalanceModel {
-  _FakeBalanceModel_1(Object parent, Invocation parentInvocation)
+class _FakeClient_1 extends _i1.SmartFake implements _i3.Client {
+  _FakeClient_1(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeDetailModel_2 extends _i1.SmartFake implements _i4.DetailModel {
-  _FakeDetailModel_2(Object parent, Invocation parentInvocation)
+class _FakeBalanceModel_2 extends _i1.SmartFake implements _i4.BalanceModel {
+  _FakeBalanceModel_2(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeBalanceRemoteDataSource_3 extends _i1.SmartFake
-    implements _i5.BalanceRemoteDataSource {
-  _FakeBalanceRemoteDataSource_3(Object parent, Invocation parentInvocation)
+class _FakeDetailModel_3 extends _i1.SmartFake implements _i5.DetailModel {
+  _FakeDetailModel_3(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeStatementRemoteDataSource_4 extends _i1.SmartFake
-    implements _i6.StatementRemoteDataSource {
-  _FakeStatementRemoteDataSource_4(Object parent, Invocation parentInvocation)
+class _FakeSavingsModel_4 extends _i1.SmartFake implements _i6.SavingsModel {
+  _FakeSavingsModel_4(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeDetailRemoteDataSource_5 extends _i1.SmartFake
-    implements _i7.DetailRemoteDataSource {
-  _FakeDetailRemoteDataSource_5(Object parent, Invocation parentInvocation)
+class _FakeBalanceRemoteDataSourceImpl_5 extends _i1.SmartFake
+    implements _i7.BalanceRemoteDataSourceImpl {
+  _FakeBalanceRemoteDataSourceImpl_5(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeClient_6 extends _i1.SmartFake implements _i8.Client {
-  _FakeClient_6(Object parent, Invocation parentInvocation)
+class _FakeStatementRemoteDataSource_6 extends _i1.SmartFake
+    implements _i8.StatementRemoteDataSource {
+  _FakeStatementRemoteDataSource_6(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeResponse_7 extends _i1.SmartFake implements _i8.Response {
-  _FakeResponse_7(Object parent, Invocation parentInvocation)
+class _FakeDetailRemoteDataSource_7 extends _i1.SmartFake
+    implements _i9.DetailRemoteDataSource {
+  _FakeDetailRemoteDataSource_7(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeStreamedResponse_8 extends _i1.SmartFake
-    implements _i8.StreamedResponse {
-  _FakeStreamedResponse_8(Object parent, Invocation parentInvocation)
+class _FakeResponse_8 extends _i1.SmartFake implements _i3.Response {
+  _FakeResponse_8(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
+}
+
+class _FakeStreamedResponse_9 extends _i1.SmartFake
+    implements _i3.StreamedResponse {
+  _FakeStreamedResponse_9(Object parent, Invocation parentInvocation)
+      : super(parent, parentInvocation);
+}
+
+/// A class which mocks [GetBalanceImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetBalanceImpl extends _i1.Mock implements _i10.GetBalanceImpl {
+  MockGetBalanceImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>> call() =>
+      (super.noSuchMethod(Invocation.method(#call, []),
+              returnValue:
+                  _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>>.value(
+                      _FakeEither_0<_i12.Failure, _i13.Balance>(
+                          this, Invocation.method(#call, []))))
+          as _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>>);
+}
+
+/// A class which mocks [GetStatementImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetStatementImpl extends _i1.Mock implements _i14.GetStatementImpl {
+  MockGetStatementImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, List<_i15.Statement>>> call(int? limit,
+          [int? offset = 1]) =>
+      (super.noSuchMethod(Invocation.method(#call, [limit, offset]),
+          returnValue:
+              _i11.Future<_i2.Either<_i12.Failure, List<_i15.Statement>>>.value(
+                  _FakeEither_0<_i12.Failure, List<_i15.Statement>>(
+                      this, Invocation.method(#call, [limit, offset])))) as _i11
+          .Future<_i2.Either<_i12.Failure, List<_i15.Statement>>>);
+}
+
+/// A class which mocks [GetDetailImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetDetailImpl extends _i1.Mock implements _i16.GetDetailImpl {
+  MockGetDetailImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, _i17.Detail>> call(String? id) =>
+      (super.noSuchMethod(Invocation.method(#call, [id]),
+          returnValue: _i11.Future<_i2.Either<_i12.Failure, _i17.Detail>>.value(
+              _FakeEither_0<_i12.Failure, _i17.Detail>(
+                  this, Invocation.method(#call, [id])))) as _i11
+          .Future<_i2.Either<_i12.Failure, _i17.Detail>>);
+}
+
+/// A class which mocks [GetSavingsImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetSavingsImpl extends _i1.Mock implements _i18.GetSavingsImpl {
+  MockGetSavingsImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>> call() =>
+      (super.noSuchMethod(Invocation.method(#call, []),
+              returnValue:
+                  _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>>.value(
+                      _FakeEither_0<_i12.Failure, _i19.Savings>(
+                          this, Invocation.method(#call, []))))
+          as _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>>);
 }
 
 /// A class which mocks [BalanceRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockBalanceRepository extends _i1.Mock implements _i9.BalanceRepository {
+class MockBalanceRepository extends _i1.Mock implements _i20.BalanceRepository {
   MockBalanceRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i2.Either<_i11.Failure, _i12.Balance>> getBalance() =>
-      (super.noSuchMethod(Invocation.method(#getBalance, []),
+  _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>> call() =>
+      (super.noSuchMethod(Invocation.method(#call, []),
               returnValue:
-                  _i10.Future<_i2.Either<_i11.Failure, _i12.Balance>>.value(
-                      _FakeEither_0<_i11.Failure, _i12.Balance>(
-                          this, Invocation.method(#getBalance, []))))
-          as _i10.Future<_i2.Either<_i11.Failure, _i12.Balance>>);
+                  _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>>.value(
+                      _FakeEither_0<_i12.Failure, _i13.Balance>(
+                          this, Invocation.method(#call, []))))
+          as _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>>);
 }
 
 /// A class which mocks [StatementRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockStatementRepository extends _i1.Mock
-    implements _i13.StatementRepository {
+    implements _i21.StatementRepository {
   MockStatementRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i2.Either<_i11.Failure, List<_i14.Statement>>> getStatement(
+  _i11.Future<_i2.Either<_i12.Failure, List<_i15.Statement>>> call(
           int? limit, int? offset) =>
-      (super.noSuchMethod(Invocation.method(#getStatement, [limit, offset]),
+      (super.noSuchMethod(Invocation.method(#call, [limit, offset]),
           returnValue:
-              _i10.Future<_i2.Either<_i11.Failure, List<_i14.Statement>>>.value(
-                  _FakeEither_0<_i11.Failure, List<_i14.Statement>>(this,
-                      Invocation.method(#getStatement, [limit, offset])))) as _i10
-          .Future<_i2.Either<_i11.Failure, List<_i14.Statement>>>);
+              _i11.Future<_i2.Either<_i12.Failure, List<_i15.Statement>>>.value(
+                  _FakeEither_0<_i12.Failure, List<_i15.Statement>>(
+                      this, Invocation.method(#call, [limit, offset])))) as _i11
+          .Future<_i2.Either<_i12.Failure, List<_i15.Statement>>>);
 }
 
 /// A class which mocks [DetailRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockDetailRepository extends _i1.Mock implements _i15.DetailRepository {
+class MockDetailRepository extends _i1.Mock implements _i22.DetailRepository {
   MockDetailRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i2.Either<_i11.Failure, _i16.Detail>> getDetail(String? id) =>
-      (super.noSuchMethod(Invocation.method(#getDetail, [id]),
-          returnValue: _i10.Future<_i2.Either<_i11.Failure, _i16.Detail>>.value(
-              _FakeEither_0<_i11.Failure, _i16.Detail>(
-                  this, Invocation.method(#getDetail, [id])))) as _i10
-          .Future<_i2.Either<_i11.Failure, _i16.Detail>>);
+  _i11.Future<_i2.Either<_i12.Failure, _i17.Detail>> call(String? id) =>
+      (super.noSuchMethod(Invocation.method(#call, [id]),
+          returnValue: _i11.Future<_i2.Either<_i12.Failure, _i17.Detail>>.value(
+              _FakeEither_0<_i12.Failure, _i17.Detail>(
+                  this, Invocation.method(#call, [id])))) as _i11
+          .Future<_i2.Either<_i12.Failure, _i17.Detail>>);
 }
 
-/// A class which mocks [BalanceRemoteDataSource].
+/// A class which mocks [SavingsRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockBalanceRemoteDataSource extends _i1.Mock
-    implements _i5.BalanceRemoteDataSource {
-  MockBalanceRemoteDataSource() {
+class MockSavingsRepository extends _i1.Mock implements _i23.SavingsRepository {
+  MockSavingsRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i3.BalanceModel> getBalance() => (super.noSuchMethod(
-          Invocation.method(#getBalance, []),
-          returnValue: _i10.Future<_i3.BalanceModel>.value(
-              _FakeBalanceModel_1(this, Invocation.method(#getBalance, []))))
-      as _i10.Future<_i3.BalanceModel>);
-}
-
-/// A class which mocks [StatementRemoteDataSource].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockStatementRemoteDataSource extends _i1.Mock
-    implements _i6.StatementRemoteDataSource {
-  MockStatementRemoteDataSource() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i10.Future<List<_i17.StatementModel>> getStatement(
-          int? limit, int? offset) =>
-      (super.noSuchMethod(Invocation.method(#getStatement, [limit, offset]),
-              returnValue: _i10.Future<List<_i17.StatementModel>>.value(
-                  <_i17.StatementModel>[]))
-          as _i10.Future<List<_i17.StatementModel>>);
-}
-
-/// A class which mocks [DetailRemoteDataSource].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockDetailRemoteDataSource extends _i1.Mock
-    implements _i7.DetailRemoteDataSource {
-  MockDetailRemoteDataSource() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i10.Future<_i4.DetailModel> getDetail(String? id) => (super.noSuchMethod(
-          Invocation.method(#getDetail, [id]),
-          returnValue: _i10.Future<_i4.DetailModel>.value(
-              _FakeDetailModel_2(this, Invocation.method(#getDetail, [id]))))
-      as _i10.Future<_i4.DetailModel>);
-}
-
-/// A class which mocks [BalanceRepositoryImpl].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockBalanceRepositoryImpl extends _i1.Mock
-    implements _i18.BalanceRepositoryImpl {
-  MockBalanceRepositoryImpl() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i5.BalanceRemoteDataSource get balanceRemoteDataSource =>
-      (super.noSuchMethod(Invocation.getter(#balanceRemoteDataSource),
-              returnValue: _FakeBalanceRemoteDataSource_3(
-                  this, Invocation.getter(#balanceRemoteDataSource)))
-          as _i5.BalanceRemoteDataSource);
-  @override
-  _i10.Future<_i2.Either<_i11.Failure, _i12.Balance>> getBalance() =>
-      (super.noSuchMethod(Invocation.method(#getBalance, []),
+  _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>> call() =>
+      (super.noSuchMethod(Invocation.method(#call, []),
               returnValue:
-                  _i10.Future<_i2.Either<_i11.Failure, _i12.Balance>>.value(
-                      _FakeEither_0<_i11.Failure, _i12.Balance>(
-                          this, Invocation.method(#getBalance, []))))
-          as _i10.Future<_i2.Either<_i11.Failure, _i12.Balance>>);
-}
-
-/// A class which mocks [StatementRepositoryImpl].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockStatementRepositoryImpl extends _i1.Mock
-    implements _i19.StatementRepositoryImpl {
-  MockStatementRepositoryImpl() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i6.StatementRemoteDataSource get statementRemoteDataSource =>
-      (super.noSuchMethod(Invocation.getter(#statementRemoteDataSource),
-              returnValue: _FakeStatementRemoteDataSource_4(
-                  this, Invocation.getter(#statementRemoteDataSource)))
-          as _i6.StatementRemoteDataSource);
-  @override
-  _i10.Future<_i2.Either<_i11.Failure, List<_i14.Statement>>> getStatement(
-          int? limit, int? offset) =>
-      (super.noSuchMethod(Invocation.method(#getStatement, [limit, offset]),
-          returnValue:
-              _i10.Future<_i2.Either<_i11.Failure, List<_i14.Statement>>>.value(
-                  _FakeEither_0<_i11.Failure, List<_i14.Statement>>(this,
-                      Invocation.method(#getStatement, [limit, offset])))) as _i10
-          .Future<_i2.Either<_i11.Failure, List<_i14.Statement>>>);
-}
-
-/// A class which mocks [DetailRepositoryImpl].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockDetailRepositoryImpl extends _i1.Mock
-    implements _i20.DetailRepositoryImpl {
-  MockDetailRepositoryImpl() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i7.DetailRemoteDataSource get detailRemoteDataSource =>
-      (super.noSuchMethod(Invocation.getter(#detailRemoteDataSource),
-              returnValue: _FakeDetailRemoteDataSource_5(
-                  this, Invocation.getter(#detailRemoteDataSource)))
-          as _i7.DetailRemoteDataSource);
-  @override
-  _i10.Future<_i2.Either<_i11.Failure, _i16.Detail>> getDetail(String? id) =>
-      (super.noSuchMethod(Invocation.method(#getDetail, [id]),
-          returnValue: _i10.Future<_i2.Either<_i11.Failure, _i16.Detail>>.value(
-              _FakeEither_0<_i11.Failure, _i16.Detail>(
-                  this, Invocation.method(#getDetail, [id])))) as _i10
-          .Future<_i2.Either<_i11.Failure, _i16.Detail>>);
+                  _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>>.value(
+                      _FakeEither_0<_i12.Failure, _i19.Savings>(
+                          this, Invocation.method(#call, []))))
+          as _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>>);
 }
 
 /// A class which mocks [BalanceRemoteDataSourceImpl].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockBalanceRemoteDataSourceImpl extends _i1.Mock
-    implements _i5.BalanceRemoteDataSourceImpl {
+    implements _i7.BalanceRemoteDataSourceImpl {
   MockBalanceRemoteDataSourceImpl() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i8.Client get client => (super.noSuchMethod(Invocation.getter(#client),
-          returnValue: _FakeClient_6(this, Invocation.getter(#client)))
-      as _i8.Client);
+  _i3.Client get client => (super.noSuchMethod(Invocation.getter(#client),
+          returnValue: _FakeClient_1(this, Invocation.getter(#client)))
+      as _i3.Client);
   @override
-  _i10.Future<_i3.BalanceModel> getBalance() => (super.noSuchMethod(
+  _i11.Future<_i4.BalanceModel> getBalance() => (super.noSuchMethod(
           Invocation.method(#getBalance, []),
-          returnValue: _i10.Future<_i3.BalanceModel>.value(
-              _FakeBalanceModel_1(this, Invocation.method(#getBalance, []))))
-      as _i10.Future<_i3.BalanceModel>);
+          returnValue: _i11.Future<_i4.BalanceModel>.value(
+              _FakeBalanceModel_2(this, Invocation.method(#getBalance, []))))
+      as _i11.Future<_i4.BalanceModel>);
 }
 
 /// A class which mocks [StatementRemoteDataSourceImpl].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockStatementRemoteDataSourceImpl extends _i1.Mock
-    implements _i6.StatementRemoteDataSourceImpl {
+    implements _i24.StatementRemoteDataSourceImpl {
   MockStatementRemoteDataSourceImpl() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i8.Client get client => (super.noSuchMethod(Invocation.getter(#client),
-          returnValue: _FakeClient_6(this, Invocation.getter(#client)))
-      as _i8.Client);
+  _i3.Client get client => (super.noSuchMethod(Invocation.getter(#client),
+          returnValue: _FakeClient_1(this, Invocation.getter(#client)))
+      as _i3.Client);
   @override
   String get limit =>
       (super.noSuchMethod(Invocation.getter(#limit), returnValue: '')
           as String);
   @override
-  _i10.Future<List<_i17.StatementModel>> getStatement(
+  _i11.Future<List<_i25.StatementModel>> getStatement(
           int? limit, int? offset) =>
       (super.noSuchMethod(Invocation.method(#getStatement, [limit, offset]),
-              returnValue: _i10.Future<List<_i17.StatementModel>>.value(
-                  <_i17.StatementModel>[]))
-          as _i10.Future<List<_i17.StatementModel>>);
+              returnValue: _i11.Future<List<_i25.StatementModel>>.value(
+                  <_i25.StatementModel>[]))
+          as _i11.Future<List<_i25.StatementModel>>);
 }
 
 /// A class which mocks [DetailRemoteDataSourceImpl].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockDetailRemoteDataSourceImpl extends _i1.Mock
-    implements _i7.DetailRemoteDataSourceImpl {
+    implements _i26.DetailRemoteDataSourceImpl {
   MockDetailRemoteDataSourceImpl() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i8.Client get client => (super.noSuchMethod(Invocation.getter(#client),
-          returnValue: _FakeClient_6(this, Invocation.getter(#client)))
-      as _i8.Client);
+  _i3.Client get client => (super.noSuchMethod(Invocation.getter(#client),
+          returnValue: _FakeClient_1(this, Invocation.getter(#client)))
+      as _i3.Client);
   @override
-  _i10.Future<_i4.DetailModel> getDetail(String? id) => (super.noSuchMethod(
+  _i11.Future<_i5.DetailModel> getDetail(String? id) => (super.noSuchMethod(
           Invocation.method(#getDetail, [id]),
-          returnValue: _i10.Future<_i4.DetailModel>.value(
-              _FakeDetailModel_2(this, Invocation.method(#getDetail, [id]))))
-      as _i10.Future<_i4.DetailModel>);
+          returnValue: _i11.Future<_i5.DetailModel>.value(
+              _FakeDetailModel_3(this, Invocation.method(#getDetail, [id]))))
+      as _i11.Future<_i5.DetailModel>);
+}
+
+/// A class which mocks [SavingsLocalDataSourceImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSavingsLocalDataSourceImpl extends _i1.Mock
+    implements _i27.SavingsLocalDataSourceImpl {
+  MockSavingsLocalDataSourceImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i11.Future<_i6.SavingsModel> getSavings() => (super.noSuchMethod(
+          Invocation.method(#getSavings, []),
+          returnValue: _i11.Future<_i6.SavingsModel>.value(
+              _FakeSavingsModel_4(this, Invocation.method(#getSavings, []))))
+      as _i11.Future<_i6.SavingsModel>);
+}
+
+/// A class which mocks [BalanceRepositoryImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockBalanceRepositoryImpl extends _i1.Mock
+    implements _i28.BalanceRepositoryImpl {
+  MockBalanceRepositoryImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i7.BalanceRemoteDataSourceImpl get balanceRemoteDataSource =>
+      (super.noSuchMethod(Invocation.getter(#balanceRemoteDataSource),
+              returnValue: _FakeBalanceRemoteDataSourceImpl_5(
+                  this, Invocation.getter(#balanceRemoteDataSource)))
+          as _i7.BalanceRemoteDataSourceImpl);
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>> call() =>
+      (super.noSuchMethod(Invocation.method(#call, []),
+              returnValue:
+                  _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>>.value(
+                      _FakeEither_0<_i12.Failure, _i13.Balance>(
+                          this, Invocation.method(#call, []))))
+          as _i11.Future<_i2.Either<_i12.Failure, _i13.Balance>>);
+}
+
+/// A class which mocks [StatementRepositoryImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockStatementRepositoryImpl extends _i1.Mock
+    implements _i29.StatementRepositoryImpl {
+  MockStatementRepositoryImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i8.StatementRemoteDataSource get statementRemoteDataSource =>
+      (super.noSuchMethod(Invocation.getter(#statementRemoteDataSource),
+              returnValue: _FakeStatementRemoteDataSource_6(
+                  this, Invocation.getter(#statementRemoteDataSource)))
+          as _i8.StatementRemoteDataSource);
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, List<_i15.Statement>>> call(
+          int? limit, int? offset) =>
+      (super.noSuchMethod(Invocation.method(#call, [limit, offset]),
+          returnValue:
+              _i11.Future<_i2.Either<_i12.Failure, List<_i15.Statement>>>.value(
+                  _FakeEither_0<_i12.Failure, List<_i15.Statement>>(
+                      this, Invocation.method(#call, [limit, offset])))) as _i11
+          .Future<_i2.Either<_i12.Failure, List<_i15.Statement>>>);
+}
+
+/// A class which mocks [DetailRepositoryImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDetailRepositoryImpl extends _i1.Mock
+    implements _i30.DetailRepositoryImpl {
+  MockDetailRepositoryImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i9.DetailRemoteDataSource get detailRemoteDataSource =>
+      (super.noSuchMethod(Invocation.getter(#detailRemoteDataSource),
+              returnValue: _FakeDetailRemoteDataSource_7(
+                  this, Invocation.getter(#detailRemoteDataSource)))
+          as _i9.DetailRemoteDataSource);
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, _i17.Detail>> call(String? id) =>
+      (super.noSuchMethod(Invocation.method(#call, [id]),
+          returnValue: _i11.Future<_i2.Either<_i12.Failure, _i17.Detail>>.value(
+              _FakeEither_0<_i12.Failure, _i17.Detail>(
+                  this, Invocation.method(#call, [id])))) as _i11
+          .Future<_i2.Either<_i12.Failure, _i17.Detail>>);
+}
+
+/// A class which mocks [SavingsRepositoryImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSavingsRepositoryImpl extends _i1.Mock
+    implements _i31.SavingsRepositoryImpl {
+  MockSavingsRepositoryImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>> call() =>
+      (super.noSuchMethod(Invocation.method(#call, []),
+              returnValue:
+                  _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>>.value(
+                      _FakeEither_0<_i12.Failure, _i19.Savings>(
+                          this, Invocation.method(#call, []))))
+          as _i11.Future<_i2.Either<_i12.Failure, _i19.Savings>>);
 }
 
 /// A class which mocks [Client].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHttpClient extends _i1.Mock implements _i8.Client {
+class MockHttpClient extends _i1.Mock implements _i3.Client {
   MockHttpClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i8.Response> head(Uri? url, {Map<String, String>? headers}) =>
+  _i11.Future<_i3.Response> head(Uri? url, {Map<String, String>? headers}) =>
       (super.noSuchMethod(Invocation.method(#head, [url], {#headers: headers}),
-              returnValue: _i10.Future<_i8.Response>.value(_FakeResponse_7(
+              returnValue: _i11.Future<_i3.Response>.value(_FakeResponse_8(
                   this, Invocation.method(#head, [url], {#headers: headers}))))
-          as _i10.Future<_i8.Response>);
+          as _i11.Future<_i3.Response>);
   @override
-  _i10.Future<_i8.Response> get(Uri? url, {Map<String, String>? headers}) =>
+  _i11.Future<_i3.Response> get(Uri? url, {Map<String, String>? headers}) =>
       (super.noSuchMethod(Invocation.method(#get, [url], {#headers: headers}),
-              returnValue: _i10.Future<_i8.Response>.value(_FakeResponse_7(
+              returnValue: _i11.Future<_i3.Response>.value(_FakeResponse_8(
                   this, Invocation.method(#get, [url], {#headers: headers}))))
-          as _i10.Future<_i8.Response>);
+          as _i11.Future<_i3.Response>);
   @override
-  _i10.Future<_i8.Response> post(Uri? url,
+  _i11.Future<_i3.Response> post(Uri? url,
           {Map<String, String>? headers,
           Object? body,
-          _i21.Encoding? encoding}) =>
+          _i32.Encoding? encoding}) =>
       (super
           .noSuchMethod(Invocation.method(#post, [url], {#headers: headers, #body: body, #encoding: encoding}),
-              returnValue: _i10.Future<_i8.Response>.value(_FakeResponse_7(
+              returnValue: _i11.Future<_i3.Response>.value(_FakeResponse_8(
                   this,
                   Invocation.method(#post, [
                     url
@@ -381,15 +480,15 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
                     #headers: headers,
                     #body: body,
                     #encoding: encoding
-                  })))) as _i10.Future<_i8.Response>);
+                  })))) as _i11.Future<_i3.Response>);
   @override
-  _i10.Future<_i8.Response> put(Uri? url,
+  _i11.Future<_i3.Response> put(Uri? url,
           {Map<String, String>? headers,
           Object? body,
-          _i21.Encoding? encoding}) =>
+          _i32.Encoding? encoding}) =>
       (super
           .noSuchMethod(Invocation.method(#put, [url], {#headers: headers, #body: body, #encoding: encoding}),
-              returnValue: _i10.Future<_i8.Response>.value(_FakeResponse_7(
+              returnValue: _i11.Future<_i3.Response>.value(_FakeResponse_8(
                   this,
                   Invocation.method(#put, [
                     url
@@ -397,15 +496,15 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
                     #headers: headers,
                     #body: body,
                     #encoding: encoding
-                  })))) as _i10.Future<_i8.Response>);
+                  })))) as _i11.Future<_i3.Response>);
   @override
-  _i10.Future<_i8.Response> patch(Uri? url,
+  _i11.Future<_i3.Response> patch(Uri? url,
           {Map<String, String>? headers,
           Object? body,
-          _i21.Encoding? encoding}) =>
+          _i32.Encoding? encoding}) =>
       (super
           .noSuchMethod(Invocation.method(#patch, [url], {#headers: headers, #body: body, #encoding: encoding}),
-              returnValue: _i10.Future<_i8.Response>.value(_FakeResponse_7(
+              returnValue: _i11.Future<_i3.Response>.value(_FakeResponse_8(
                   this,
                   Invocation.method(#patch, [
                     url
@@ -413,15 +512,15 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
                     #headers: headers,
                     #body: body,
                     #encoding: encoding
-                  })))) as _i10.Future<_i8.Response>);
+                  })))) as _i11.Future<_i3.Response>);
   @override
-  _i10.Future<_i8.Response> delete(Uri? url,
+  _i11.Future<_i3.Response> delete(Uri? url,
           {Map<String, String>? headers,
           Object? body,
-          _i21.Encoding? encoding}) =>
+          _i32.Encoding? encoding}) =>
       (super
           .noSuchMethod(Invocation.method(#delete, [url], {#headers: headers, #body: body, #encoding: encoding}),
-              returnValue: _i10.Future<_i8.Response>.value(_FakeResponse_7(
+              returnValue: _i11.Future<_i3.Response>.value(_FakeResponse_8(
                   this,
                   Invocation.method(#delete, [
                     url
@@ -429,25 +528,25 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
                     #headers: headers,
                     #body: body,
                     #encoding: encoding
-                  })))) as _i10.Future<_i8.Response>);
+                  })))) as _i11.Future<_i3.Response>);
   @override
-  _i10.Future<String> read(Uri? url, {Map<String, String>? headers}) =>
+  _i11.Future<String> read(Uri? url, {Map<String, String>? headers}) =>
       (super.noSuchMethod(Invocation.method(#read, [url], {#headers: headers}),
-          returnValue: _i10.Future<String>.value('')) as _i10.Future<String>);
+          returnValue: _i11.Future<String>.value('')) as _i11.Future<String>);
   @override
-  _i10.Future<_i22.Uint8List> readBytes(Uri? url,
+  _i11.Future<_i33.Uint8List> readBytes(Uri? url,
           {Map<String, String>? headers}) =>
       (super.noSuchMethod(
               Invocation.method(#readBytes, [url], {#headers: headers}),
-              returnValue: _i10.Future<_i22.Uint8List>.value(_i22.Uint8List(0)))
-          as _i10.Future<_i22.Uint8List>);
+              returnValue: _i11.Future<_i33.Uint8List>.value(_i33.Uint8List(0)))
+          as _i11.Future<_i33.Uint8List>);
   @override
-  _i10.Future<_i8.StreamedResponse> send(_i8.BaseRequest? request) =>
+  _i11.Future<_i3.StreamedResponse> send(_i3.BaseRequest? request) =>
       (super.noSuchMethod(Invocation.method(#send, [request]),
-              returnValue: _i10.Future<_i8.StreamedResponse>.value(
-                  _FakeStreamedResponse_8(
+              returnValue: _i11.Future<_i3.StreamedResponse>.value(
+                  _FakeStreamedResponse_9(
                       this, Invocation.method(#send, [request]))))
-          as _i10.Future<_i8.StreamedResponse>);
+          as _i11.Future<_i3.StreamedResponse>);
   @override
   void close() => super.noSuchMethod(Invocation.method(#close, []),
       returnValueForMissingStub: null);

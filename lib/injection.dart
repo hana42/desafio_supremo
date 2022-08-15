@@ -2,10 +2,10 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
-import 'data/datasources/balance_remote_data_source.dart';
-import 'data/datasources/detail_remote_data_source.dart';
-import 'data/datasources/savings_local_data_source.dart';
-import 'data/datasources/statement_remote_data_source.dart';
+import 'data/datasources/balance/balance_remote_data_source_impl.dart';
+import 'data/datasources/detail/detail_remote_data_source_impl.dart';
+import 'data/datasources/savings/savings_local_data_source_impl.dart';
+import 'data/datasources/statement/statement_remote_data_source_impl.dart';
 import 'data/repositories/balance_repository_impl.dart';
 import 'data/repositories/detail_repository_impl.dart';
 import 'data/repositories/savings_repository_impl.dart';
@@ -13,12 +13,10 @@ import 'data/repositories/statement_repository_impl.dart';
 import 'domain/repositories/balance_repository.dart';
 import 'domain/repositories/detail_repository.dart';
 import 'domain/repositories/savings_repository.dart';
-import 'domain/repositories/statement_repository.dart';
-import 'domain/usecases/balance/get_balance.dart';
 import 'domain/usecases/balance/get_balance_impl.dart';
-import 'domain/usecases/detail/get_detail.dart';
-import 'domain/usecases/savings/get_savings.dart';
-import 'domain/usecases/statement/get_statement.dart';
+import 'domain/usecases/detail/get_detail_impl.dart';
+import 'domain/usecases/savings/get_savings_impl.dart';
+import 'domain/usecases/statement/get_statement_impl.dart';
 import 'presentation/bloc/app/app_bloc.dart';
 import 'presentation/bloc/balance/balance_cubit.dart';
 import 'presentation/bloc/balance/balance_visibility_cubit.dart';
@@ -33,7 +31,7 @@ final locator = GetIt.instance;
 void init() {
   // bloc/cubit
   locator.registerLazySingleton<BalanceCubit>(
-    () => BalanceCubit(locator<GetBalance>()),
+    () => BalanceCubit(locator<GetBalanceImpl>()),
   );
 
   locator.registerLazySingleton<BalanceVisibilityCubit>(
@@ -41,20 +39,11 @@ void init() {
   );
 
   locator.registerLazySingleton<SavingsCubit>(
-    () => SavingsCubit(locator<GetSavings>()),
+    () => SavingsCubit(locator<GetSavingsImpl>()),
   );
 
-  // locator.registerLazySingleton<GoalCubit>(
-  //   () => GoalCubit(
-  //     locator<GetGoal>(),
-  //     locator<AddGoal>(),
-  //     locator<UpdateGoal>(),
-  //     locator<RemoveGoal>(),
-  //   ),
-  // );
-
   locator.registerFactory<StatementCubit>(
-    () => StatementCubit(locator<GetStatement>()),
+    () => StatementCubit(locator<GetStatementImpl>()),
   );
 
   // bloc
@@ -75,53 +64,54 @@ void init() {
 
   // usecase
   locator.registerFactory<DetailCubit>(
-    () => DetailCubit(locator<GetDetail>()),
+    () => DetailCubit(locator<GetDetailImpl>()),
   );
 
   // usecases
-  locator.registerLazySingleton<GetBalance>(
-    () => GetBalanceImpl(locator<BalanceRepository>()),
+  locator.registerLazySingleton<GetBalanceImpl>(
+    () => GetBalanceImpl(locator()),
   );
 
-  locator.registerLazySingleton<GetStatement>(
-    () => GetStatement(locator<StatementRepository>()),
+  locator.registerLazySingleton<GetStatementImpl>(
+    () => GetStatementImpl(locator<StatementRepositoryImpl>()),
   );
 
-  locator.registerLazySingleton<GetDetail>(
-    () => GetDetail(locator<DetailRepository>()),
+  locator.registerLazySingleton<GetDetailImpl>(
+    () => GetDetailImpl(locator<DetailRepositoryImpl>()),
   );
 
-  locator.registerLazySingleton<GetSavings>(
-    () => GetSavings(locator<SavingsRepository>()),
+  locator.registerLazySingleton<GetSavingsImpl>(
+    () => GetSavingsImpl(locator<SavingsRepositoryImpl>()),
   );
 
   // repositories
+
   locator.registerLazySingleton<BalanceRepository>(
-    () => BalanceRepositoryImpl(locator<BalanceRemoteDataSource>()),
+    () => BalanceRepositoryImpl(locator<BalanceRemoteDataSourceImpl>()),
   );
 
-  locator.registerLazySingleton<StatementRepository>(
-    () => StatementRepositoryImpl(locator<StatementRemoteDataSource>()),
+  locator.registerLazySingleton<StatementRepositoryImpl>(
+    () => StatementRepositoryImpl(locator<StatementRemoteDataSourceImpl>()),
   );
 
   locator.registerLazySingleton<DetailRepository>(
-    () => DetailRepositoryImpl(locator<DetailRemoteDataSource>()),
+    () => DetailRepositoryImpl(locator<DetailRemoteDataSourceImpl>()),
   );
 
   locator.registerLazySingleton<SavingsRepository>(
-    () => SavingsRepositoryImpl(locator<SavingsLocalDataSource>()),
+    () => SavingsRepositoryImpl(locator<SavingsLocalDataSourceImpl>()),
   );
 
   // datasources
-  locator.registerLazySingleton<BalanceRemoteDataSource>(
+  locator.registerLazySingleton<BalanceRemoteDataSourceImpl>(
     () => BalanceRemoteDataSourceImpl(locator()),
   );
 
-  locator.registerLazySingleton<StatementRemoteDataSource>(
+  locator.registerLazySingleton<StatementRemoteDataSourceImpl>(
     () => StatementRemoteDataSourceImpl(locator()),
   );
 
-  locator.registerLazySingleton<DetailRemoteDataSource>(
+  locator.registerLazySingleton<DetailRemoteDataSourceImpl>(
     () => DetailRemoteDataSourceImpl(locator()),
   );
 

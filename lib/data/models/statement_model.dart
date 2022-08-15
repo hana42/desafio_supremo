@@ -4,17 +4,6 @@ import 'package:intl/intl.dart';
 import '../../domain/entities/statement.dart';
 
 class StatementModel extends Equatable {
-  factory StatementModel.fromJson(Map<String, dynamic> json) => StatementModel(
-        createdAt: DateTime.parse(json['createdAt'] as String),
-        id: json['id'] as String,
-        amount: json['amount'] as int,
-        to: json['to'],
-        description: json['description'] as String,
-        tType: json['tType'] as String,
-        from: json['from'],
-        bankName: json['bankName'],
-      );
-      
   const StatementModel({
     required this.createdAt,
     required this.id,
@@ -25,6 +14,19 @@ class StatementModel extends Equatable {
     this.from,
     this.bankName,
   });
+
+  factory StatementModel.fromJson(Map<String, dynamic> json) {
+    return StatementModel(
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      id: json['id'] as String,
+      amount: json['amount'] as int,
+      to: json['to'],
+      description: json['description'] as String,
+      tType: json['tType'] as String,
+      from: json['from'],
+      bankName: json['bankName'],
+    );
+  }
 
   final DateTime createdAt;
   final String id;

@@ -10,13 +10,10 @@ List<Page<dynamic>> onGenerateAppViewPages(
 ) {
   switch (state) {
     case AppStatus.authenticated:
-      print('home');
       return [HomeScreen.page()];
     case AppStatus.unauthenticated:
-      print('login');
       return [LoginPage.page()];
     default:
-      print('default');
       return [LoginPage.page()];
   }
 }

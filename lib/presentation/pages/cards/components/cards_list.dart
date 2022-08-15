@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/colors.dart';
-import '../../../../core/theme/constants.dart';
-import '../../../widgets/credit_card.dart';
+import '../../../shared/theme/colors.dart';
+import '../../../shared/theme/constants.dart';
+import '../../../shared/widgets/credit_card.dart';
+
 import 'block_card_alert.dart';
 
 class CardsList extends StatefulWidget {
@@ -38,7 +39,7 @@ class _CardsListState extends State<CardsList> {
                 OutlinedButton(
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        kPaddingButton),
+                        kButtonPadding),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4))),
@@ -49,7 +50,8 @@ class _CardsListState extends State<CardsList> {
                   ),
                   onPressed: () => showDialog<AlertDialog>(
                     context: context,
-                    builder: (context) => const AlertDialog(content: BlockCardAlert()),
+                    builder: (context) =>
+                        const AlertDialog(content: BlockCardAlert()),
                   ),
                   child: const Text(
                     'Bloquear',

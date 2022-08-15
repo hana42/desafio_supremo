@@ -4,17 +4,17 @@ import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/domain/entities/detail.dart';
-import 'package:desafio_supremo/domain/usecases/detail/get_detail.dart';
+import 'package:desafio_supremo/domain/usecases/detail/get_detail_impl.dart';
 
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MockDetailRepository mockDetailRepository;
-  late GetDetail usecase;
+  late GetDetailImpl usecase;
 
   setUp(() {
     mockDetailRepository = MockDetailRepository();
-    usecase = GetDetail(mockDetailRepository);
+    usecase = GetDetailImpl(mockDetailRepository);
   });
 
   const tId = '49E27207-F3A7-4264-B021-0188690F7D43';

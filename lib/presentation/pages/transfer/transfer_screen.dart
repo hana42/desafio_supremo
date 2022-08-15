@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/colors.dart';
-import '../../../core/theme/constants.dart';
 import '../../../injection.dart';
 import '../../bloc/balance/balance_cubit.dart';
+import '../../shared/theme/colors.dart';
+import '../../shared/theme/constants.dart';
+import '../../shared/widgets/header.dart';
+
 import 'transfer_destiny.dart';
-import '../../widgets/header.dart';
 
 class TransferScreen extends StatelessWidget {
   TransferScreen({Key? key}) : super(key: key);

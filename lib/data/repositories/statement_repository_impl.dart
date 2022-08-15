@@ -6,7 +6,7 @@ import '../../core/error/exception.dart';
 import '../../core/error/failure.dart';
 import '../../domain/entities/statement.dart';
 import '../../domain/repositories/statement_repository.dart';
-import '../datasources/statement_remote_data_source.dart';
+import '../datasources/statement/statement_remote_data_source.dart';
 
 class StatementRepositoryImpl implements StatementRepository {
   StatementRepositoryImpl(this.statementRemoteDataSource);
@@ -19,9 +19,9 @@ class StatementRepositoryImpl implements StatementRepository {
       final result = await statementRemoteDataSource.getStatement(limit, offset);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return const Left(ServerFailure(''));
+      return const Left(ServerFailure());
     } on SocketException {
-      return const Left(ConnectionFailure('Connection failed'));
+      return const Left(ConnectionFailure());
     }
   }
 }

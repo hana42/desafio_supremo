@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/colors.dart';
-import '../../../widgets/balance/balance_widget.dart';
-import '../../../widgets/credit_card.dart';
+import '../../../shared/theme/colors.dart';
+import '../../../shared/widgets/balance/balance_widget.dart';
+import '../../../shared/widgets/credit_card.dart';
 
 import 'home_app_bar.dart';
 

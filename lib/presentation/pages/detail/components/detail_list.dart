@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/utils/utils.dart';
 import '../../../../injection.dart';
 import '../../../bloc/detail/detail_cubit.dart';
-import '../../../widgets/bottom_loader.dart';
+import '../../../shared/widgets/bottom_loader.dart';
+
 import 'detail_list_item.dart';
 
 class DetailList extends StatefulWidget {

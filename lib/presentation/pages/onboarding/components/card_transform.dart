@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../../widgets/credit_card.dart';
+import '../../../shared/widgets/credit_card.dart';
 
 class MyTransform extends StatefulWidget {
   const MyTransform({Key? key, required this.cardColor}) : super(key: key);

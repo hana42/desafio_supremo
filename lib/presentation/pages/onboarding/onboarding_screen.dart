@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:introduction_screen/introduction_screen.dart';
 
-import '../../../core/theme/colors.dart';
-import '../../../core/theme/constants.dart';
+import '../../shared/theme/colors.dart';
+import '../../shared/theme/constants.dart';
 import '../statement/statement_screen.dart';
+
 import 'components/choose_card.dart';
 import 'components/create_pin.dart';
 

@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:desafio_supremo/core/theme/constants.dart';
-
 import '../../bloc/login/login_cubit.dart';
+import '../../shared/theme/constants.dart';
 
 import 'components/login_form.dart';
 

@@ -1,4 +1,3 @@
-
 part of 'balance_cubit.dart';
 
 abstract class BalanceState extends Equatable {
@@ -16,11 +15,11 @@ class BalanceInitial extends BalanceState {
 }
 
 class BalanceError extends BalanceState {
-  const BalanceError(this.message);
-  final String message;
+  const BalanceError(this.error);
+  final ErrorObject error;
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [error];
 }
 
 class BalanceSuccess extends BalanceState {

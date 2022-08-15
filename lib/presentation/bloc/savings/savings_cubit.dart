@@ -10,8 +10,12 @@ class SavingsCubit extends Cubit<SavingsState> {
   SavingsCubit(this._getSavings) : super(SavingsInitial());
   final GetSavings _getSavings;
 
-  void getSavings() {
-    final Savings result = _getSavings();
-    emit(SavingsSuccess(result));
+  void getSavings() async {
+    final result = await _getSavings();
+    
+    result.fold(
+      (left) => emit(SavingsError('Error')),
+      (right) => emit(SavingsSuccess(right)),
+    );
   }
 }
