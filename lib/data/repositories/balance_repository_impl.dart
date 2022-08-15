@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:either_dart/either.dart';
 
@@ -19,8 +20,12 @@ class BalanceRepositoryImpl implements BalanceRepository {
       return Right(result.toEntity());
     } on ServerException {
       return Left(ServerFailure());
-    } on ConnectionException {
+    } on FormatException {
+      return Left(DataParsingFailure());
+    } on SocketException {
       return Left(ConnectionFailure());
+    } catch (error) {
+      return Left(UnkownFailure());
     }
   }
 }

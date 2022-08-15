@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
-import 'package:meta/meta.dart';
+
 
 // Sign Up Failure
 class SignUpWithEmailAndPasswordFailure implements Exception {
@@ -105,11 +105,12 @@ class AuthenticationRepository {
     return _cache.read<User>(key: userCacheKey) ?? User.empty;
   }
 
-  Future<void> signUp(
-      {required String email,
-      required String password,
-      required String name,
-      required String cpf}) async {
+  Future<void> signUp({
+    required String email,
+    required String password,
+    required String name,
+    required String cpf,
+  }) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,

@@ -8,4 +8,5 @@ class Failure with _$Failure {
   const factory Failure.serverFailure() = ServerFailure;
   const factory Failure.dataParsingFailure() = DataParsingFailure;
   const factory Failure.connectionFailure() = ConnectionFailure;
+  const factory Failure.unkownFailure() = UnkownFailure;
 }

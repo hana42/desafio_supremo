@@ -22,8 +22,8 @@ class StatementError extends StatementState {
   List<Object?> get props => [error];
 }
 
-class StatementLoaded extends StatementState {
-  const StatementLoaded({
+class StatementSuccess extends StatementState {
+  const StatementSuccess({
     this.statements = const <Statement>[],
     this.hasReachedMax = false,
   });

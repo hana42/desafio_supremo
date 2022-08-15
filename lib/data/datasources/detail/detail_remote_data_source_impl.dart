@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
@@ -21,20 +22,18 @@ class DetailRemoteDataSourceImpl implements DetailRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        try {
-          return DetailModel.fromJson(json.decode(response.body));
-        } on Exception {
-          throw DataParsingException();
-        }
+        return DetailModel.fromJson(json.decode(response.body));
       } else {
         throw ServerException();
       }
+    } on ServerException {
+      rethrow;
+    } on FormatException {
+      throw DataParsingException();
+    } on SocketException {
+      throw ConnectionException();
     } catch (error) {
-      if ((error is ServerException) || (error is DataParsingException)) {
-        rethrow;
-      } else {
-        throw ConnectionException();
-      }
+      throw UnkownException();
     }
   }
 }

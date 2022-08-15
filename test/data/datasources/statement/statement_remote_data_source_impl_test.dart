@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -9,8 +10,8 @@ import 'package:desafio_supremo/core/utils/api.utils.dart';
 import 'package:desafio_supremo/data/datasources/statement/statement_remote_data_source_impl.dart';
 import 'package:desafio_supremo/data/models/statement_model.dart';
 
-import '../../helpers/json_reader.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../../helpers/json_reader.dart';
+import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
@@ -45,7 +46,7 @@ void main() {
       expect(result, equals(tStatementModel));
     });
 
-    test('returns a server exception when the response code is 404 or other',
+    test('throws a server exception when the response code is 404 or other',
         () async {
       when(
         mockHttpClient.get(
@@ -57,6 +58,29 @@ void main() {
       final call = dataSource.getStatement(limit, offset);
 
       expect(() => call, throwsA(isA<ServerException>()));
+    });
+
+    test('throws a connection exception when connection fails', () async {
+      when(mockHttpClient.get(
+        Uri.parse(API.statement(limit, offset)),
+        headers: API.defaultHeaders,
+      )).thenThrow(SocketException(''));
+
+      final call = dataSource.getStatement(limit, offset);
+
+      expect(() => call, throwsA(isA<ConnectionException>()));
+    });
+
+    test('throws a unkown exception when other exceptions is thrown',
+        () async {
+      when(mockHttpClient.get(
+        Uri.parse(API.statement(limit, offset)),
+        headers: API.defaultHeaders,
+      )).thenThrow(Exception);
+
+      final call = dataSource.getStatement(limit, offset);
+
+      expect(() => call, throwsA(isA<UnkownException>()));
     });
   });
 }

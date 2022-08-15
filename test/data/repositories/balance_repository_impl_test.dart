@@ -24,7 +24,7 @@ void main() {
   });
 
   group('get balance', () {
-    test('returns a balance when a call to datasource is successful',
+    test('returns a balance entity when a call to datasource is successful',
         () async {
       when(mockBalanceRemoteDataSource.getBalance())
           .thenAnswer((_) async => tBalanceModel);
@@ -33,7 +33,6 @@ void main() {
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
-      expect(result.isRight, true);
       expect(result.right, equals(tBalance));
     });
 
@@ -46,21 +45,42 @@ void main() {
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
-      expect(result.isLeft, true);
-      expect(result.left, equals(const ServerFailure('')));
+      expect(result.left, equals(const ServerFailure()));
     });
 
-    test('returns connection failure when the device has no internet',
-        () async {
+    test('returns data parsing failure when fails to decode json', () async {
       when(mockBalanceRemoteDataSource.getBalance())
-          .thenThrow(const SocketException('Connection failed'));
+          .thenThrow(FormatException(''));
 
       final result = await repository();
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
-      expect(result.isLeft, true);
-      expect(result.left, equals(const ConnectionFailure('Connection failed')));
+      expect(result.left, equals(const DataParsingFailure()));
+    });
+
+    test('returns connection failure when the device has no internet',
+        () async {
+      when(mockBalanceRemoteDataSource.getBalance())
+          .thenThrow(SocketException(''));
+
+      final result = await repository();
+
+      verify(mockBalanceRemoteDataSource.getBalance());
+
+      expect(result.left, equals(const ConnectionFailure()));
+    });
+
+    test('returns a unkown exception when another type of Exception is thrown',
+        () async {
+      when(mockBalanceRemoteDataSource.getBalance())
+          .thenThrow(Exception(''));
+
+      final result = await repository();
+
+      verify(mockBalanceRemoteDataSource.getBalance());
+
+      expect(result.left, equals(const UnkownFailure()));
     });
   });
 }

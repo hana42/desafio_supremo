@@ -53,7 +53,6 @@ void main() {
 
       verify(mockStatementRemoteDataSource.getStatement(limit, offset));
 
-      expect(result.isRight, true);
       expect(result.right, equals([tStatement]));
     });
 
@@ -66,21 +65,54 @@ void main() {
 
       verify(mockStatementRemoteDataSource.getStatement(limit, offset));
 
-      expect(result.isLeft, true);
-      expect(result.left, equals(const ServerFailure('')));
+      expect(result.left, equals(const ServerFailure()));
     });
 
-    test('returns connection failure when the device has no internet',
-        () async {
+    test('returns data parsing failure when fails to decode json', () async {
       when(mockStatementRemoteDataSource.getStatement(limit, offset))
-          .thenThrow(const SocketException('Connection failed'));
+          .thenThrow(FormatException(''));
 
       final result = await repository(limit, offset);
 
       verify(mockStatementRemoteDataSource.getStatement(limit, offset));
 
-      expect(result.isLeft, true);
-      expect(result.left, equals(const ConnectionFailure('Connection failed')));
+      expect(result.left, equals(const DataParsingFailure()));
+    });
+
+    test('returns connection failure when the device has no internet',
+        () async {
+      when(mockStatementRemoteDataSource.getStatement(limit, offset))
+          .thenThrow(const SocketException(''));
+
+      final result = await repository(limit, offset);
+
+      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
+
+      expect(result.left, equals(const ConnectionFailure()));
+    });
+
+    test('returns connection failure when the device has no internet',
+        () async {
+      when(mockStatementRemoteDataSource.getStatement(limit, offset))
+          .thenThrow(const SocketException(''));
+
+      final result = await repository(limit, offset);
+
+      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
+
+      expect(result.left, equals(const ConnectionFailure()));
+    });
+
+    test('returns a unkown failure when another type of Exception is thrown',
+        () async {
+      when(mockStatementRemoteDataSource.getStatement(limit, offset))
+          .thenThrow(Exception(''));
+
+      final result = await repository(limit, offset);
+
+      verify(mockStatementRemoteDataSource.getStatement(limit, offset));
+
+      expect(result.left, equals(const UnkownFailure()));
     });
   });
 }

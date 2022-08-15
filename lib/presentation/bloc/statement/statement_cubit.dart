@@ -15,10 +15,10 @@ class StatementCubit extends Cubit<StatementState> {
   List<Statement> statements = <Statement>[];
 
   void getStatement() async {
-    if (const StatementLoaded().hasReachedMax == true) return;
+    if (const StatementSuccess().hasReachedMax == true) return;
 
     final currentState = state;
-    if (currentState is StatementLoaded) {
+    if (currentState is StatementSuccess) {
       statements = List.of(currentState.statements);
     }
 
@@ -29,10 +29,10 @@ class StatementCubit extends Cubit<StatementState> {
         (failure) => emit(
             StatementError(ErrorObject.mapFailureToError(failure: failure))),
         (data) => data.isEmpty
-            ? emit(StatementLoaded(statements: statements, hasReachedMax: true))
+            ? emit(StatementSuccess(statements: statements, hasReachedMax: true))
             : {
                 statements..addAll(data),
-                emit(StatementLoaded(statements: statements)),
+                emit(StatementSuccess(statements: statements)),
               },
       );
     });

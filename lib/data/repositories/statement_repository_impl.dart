@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:either_dart/either.dart';
 
 import '../../core/error/exception.dart';
@@ -11,15 +13,19 @@ class StatementRepositoryImpl implements StatementRepository {
   final StatementRemoteDataSource statementRemoteDataSource;
 
   @override
-  Future<Either<Failure, List<Statement>>> call(
-      int limit, int offset) async {
+  Future<Either<Failure, List<Statement>>> call(int limit, int offset) async {
     try {
-      final result = await statementRemoteDataSource.getStatement(limit, offset);
+      final result =
+          await statementRemoteDataSource.getStatement(limit, offset);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return const Left(ServerFailure());
-    } on ConnectionException {
-      return const Left(ConnectionFailure());
+      return Left(ServerFailure());
+    } on FormatException {
+      return Left(DataParsingFailure());
+    } on SocketException {
+      return Left(ConnectionFailure());
+    } catch (error) {
+      return Left(UnkownFailure());
     }
   }
 }

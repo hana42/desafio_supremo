@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
@@ -22,25 +23,23 @@ class StatementRemoteDataSourceImpl implements StatementRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        try {
-          var decodedResponse = await json.decode(response.body);
-          var items = decodedResponse['items'] as List;
-          List<StatementModel> statements = [
-            for (var item in items) StatementModel.fromJson(item)
-          ];
-          return statements;
-        } on Exception {
-          throw DataParsingException();
-        }
+        var decodedResponse = await json.decode(response.body);
+        var items = decodedResponse['items'] as List;
+        List<StatementModel> statements = [
+          for (var item in items) StatementModel.fromJson(item)
+        ];
+        return statements;
       } else {
         throw ServerException();
       }
+    } on ServerException {
+      throw ServerException();
+    } on FormatException {
+      throw DataParsingException();
+    } on SocketException {
+      throw ConnectionException();
     } catch (error) {
-      if ((error is ServerException) || (error is DataParsingException)) {
-        rethrow;
-      } else {
-        throw ConnectionException();
-      }
+      throw UnkownException();
     }
   }
 }

@@ -59,7 +59,7 @@ class _StatementListState extends State<StatementList> {
       child: BlocBuilder<StatementCubit, StatementState>(
         bloc: cubit..getStatement(),
         builder: (context, state) {
-          if (state is StatementLoaded) {
+          if (state is StatementSuccess) {
             return ListView.builder(
               controller: scrollController,
               itemExtent: MediaQuery.of(context).size.height * 0.16,

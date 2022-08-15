@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -6,16 +7,15 @@ import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/exception.dart';
 import 'package:desafio_supremo/core/utils/api.utils.dart';
-import 'package:desafio_supremo/data/datasources/balance/balance_remote_data_source.dart';
 import 'package:desafio_supremo/data/datasources/balance/balance_remote_data_source_impl.dart';
 import 'package:desafio_supremo/data/models/balance_model.dart';
 
-import '../../helpers/json_reader.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../../helpers/json_reader.dart';
+import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
-  late BalanceRemoteDataSource dataSource;
+  late BalanceRemoteDataSourceImpl dataSource;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
@@ -41,16 +41,37 @@ void main() {
 
     test('returns a server exception when the response code is 404 or other',
         () async {
-      when(
-        mockHttpClient.get(
-          Uri.parse(API.balance),
-          headers: API.defaultHeaders,
-        ),
-      ).thenAnswer((_) async => http.Response('Not found', 404));
+      when(mockHttpClient.get(
+        Uri.parse(API.balance),
+        headers: API.defaultHeaders,
+      )).thenAnswer((_) async => http.Response('Not found', 404));
 
       final call = dataSource.getBalance();
 
       expect(() => call, throwsA(isA<ServerException>()));
+    });
+
+    test('returns a connection exception when connection fails', () async {
+      when(mockHttpClient.get(
+        Uri.parse(API.balance),
+        headers: API.defaultHeaders,
+      )).thenThrow(SocketException(''));
+
+      final call = dataSource.getBalance();
+
+      expect(() => call, throwsA(isA<ConnectionException>()));
+    });
+
+    test('returns a unkown exception when a generic Exception is thrown',
+        () async {
+      when(mockHttpClient.get(
+        Uri.parse(API.balance),
+        headers: API.defaultHeaders,
+      )).thenThrow(Exception);
+
+      final call = dataSource.getBalance();
+
+      expect(() => call, throwsA(isA<UnkownException>()));
     });
   });
 }

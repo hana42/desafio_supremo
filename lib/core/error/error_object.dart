@@ -33,6 +33,11 @@ class ErrorObject extends Equatable {
         message:
             'Parece que seu dispositivo não está conectado à rede, verifique sua conectividade com a Internet ou tente novamente mais tarde.',
       ),
+      unkownFailure: () => const ErrorObject(
+        title: 'Erro: UNKOWN',
+        message:
+            'Estamos com problemas, tente novamente mais tarde.',
+      ),
     );
   }
 }

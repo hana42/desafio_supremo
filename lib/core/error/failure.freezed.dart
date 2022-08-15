@@ -21,6 +21,7 @@ mixin _$Failure {
     required TResult Function() serverFailure,
     required TResult Function() dataParsingFailure,
     required TResult Function() connectionFailure,
+    required TResult Function() unkownFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$Failure {
     TResult Function()? serverFailure,
     TResult Function()? dataParsingFailure,
     TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$Failure {
     TResult Function()? serverFailure,
     TResult Function()? dataParsingFailure,
     TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$Failure {
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(DataParsingFailure value) dataParsingFailure,
     required TResult Function(ConnectionFailure value) connectionFailure,
+    required TResult Function(UnkownFailure value) unkownFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$Failure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(DataParsingFailure value)? dataParsingFailure,
     TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$Failure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(DataParsingFailure value)? dataParsingFailure,
     TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +126,7 @@ class _$ServerFailure extends ServerFailure {
     required TResult Function() serverFailure,
     required TResult Function() dataParsingFailure,
     required TResult Function() connectionFailure,
+    required TResult Function() unkownFailure,
   }) {
     return serverFailure();
   }
@@ -130,6 +137,7 @@ class _$ServerFailure extends ServerFailure {
     TResult Function()? serverFailure,
     TResult Function()? dataParsingFailure,
     TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
   }) {
     return serverFailure?.call();
   }
@@ -140,6 +148,7 @@ class _$ServerFailure extends ServerFailure {
     TResult Function()? serverFailure,
     TResult Function()? dataParsingFailure,
     TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -154,6 +163,7 @@ class _$ServerFailure extends ServerFailure {
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(DataParsingFailure value) dataParsingFailure,
     required TResult Function(ConnectionFailure value) connectionFailure,
+    required TResult Function(UnkownFailure value) unkownFailure,
   }) {
     return serverFailure(this);
   }
@@ -164,6 +174,7 @@ class _$ServerFailure extends ServerFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(DataParsingFailure value)? dataParsingFailure,
     TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
   }) {
     return serverFailure?.call(this);
   }
@@ -174,6 +185,7 @@ class _$ServerFailure extends ServerFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(DataParsingFailure value)? dataParsingFailure,
     TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -232,6 +244,7 @@ class _$DataParsingFailure extends DataParsingFailure {
     required TResult Function() serverFailure,
     required TResult Function() dataParsingFailure,
     required TResult Function() connectionFailure,
+    required TResult Function() unkownFailure,
   }) {
     return dataParsingFailure();
   }
@@ -242,6 +255,7 @@ class _$DataParsingFailure extends DataParsingFailure {
     TResult Function()? serverFailure,
     TResult Function()? dataParsingFailure,
     TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
   }) {
     return dataParsingFailure?.call();
   }
@@ -252,6 +266,7 @@ class _$DataParsingFailure extends DataParsingFailure {
     TResult Function()? serverFailure,
     TResult Function()? dataParsingFailure,
     TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
     required TResult orElse(),
   }) {
     if (dataParsingFailure != null) {
@@ -266,6 +281,7 @@ class _$DataParsingFailure extends DataParsingFailure {
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(DataParsingFailure value) dataParsingFailure,
     required TResult Function(ConnectionFailure value) connectionFailure,
+    required TResult Function(UnkownFailure value) unkownFailure,
   }) {
     return dataParsingFailure(this);
   }
@@ -276,6 +292,7 @@ class _$DataParsingFailure extends DataParsingFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(DataParsingFailure value)? dataParsingFailure,
     TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
   }) {
     return dataParsingFailure?.call(this);
   }
@@ -286,6 +303,7 @@ class _$DataParsingFailure extends DataParsingFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(DataParsingFailure value)? dataParsingFailure,
     TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
     required TResult orElse(),
   }) {
     if (dataParsingFailure != null) {
@@ -344,6 +362,7 @@ class _$ConnectionFailure extends ConnectionFailure {
     required TResult Function() serverFailure,
     required TResult Function() dataParsingFailure,
     required TResult Function() connectionFailure,
+    required TResult Function() unkownFailure,
   }) {
     return connectionFailure();
   }
@@ -354,6 +373,7 @@ class _$ConnectionFailure extends ConnectionFailure {
     TResult Function()? serverFailure,
     TResult Function()? dataParsingFailure,
     TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
   }) {
     return connectionFailure?.call();
   }
@@ -364,6 +384,7 @@ class _$ConnectionFailure extends ConnectionFailure {
     TResult Function()? serverFailure,
     TResult Function()? dataParsingFailure,
     TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
     required TResult orElse(),
   }) {
     if (connectionFailure != null) {
@@ -378,6 +399,7 @@ class _$ConnectionFailure extends ConnectionFailure {
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(DataParsingFailure value) dataParsingFailure,
     required TResult Function(ConnectionFailure value) connectionFailure,
+    required TResult Function(UnkownFailure value) unkownFailure,
   }) {
     return connectionFailure(this);
   }
@@ -388,6 +410,7 @@ class _$ConnectionFailure extends ConnectionFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(DataParsingFailure value)? dataParsingFailure,
     TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
   }) {
     return connectionFailure?.call(this);
   }
@@ -398,6 +421,7 @@ class _$ConnectionFailure extends ConnectionFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(DataParsingFailure value)? dataParsingFailure,
     TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
     required TResult orElse(),
   }) {
     if (connectionFailure != null) {
@@ -410,4 +434,121 @@ class _$ConnectionFailure extends ConnectionFailure {
 abstract class ConnectionFailure extends Failure {
   const factory ConnectionFailure() = _$ConnectionFailure;
   const ConnectionFailure._() : super._();
+}
+
+/// @nodoc
+abstract class _$$UnkownFailureCopyWith<$Res> {
+  factory _$$UnkownFailureCopyWith(
+          _$UnkownFailure value, $Res Function(_$UnkownFailure) then) =
+      __$$UnkownFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnkownFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
+    implements _$$UnkownFailureCopyWith<$Res> {
+  __$$UnkownFailureCopyWithImpl(
+      _$UnkownFailure _value, $Res Function(_$UnkownFailure) _then)
+      : super(_value, (v) => _then(v as _$UnkownFailure));
+
+  @override
+  _$UnkownFailure get _value => super._value as _$UnkownFailure;
+}
+
+/// @nodoc
+
+class _$UnkownFailure extends UnkownFailure {
+  const _$UnkownFailure() : super._();
+
+  @override
+  String toString() {
+    return 'Failure.unkownFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UnkownFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverFailure,
+    required TResult Function() dataParsingFailure,
+    required TResult Function() connectionFailure,
+    required TResult Function() unkownFailure,
+  }) {
+    return unkownFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverFailure,
+    TResult Function()? dataParsingFailure,
+    TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
+  }) {
+    return unkownFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverFailure,
+    TResult Function()? dataParsingFailure,
+    TResult Function()? connectionFailure,
+    TResult Function()? unkownFailure,
+    required TResult orElse(),
+  }) {
+    if (unkownFailure != null) {
+      return unkownFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerFailure value) serverFailure,
+    required TResult Function(DataParsingFailure value) dataParsingFailure,
+    required TResult Function(ConnectionFailure value) connectionFailure,
+    required TResult Function(UnkownFailure value) unkownFailure,
+  }) {
+    return unkownFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(DataParsingFailure value)? dataParsingFailure,
+    TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
+  }) {
+    return unkownFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(DataParsingFailure value)? dataParsingFailure,
+    TResult Function(ConnectionFailure value)? connectionFailure,
+    TResult Function(UnkownFailure value)? unkownFailure,
+    required TResult orElse(),
+  }) {
+    if (unkownFailure != null) {
+      return unkownFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnkownFailure extends Failure {
+  const factory UnkownFailure() = _$UnkownFailure;
+  const UnkownFailure._() : super._();
 }
