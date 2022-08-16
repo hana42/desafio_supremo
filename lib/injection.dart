@@ -47,12 +47,12 @@ void init() {
     () => StatementCubit(locator<GetStatementImpl>()),
   );
 
-  locator.registerLazySingleton<AppBloc>(
+  locator.registerFactory<AppBloc>(
     () =>
         AppBloc(authenticationRepository: locator<AuthenticationRepository>()),
   );
 
-  locator.registerLazySingleton<AuthenticationRepository>(
+  locator.registerFactory<AuthenticationRepository>(
     () => AuthenticationRepository(),
   );
 
