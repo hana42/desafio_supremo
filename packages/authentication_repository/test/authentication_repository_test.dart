@@ -94,8 +94,8 @@ void main() {
         await authenticationRepository.signUp(
           email: email,
           password: password,
-          cpf: '',
-          name: '',
+          cpf: '12345678900000',
+          name: 'Fulano de tal',
         );
         verify(
           () => firebaseAuth.createUserWithEmailAndPassword(
@@ -110,8 +110,8 @@ void main() {
           authenticationRepository.signUp(
             email: email,
             password: password,
-            cpf: '',
-            name: '',
+            cpf: '12345678900000',
+            name: 'Fulano de tal',
           ),
           completes,
         );

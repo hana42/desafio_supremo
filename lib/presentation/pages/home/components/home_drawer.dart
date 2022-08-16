@@ -43,7 +43,10 @@ class HomeDrawer extends StatelessWidget {
             ),
             icon: const Icon(Icons.exit_to_app),
             label: Text('Sair'),
-            onPressed: () => locator.get<AppBloc>().add(AppLogoutRequested()),
+            onPressed: () {
+              Navigator.popUntil(context, (route) => route.isFirst);
+              locator.get<AppBloc>().add(AppLogoutRequested());
+            },
           ),
         ],
       ),
