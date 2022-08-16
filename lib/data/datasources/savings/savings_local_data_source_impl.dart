@@ -13,7 +13,7 @@ class SavingsLocalDataSourceImpl implements SavingsLocalDataSource {
   @override
   Future<SavingsModel> getSavings() async {
     final SavingsModel response = SavingsModel.fromJson(
-      json.decode(await rootBundle.loadString('assets/data/savings.json')),
+      json.decode('assets/data/savings.json'),
     );
 
     try {

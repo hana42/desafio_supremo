@@ -47,7 +47,7 @@ void init() {
     () => DetailCubit(locator<GetDetailImpl>()),
   );
 
-  locator.registerLazySingleton(
+  locator.registerFactory<SavingsCubit>(
     () => SavingsCubit(locator<GetSavingsImpl>()),
   );
 

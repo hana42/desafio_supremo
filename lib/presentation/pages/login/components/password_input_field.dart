@@ -16,6 +16,7 @@ class PasswordInput extends StatelessWidget {
           onChanged: (password) =>
               context.read<LoginCubit>().passwordChanged(password),
           obscureText: true,
+          textInputAction: TextInputAction.done,
           decoration: InputDecoration(
             errorText: state.password.invalid ? 'Senha inválida' : null,
             hintText: 'Senha',

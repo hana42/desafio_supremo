@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:desafio_supremo/presentation/pages/savings/components/savings_container.dart';
-import 'package:desafio_supremo/presentation/pages/savings/user_goals_list.dart';
 
 import '../../shared/theme/constants.dart';
+
+import 'components/user_goals_list.dart';
 
 class SavingsScreen extends StatelessWidget {
   @override
@@ -17,18 +18,21 @@ class SavingsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SavingsWidget(),
-            SizedBox(height: 60),
-            Padding(
-              padding: kDefaultPadding,
-              child: Text(
-                'Meus objetivos',
-                maxLines: 1,
-                overflow: TextOverflow.fade,
-                style: Theme.of(context).textTheme.overline,
-              ),
+            Center(
+              child: Text('Não funciona'),
             ),
-            UserGoalsList(),
+            // SavingsWidget(),
+            // SizedBox(height: 60),
+            // Padding(
+            //   padding: kDefaultPadding,
+            //   child: Text(
+            //     'Meus objetivos',
+            //     maxLines: 1,
+            //     overflow: TextOverflow.fade,
+            //     style: Theme.of(context).textTheme.overline,
+            //   ),
+            // ),
+            // UserGoalsList(),
           ],
         ),
       ),
