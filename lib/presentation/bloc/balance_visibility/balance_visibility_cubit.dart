@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 
 import '../../../domain/usecases/balance_visibility/get_balance_visibility_impl.dart';
-
 import '../../../domain/usecases/balance_visibility/save_balance_visibility_impl.dart';
 
 class BalanceVisibilityCubit extends Cubit<bool> {
@@ -16,8 +15,11 @@ class BalanceVisibilityCubit extends Cubit<bool> {
 
   void get() async {
     final result = await _getBalanceVisibility();
-    isVisible = result.right;
-    emit(isVisible);
+    result.fold((failure) => emit(false), 
+    (data) {
+      isVisible = result.right;
+      emit(isVisible);
+    });
   }
 
   void changeVisibility() async {
