@@ -31,14 +31,20 @@ class LoginForm extends StatelessWidget {
       },
       child: Align(
         alignment: const Alignment(0, -1 / 3),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SignUpButton(),
-            EmailInput(),
-            PasswordInput(),
-            LoginButton(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 15),
+              EmailInput(),
+              const SizedBox(height: 7),
+              PasswordInput(),
+              const SizedBox(height: 7),
+              LoginButton(),
+              const SizedBox(height: 7),
+              SignUpButton(),
+            ],
+          ),
         ),
       ),
     );
