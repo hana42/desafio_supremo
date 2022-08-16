@@ -30,6 +30,9 @@ class LoginForm extends StatelessWidget {
       child: Column(
         children: [
           EmailInput(),
+          SizedBox(
+            height: 20,
+          ),
           PasswordInput(),
           LoginButton(),
           RegisterButton(),
