@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:desafio_supremo/core/error/failure.dart';
+
 import '../../../domain/entities/savings.dart';
 import '../../../domain/usecases/savings/get_savings_impl.dart';
 
@@ -12,10 +14,10 @@ class SavingsCubit extends Cubit<SavingsState> {
 
   void getSavings() async {
     final result = await _getSavings();
-    
+
     result.fold(
-      (left) => emit(SavingsError('Error')),
-      (right) => emit(SavingsSuccess(right)),
+      (failure) => emit(SavingsError(failure)),
+      (data) => emit(SavingsSuccess(data)),
     );
   }
 }

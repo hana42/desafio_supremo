@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../injection.dart';
+import '../../../core/injection.dart';
 import '../../bloc/balance/balance_cubit.dart';
 import '../../shared/theme/colors.dart';
 import '../../shared/theme/constants.dart';

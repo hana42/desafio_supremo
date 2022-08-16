@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/error/error_object.dart';
+import 'package:desafio_supremo/core/error/error_object.dart';
+
+import '../../../core/error/failure.dart';
 import '../theme/colors.dart';
 
 class ErrorDialog extends StatelessWidget {
-  const ErrorDialog({Key? key, required this.error}) : super(key: key);
-  final ErrorObject error;
+  const ErrorDialog({Key? key, required this.failure}) : super(key: key);
+  final Failure failure;
 
   @override
   Widget build(BuildContext context) {
+    final ErrorObject error = ErrorObject.mapFailureToError(failure: failure);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.min,

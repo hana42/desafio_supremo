@@ -15,11 +15,11 @@ class BalanceInitial extends BalanceState {
 }
 
 class BalanceError extends BalanceState {
-  const BalanceError(this.error);
-  final ErrorObject error;
+  const BalanceError(this.failure);
+  final Failure failure;
 
   @override
-  List<Object?> get props => [error];
+  List<Object?> get props => [failure];
 }
 
 class BalanceSuccess extends BalanceState {

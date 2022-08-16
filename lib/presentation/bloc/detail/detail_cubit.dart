@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../core/error/error_object.dart';
+import 'package:desafio_supremo/core/error/failure.dart';
+
 import '../../../domain/entities/detail.dart';
 import '../../../domain/usecases/detail/get_detail_impl.dart';
 
@@ -15,7 +16,7 @@ class DetailCubit extends Cubit<DetailState> {
     final result = await _getDetail(id);
 
     result.fold(
-      (failure) => emit(DetailError(ErrorObject.mapFailureToError(failure: failure))),
+      (failure) => emit(DetailError(failure)),
       (data) => emit(DetailSuccess(data)),
     );
   }

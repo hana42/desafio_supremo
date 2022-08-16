@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/utils/utils.dart';
-import '../../../../injection.dart';
+import '../../../../core/injection.dart';
 import '../../../bloc/detail/detail_cubit.dart';
 import '../../../shared/theme/constants.dart';
 import '../../../shared/widgets/bottom_loader.dart';
@@ -31,7 +31,7 @@ class _DetailListState extends State<DetailList> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               margin: kDefaultPadding / 2,
-              content: ErrorDialog(error: state.error),
+              content: ErrorDialog(failure: state.failure),
             ),
           );
         }

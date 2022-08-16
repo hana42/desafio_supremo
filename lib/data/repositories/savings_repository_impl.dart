@@ -18,9 +18,13 @@ class SavingsRepositoryImpl implements SavingsRepository {
       final result = await _savingsLocalDataSource.getSavings();
       return Right(result.toEntity());
     } on ServerException {
-      return const Left(ServerFailure());
+      return Left(ServerFailure());
+    } on FormatException {
+      return Left(DataParsingFailure());
     } on SocketException {
-      return const Left(ConnectionFailure());
+      return Left(ConnectionFailure());
+    } catch (error) {
+      return Left(UnkownFailure());
     }
   }
 }

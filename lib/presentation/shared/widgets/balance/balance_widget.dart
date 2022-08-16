@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../injection.dart';
+import '../../../../core/injection.dart';
 import '../../../bloc/balance/balance_cubit.dart';
-import '../../../bloc/balance/balance_visibility_cubit.dart';
+import '../../../bloc/balance_visibility/balance_visibility_cubit.dart';
 import '../../theme/colors.dart';
 import '../../theme/constants.dart';
 import '../error_dialog.dart';
@@ -18,6 +18,7 @@ class BalanceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final cubit = locator.get<BalanceVisibilityCubit>();
 
     return Container(
       height: size.height / 7,
@@ -34,7 +35,7 @@ class BalanceWidget extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.remove_red_eye_rounded),
                 onPressed: () {
-                  locator.get<BalanceVisibilityCubit>().changeVisibility();
+                  cubit.changeVisibility();
                 },
               ),
             ],
@@ -46,7 +47,7 @@ class BalanceWidget extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     margin: kDefaultPadding / 2,
-                    content: ErrorDialog(error: state.error),
+                    content: ErrorDialog(failure: state.failure),
                   ),
                 );
               }
@@ -58,11 +59,11 @@ class BalanceWidget extends StatelessWidget {
                   var balance = state.balance.amount;
 
                   return BlocBuilder<BalanceVisibilityCubit, bool>(
-                    bloc: locator.get<BalanceVisibilityCubit>(),
+                    bloc: cubit..get(),
                     builder: (context, state) {
                       return AnimatedBalanceContainer(
                         amount: balance,
-                        visibility: locator.get<BalanceVisibilityCubit>().state,
+                        visibility: cubit.state,
                       );
                     },
                   );
