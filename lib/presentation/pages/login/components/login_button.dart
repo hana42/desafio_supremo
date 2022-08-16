@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
-import '../../../../core/injection.dart';
+import '../../../../core/di/injection.dart';
 import '../../../bloc/login/login_cubit.dart';
 
 class LoginButton extends StatelessWidget {
@@ -19,11 +19,9 @@ class LoginButton extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   key: const Key('loginForm_passwordInput_textField'),
-                  onPressed:
-                      // state.status.isValidated
-                      // ?
-                      () => locator.get<LoginCubit>().logInWithCredentials(),
-                  // : null,
+                  onPressed: state.status.isValidated
+                      ? () => locator.get<LoginCubit>().logInWithCredentials()
+                      : null,
                   child: Text('Entrar'),
                 ),
               );

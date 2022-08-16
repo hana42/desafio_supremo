@@ -4,7 +4,7 @@ enum CpfError { invalid }
 
 class Cpf extends FormzInput<String, CpfError> {
   const Cpf.pure() : super.pure('');
-  const Cpf.dirty([String value = '']) : super.dirty(value);
+  const Cpf.dirty([super.value = '']) : super.dirty();
 
   static final RegExp _cpfRegExp = RegExp(
     r'^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}',

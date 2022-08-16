@@ -1,13 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:confetti/confetti.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import '../../../core/injection.dart';
-import '../../bloc/app/app_bloc.dart';
-import '../../shared/widgets/user_goals_list.dart';
+import 'package:flutter/material.dart';
 
 import 'components/advertisement_card.dart';
+import 'components/home_drawer.dart';
 import 'components/home_header.dart';
 import 'components/home_nav_menu.dart';
 import 'components/home_scrollable_item.dart';
@@ -55,25 +51,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello, ${FirebaseAuth.instance.currentUser!.displayName}'),
+        backgroundColor: Colors.grey[200]!,
+        title: Text(
+            'Olá, ${FirebaseAuth.instance.currentUser!.displayName ?? 'David'}.'),
         centerTitle: false,
       ),
-      endDrawer: Drawer(
-        child: Column(
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: Text('dsada'),
-              accountEmail: Text('dhusiahd'),
-            ),
-            DrawerHeader(child: Text('aaa')),
-            IconButton(
-              key: const Key('homePage_logout_iconButton'),
-              icon: const Icon(Icons.exit_to_app),
-              onPressed: () => locator.get<AppBloc>().add(AppLogoutRequested()),
-            ),
-          ],
-        ),
-      ),
+      endDrawer: HomeDrawer(),
       body: SingleChildScrollView(
         controller: scrollController,
         child: Stack(
@@ -86,7 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Empréstimo agora é 100% digital!',
                   'Agora ficou mais fácil conseguir seu empréstimo! Você faz tudo pelo app. Confira os convênios disponíveis e aproveite!',
                 ),
-                UserGoalsList(),
               ],
             ),
             HomeScrollableItem(confettiController: confettiController),

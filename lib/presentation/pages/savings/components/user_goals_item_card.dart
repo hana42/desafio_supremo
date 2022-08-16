@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 
-import '../theme/colors.dart';
-import '../theme/constants.dart';
+import '../../../shared/theme/colors.dart';
+import '../../../shared/theme/constants.dart';
 
 import 'percent_indicator.dart';
 

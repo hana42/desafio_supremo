@@ -1,4 +1,4 @@
-abstract class API {
+class API {
   static const String baseUrl = 'https://bank-statement-bff.herokuapp.com';
   static const Map<String, String> defaultHeaders = {
     'token':
@@ -6,6 +6,7 @@ abstract class API {
   };
 
   static String balance = '$baseUrl/myBalance';
-  static String statement(int limit, int offset) => '$baseUrl/myStatement/$limit/$offset';
+  static String statement(int limit, int offset) =>
+      '$baseUrl/myStatement/$limit/$offset';
   static String detail(String id) => '$baseUrl/myStatement/detail/$id';
 }

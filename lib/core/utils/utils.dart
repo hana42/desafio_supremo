@@ -8,9 +8,9 @@ import 'package:share_plus/share_plus.dart';
 class Utils {
   bool statementType(String tType) {
     final String cleanedString = tType.trim().toLowerCase();
-    final bool cashOut = cleanedString.contains('cashout') ||
+    final bool isCashOut = cleanedString.contains('cashout') ||
         cleanedString.contains('realizada');
-    return cashOut;
+    return isCashOut;
   }
 
   String formatCurrency(num number, [String type = 'cashin']) {
@@ -19,10 +19,10 @@ class Utils {
         .format(number);
   }
 
-  Future<void> saveAndShare(final Uint8List? proof) async {
+  Future<void> saveAndShare(final Uint8List? file) async {
     final Directory directory = await getApplicationDocumentsDirectory();
-    final File image = File('${directory.path}/proof.png')
-      ..writeAsBytesSync(proof!);
+    final File image = File('${directory.path}/${DateTime.now()}.png')
+      ..writeAsBytesSync(file!);
 
     return Share.shareFiles([image.path]);
   }

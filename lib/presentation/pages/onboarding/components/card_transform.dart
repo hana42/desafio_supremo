@@ -2,18 +2,19 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../../shared/widgets/credit_card.dart';
+import '../../../shared/widgets/credit_card/credit_card.dart';
+import '../../../shared/widgets/credit_card/credit_card_back.dart';
 
-class MyTransform extends StatefulWidget {
-  const MyTransform({Key? key, required this.cardColor}) : super(key: key);
-  
+class RotateCard extends StatefulWidget {
+  const RotateCard({Key? key, required this.cardColor}) : super(key: key);
+
   final Color cardColor;
 
   @override
-  State<MyTransform> createState() => _MyTransformState();
+  State<RotateCard> createState() => _RotateCardState();
 }
 
-class _MyTransformState extends State<MyTransform>
+class _RotateCardState extends State<RotateCard>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
@@ -94,8 +95,6 @@ class _MyTransformState extends State<MyTransform>
                 alignment: FractionalOffset.center,
                 child: CreditCardBack(
                   color: widget.cardColor,
-                  width: 350,
-                  height: 600,
                   vertical: true,
                 ),
               ),

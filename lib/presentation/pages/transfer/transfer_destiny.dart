@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/theme/colors.dart';
 import '../../shared/theme/constants.dart';
 import '../../shared/widgets/header.dart';
 
@@ -13,13 +12,7 @@ class TransferDestiny extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.navigate_before, color: kBlack),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: kDefaultPadding,
         child: Column(
@@ -35,9 +28,9 @@ class TransferDestiny extends StatelessWidget {
               child: Padding(
                 padding: kDefaultPadding,
                 child: TextFormField(
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.name,
                   decoration: const InputDecoration(
-                    hintText: 'Nome, CPF/CNPJ ou Chave Pix',
+                    hintText: 'Nome, CPF/CNPJ ou chave Pix',
                   ),
                 ),
               ),

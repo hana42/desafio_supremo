@@ -11,8 +11,7 @@ class BalanceVisibilityRepositoryImpl implements BalanceVisibilityRepository {
 
   @override
   Future<Either<Failure, bool>> getBalanceVisibility() async {
-    final result = await localDataSource.get();
-    print(result);
+    final result = localDataSource.get();
     return Right(result);
   }
 
@@ -20,7 +19,6 @@ class BalanceVisibilityRepositoryImpl implements BalanceVisibilityRepository {
   Future<Either<Failure, bool>> save(bool isVisible) async {
     try {
       final result = await localDataSource.post(isVisible);
-      print(result);
       return Right(result);
     } on CacheException {
       return Left(CacheFailure());

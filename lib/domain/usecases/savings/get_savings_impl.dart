@@ -1,6 +1,6 @@
 import 'package:either_dart/either.dart';
 
-import 'package:desafio_supremo/domain/usecases/savings/get_savings.dart';
+import 'get_savings.dart';
 
 import '../../../core/error/failure.dart';
 import '../../entities/savings.dart';

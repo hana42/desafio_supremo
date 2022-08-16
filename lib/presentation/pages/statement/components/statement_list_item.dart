@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../shared/theme/colors.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../domain/entities/statement.dart';
+import '../../../shared/theme/colors.dart';
 import '../../detail/detail_screen.dart';
 
 class StatementListItem extends StatelessWidget {
@@ -21,10 +21,7 @@ class StatementListItem extends StatelessWidget {
     return ListTile(
       onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => DetailScreen(id: statement.id),
-            maintainState: true,
-          ),
+          MaterialPageRoute(builder: (_) => DetailScreen(id: statement.id)),
         );
       },
       minLeadingWidth: 0,

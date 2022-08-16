@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../core/di/injection.dart';
 import '../../../../core/utils/utils.dart';
-import '../../../../core/injection.dart';
 import '../../../bloc/detail/detail_cubit.dart';
 import '../../../shared/theme/constants.dart';
 import '../../../shared/widgets/bottom_loader.dart';
@@ -43,7 +43,6 @@ class _DetailListState extends State<DetailList> {
             var detail = state.detail;
 
             return Column(
-              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -23,7 +23,6 @@ class NavMenuItem extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           tileColor: kLightGrey,
           minLeadingWidth: 15,
-          dense: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 20),
           iconColor: kPurple,
           trailing: const Icon(Icons.arrow_forward),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/constants.dart';
+import '../../../shared/theme/constants.dart';
 
 import 'user_goals_item_card.dart';
 
@@ -16,7 +16,7 @@ class UserGoalsList extends StatelessWidget {
       'goal': 500,
     },
     {
-      'title': 'Viagem Americana',
+      'title': 'Viagem',
       'subtitle': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       'savings': 100,
       'goal': 500,
@@ -48,7 +48,7 @@ class UserGoalsList extends StatelessWidget {
                 return UserGoalsCard(
                   title: goalsList[index]['title'].toString(),
                   subtitle: goalsList[index]['subtitle'].toString(),
-                  goal: 100,
+                  goal: double.parse('${goalsList[index]['goal']}'),
                 );
               },
             ),

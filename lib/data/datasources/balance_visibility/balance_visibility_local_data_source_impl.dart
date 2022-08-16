@@ -1,9 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:desafio_supremo/core/error/exception.dart';
+import '../../../core/error/exception.dart';
 
 abstract class BalanceVisibilityLocalDataSource {
-  Future<bool> get();
+  bool get();
   Future<bool> post(bool isVisible);
 }
 
@@ -14,17 +14,18 @@ class BalanceVisibilityLocalDataSourceImpl
   final SharedPreferences sharedPreferences;
 
   @override
-  Future<bool> get() {
-    final bool? json = sharedPreferences.getBool('isVisible');
-    if (json != null) {
-      return Future.value(json);
+  bool get() {
+    final bool? result = sharedPreferences.getBool('isVisible');
+    if (result != null) {
+      return result;
     } else {
       throw CacheException();
     }
   }
 
   @override
-  Future<bool> post(bool isVisible) {
-    return sharedPreferences.setBool('isVisible', isVisible);
+  Future<bool> post(bool isVisible) async {
+    final result = await sharedPreferences.setBool('isVisible', isVisible);
+    return result;
   }
 }

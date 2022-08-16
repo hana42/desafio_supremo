@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
-import '../../../../core/injection.dart';
+import '../../../../core/di/injection.dart';
 import '../../../bloc/login/login_cubit.dart';
-
 import 'email_input_field.dart';
 import 'login_button.dart';
 import 'password_input_field.dart';
@@ -42,7 +40,7 @@ class LoginForm extends StatelessWidget {
               const SizedBox(height: 7),
               LoginButton(),
               const SizedBox(height: 7),
-              SignUpButton(),
+              RegisterButton(),
             ],
           ),
         ),

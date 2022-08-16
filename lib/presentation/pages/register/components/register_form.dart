@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
-import '../cubit/sign_up_cubit.dart';
+import '../../home/home_screen.dart';
 
-class SignUpForm extends StatelessWidget {
-  const SignUpForm({super.key});
+import '../../../bloc/register/register_cubit.dart';
+import '../../../shared/theme/constants.dart';
+import '../../onboarding/components/register_button.dart';
+
+class RegisterForm extends StatelessWidget {
+  const RegisterForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SignUpCubit, SignUpState>(
+    return BlocListener<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state.status.isSubmissionSuccess) {
-          Navigator.of(context).pop();
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => HomeScreen()),
+          );
         } else if (state.status.isSubmissionFailure) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
@@ -22,18 +28,16 @@ class SignUpForm extends StatelessWidget {
             );
         }
       },
-      child: Align(
-        alignment: const Alignment(0, -1 / 3),
+      child: Padding(
+        padding: kDefaultPadding * 1.5,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            SizedBox(height: 8),
             _NameInput(),
             _CpfInput(),
             _EmailInput(),
             _PasswordInput(),
             _ConfirmPasswordInput(),
-            _SignUpButton(),
+            _RegisterButton(),
           ],
         ),
       ),
@@ -44,13 +48,14 @@ class SignUpForm extends StatelessWidget {
 class _NameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
+    return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) => previous.name != current.name,
       builder: (context, state) {
         return TextFormField(
-          key: const Key('signUpForm_nameInput_textField'),
-          onChanged: (name) => context.read<SignUpCubit>().nameChanged(name),
+          key: const Key('RegisterForm_nameInput_textField'),
+          onChanged: (name) => context.read<RegisterCubit>().nameChanged(name),
           keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             labelText: 'Nome',
             helperText: '',
@@ -65,13 +70,14 @@ class _NameInput extends StatelessWidget {
 class _CpfInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
+    return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) => previous.cpf != current.cpf,
       builder: (context, state) {
         return TextFormField(
-          key: const Key('signUpForm_cpfInput_textField'),
-          onChanged: (cpf) => context.read<SignUpCubit>().cpfChanged(cpf),
+          key: const Key('RegisterForm_cpfInput_textField'),
+          onChanged: (cpf) => context.read<RegisterCubit>().cpfChanged(cpf),
           keyboardType: TextInputType.number,
+          textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             labelText: 'CPF',
             helperText: '',
@@ -86,13 +92,15 @@ class _CpfInput extends StatelessWidget {
 class _EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
+    return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
         return TextFormField(
-          key: const Key('signUpForm_emailInput_textField'),
-          onChanged: (email) => context.read<SignUpCubit>().emailChanged(email),
+          key: const Key('RegisterForm_emailInput_textField'),
+          onChanged: (email) =>
+              context.read<RegisterCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             labelText: 'Email',
             helperText: '',
@@ -107,14 +115,15 @@ class _EmailInput extends StatelessWidget {
 class _PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
+    return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return TextField(
-          key: const Key('signUpForm_passwordInput_textField'),
+          key: const Key('RegisterForm_passwordInput_textField'),
           onChanged: (password) =>
-              context.read<SignUpCubit>().passwordChanged(password),
+              context.read<RegisterCubit>().passwordChanged(password),
           obscureText: true,
+          textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             labelText: 'Senha',
             helperText: '',
@@ -129,22 +138,22 @@ class _PasswordInput extends StatelessWidget {
 class _ConfirmPasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
+    return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) =>
           previous.password != current.password ||
           previous.confirmedPassword != current.confirmedPassword,
       builder: (context, state) {
         return TextField(
-          key: const Key('signUpForm_confirmedPasswordInput_textField'),
+          key: const Key('RegisterForm_confirmedPasswordInput_textField'),
           onChanged: (confirmPassword) => context
-              .read<SignUpCubit>()
+              .read<RegisterCubit>()
               .confirmedPasswordChanged(confirmPassword),
           obscureText: true,
+          textInputAction: TextInputAction.done,
           decoration: InputDecoration(
-            labelText: 'Confirme a senha',
-            helperText: '',
+            labelText: 'Confirme sua senha',
             errorText:
-                state.confirmedPassword.invalid ? 'Senha diferente' : null,
+                state.confirmedPassword.invalid ? 'Senhas diferentes' : null,
           ),
         );
       },
@@ -152,26 +161,20 @@ class _ConfirmPasswordInput extends StatelessWidget {
   }
 }
 
-class _SignUpButton extends StatelessWidget {
+class _RegisterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
+    return BlocBuilder<RegisterCubit, RegisterState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return state.status.isSubmissionInProgress
             ? const CircularProgressIndicator()
-            : ElevatedButton(
-                key: const Key('signUpForm_continue_elevate_button'),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  primary: Colors.indigo,
-                ),
-                onPressed: state.status.isValidated
-                    ? () => context.read<SignUpCubit>().signUpFormSubmitted()
+            : CustomButton(
+                key: const Key('RegisterForm_continue_elevate_button'),
+                'Confirmar',
+                onPressed: () => state.status.isValidated
+                    ? context.read<RegisterCubit>().registerFormSubmitted()
                     : null,
-                child: const Text('Sign Up'),
               );
       },
     );

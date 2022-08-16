@@ -19,7 +19,6 @@ void main() {
   });
 
   const int limit = 10;
-  const int offset = 1;
 
   Statement tStatement = Statement(
     createdAt: DateTime.parse('2020-10-22T03:00:00Z'),

@@ -13,8 +13,9 @@ class GlassMorphism extends StatelessWidget {
 
   final Widget child;
   final Color color;
-  final double start = 0.9;
-  final double end = 0.7;
+  final double start = 0.6;
+  final double middle = 0.8;
+  final double end = 1;
   final double width;
   final double height;
 
@@ -22,7 +23,7 @@ class GlassMorphism extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 0.3, sigmaY: 3),
+        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
         child: Container(
           width: width,
           height: height,
@@ -30,6 +31,7 @@ class GlassMorphism extends StatelessWidget {
             gradient: LinearGradient(
               colors: [
                 color.withOpacity(start),
+                color.withOpacity(middle),
                 color.withOpacity(end),
               ],
               begin: AlignmentDirectional.topStart,

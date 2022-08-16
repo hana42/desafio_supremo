@@ -4,10 +4,10 @@ import 'package:equatable/equatable.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 
-part 'sign_up_state.dart';
+part 'register_state.dart';
 
-class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit(this._authenticationRepository) : super(const SignUpState());
+class RegisterCubit extends Cubit<RegisterState> {
+  RegisterCubit(this._authenticationRepository) : super(const RegisterState());
 
   final AuthenticationRepository _authenticationRepository;
 
@@ -95,7 +95,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     ));
   }
 
-  Future<void> signUpFormSubmitted() async {
+  Future<void> registerFormSubmitted() async {
     if (!state.status.isValidated) return;
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {

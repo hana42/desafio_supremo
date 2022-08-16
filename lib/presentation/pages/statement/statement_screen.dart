@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../shared/theme/constants.dart';
 import '../../shared/widgets/balance/balance_widget.dart';
 
-import 'components/statement_list.dart';
+import 'components/statement_list_builder.dart';
 
 
 class StatementScreen extends StatelessWidget {
@@ -28,7 +28,7 @@ class StatementScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
-            Expanded(child: StatementList()),
+            Expanded(child: StatementListBuilder()),
           ],
         ));
   }

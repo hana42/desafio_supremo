@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:desafio_supremo/presentation/shared/widgets/header_widget.dart';
+import '../../shared/widgets/clipper_header.dart';
 
 import '../../bloc/login/login_cubit.dart';
 
 import 'components/login_form.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
-  static Page<void> page() => const MaterialPage<void>(child: LoginPage());
+  static Page<void> page() => const MaterialPage<void>(child: LoginScreen());
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
           children: [
             Container(
               height: size.height * 0.3,
-              child: HeaderWidget(size.height * 0.3),
+              child: ClipperHeader(size.height * 0.3),
             ),
             Container(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 10),

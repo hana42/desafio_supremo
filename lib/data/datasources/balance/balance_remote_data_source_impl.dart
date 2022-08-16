@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import '../../../core/error/exception.dart';
 import '../../../core/utils/api.utils.dart';
 import '../../models/balance_model.dart';
-
 import 'balance_remote_data_source.dart';
 
 class BalanceRemoteDataSourceImpl implements BalanceRemoteDataSource {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:desafio_supremo/core/injection.dart';
+import '../../../../core/di/injection.dart';
 
 import '../../../bloc/login/login_cubit.dart';
 

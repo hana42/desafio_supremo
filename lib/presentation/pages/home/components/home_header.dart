@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/theme/colors.dart';
 import '../../../shared/widgets/balance/balance_widget.dart';
-import '../../../shared/widgets/credit_card.dart';
-
-import 'home_app_bar.dart';
+import '../../../shared/widgets/credit_card/credit_card.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({Key? key}) : super(key: key);
@@ -14,7 +12,7 @@ class HomeHeader extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Container(
-      constraints: BoxConstraints(maxHeight: size.height * 0.53),
+      constraints: BoxConstraints(maxHeight: size.height * 0.5),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: FractionalOffset.center,
@@ -28,7 +26,6 @@ class HomeHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeAppBar(),
             const BalanceWidget(),
             Expanded(
               child: Container(

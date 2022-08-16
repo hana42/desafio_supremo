@@ -1,6 +1,6 @@
 import 'package:either_dart/either.dart';
 
-import 'package:desafio_supremo/domain/repositories/statement_repository.dart';
+import '../../repositories/statement_repository.dart';
 
 import '../../../core/error/failure.dart';
 import '../../entities/statement.dart';

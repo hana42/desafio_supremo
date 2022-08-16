@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:desafio_supremo/core/error/failure.dart';
-
+import '../../../core/error/failure.dart';
 import '../../../domain/entities/detail.dart';
 import '../../../domain/usecases/detail/get_detail_impl.dart';
 

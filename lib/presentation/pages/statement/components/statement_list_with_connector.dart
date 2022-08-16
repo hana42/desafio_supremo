@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../../../../domain/entities/statement.dart';
 import '../../../shared/theme/colors.dart';
 import '../../../shared/theme/constants.dart';
-import '../../../../domain/entities/statement.dart';
+
 import 'statement_list_item.dart';
 
-class StatementConnector extends StatelessWidget {
-  const StatementConnector(this.statement, {Key? key}) : super(key: key);
+class StatementListWithConnector extends StatelessWidget {
+  const StatementListWithConnector(this.statement, {Key? key}) : super(key: key);
   final Statement statement;
 
   @override

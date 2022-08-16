@@ -48,7 +48,8 @@ class _DetailScreenState extends State<DetailScreen> {
               endIndent: 15,
               thickness: 1.2,
             ),
-            Expanded(
+            Flexible(
+              flex: 2,
               child: Screenshot<Widget>(
                 controller: _screenshotController,
                 child: DetailList(id: widget.id),
@@ -60,13 +61,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   final proof = await _screenshotController.capture();
                   Utils().saveAndShare(proof);
                 },
-                child: Padding(
-                  padding: kButtonPadding,
-                  child: Text(
-                    'Compartilhar',
-                    style: Theme.of(context).textTheme.button,
-                  ),
-                ),
+                child: Text('Compartilhar'),
               ),
             ),
           ],

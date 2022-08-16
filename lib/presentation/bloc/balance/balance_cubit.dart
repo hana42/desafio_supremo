@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:desafio_supremo/core/error/failure.dart';
+import '../../../core/error/failure.dart';
 
 import '../../../domain/entities/balance.dart';
 import '../../../domain/usecases/balance/get_balance_impl.dart';

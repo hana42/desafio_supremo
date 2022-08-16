@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/presentation/shared/theme/colors.dart';
+import '../theme/colors.dart';
 
-class HeaderWidget extends StatelessWidget {
-  HeaderWidget(this._height);
+class ClipperHeader extends StatelessWidget {
+  ClipperHeader(this._height);
   final double _height;
 
   @override
@@ -16,7 +16,7 @@ class HeaderWidget extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [kPurple.withOpacity(0.4), kPurple.withOpacity(0.4)],
+                colors: [kBlack.withOpacity(0.8), kBlack.withOpacity(0.2)],
                 begin: const FractionalOffset(0.0, 0.0),
                 end: const FractionalOffset(1.0, 0.0),
                 stops: [0.0, 1.0],
@@ -35,7 +35,7 @@ class HeaderWidget extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [kPurple.withOpacity(0.4), kPurple.withOpacity(0.4)],
+                colors: [kBlack.withOpacity(0.8), kBlack.withOpacity(0.4)],
                 begin: const FractionalOffset(0.0, 0.0),
                 end: const FractionalOffset(1.0, 0.0),
                 stops: [0.0, 1.0],
@@ -54,7 +54,7 @@ class HeaderWidget extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [kPurple, kLightGrey],
+                colors: [kDarkGrey, kLightGrey],
                 begin: const FractionalOffset(0.0, 0.0),
                 end: const FractionalOffset(1.0, 0.0),
                 stops: [0.0, 1.0],

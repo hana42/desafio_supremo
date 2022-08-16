@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/theme/colors.dart';
 import '../../../shared/theme/constants.dart';
-import '../../../shared/widgets/credit_card.dart';
-
+import '../../../shared/widgets/credit_card/credit_card.dart';
 import 'block_card_alert.dart';
 
 class CardsList extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/injection.dart';
+import '../../../../core/di/injection.dart';
 import '../../../bloc/balance/balance_cubit.dart';
 import '../../../bloc/balance_visibility/balance_visibility_cubit.dart';
 import '../../theme/colors.dart';
@@ -31,7 +31,10 @@ class BalanceWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text('Seu saldo'),
+              Text(
+                'Seu saldo',
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
               IconButton(
                 icon: const Icon(Icons.remove_red_eye_rounded),
                 onPressed: () {

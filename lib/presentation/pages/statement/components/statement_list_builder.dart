@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/injection.dart';
+import '../../../../core/di/injection.dart';
 import '../../../bloc/statement/statement_cubit.dart';
 import '../../../shared/theme/constants.dart';
 import '../../../shared/widgets/bottom_loader.dart';
 import '../../../shared/widgets/error_dialog.dart';
 
-import 'statement_connector.dart';
+import 'statement_list_with_connector.dart';
 
-class StatementList extends StatefulWidget {
-  const StatementList({Key? key}) : super(key: key);
+class StatementListBuilder extends StatefulWidget {
+  const StatementListBuilder({Key? key}) : super(key: key);
 
   @override
-  State<StatementList> createState() => _StatementListState();
+  State<StatementListBuilder> createState() => _StatementListBuilderState();
 }
 
-class _StatementListState extends State<StatementList> {
+class _StatementListBuilderState extends State<StatementListBuilder> {
   final StatementCubit cubit = locator.get<StatementCubit>();
   final ScrollController scrollController = ScrollController();
 
@@ -66,7 +66,7 @@ class _StatementListState extends State<StatementList> {
               itemBuilder: (context, index) {
                 return index >= state.statements.length
                     ? const BottomLoader()
-                    : StatementConnector(state.statements[index]);
+                    : StatementListWithConnector(state.statements[index]);
               },
               itemCount: state.hasReachedMax
                   ? state.statements.length

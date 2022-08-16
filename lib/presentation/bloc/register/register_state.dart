@@ -1,9 +1,9 @@
-part of 'sign_up_cubit.dart';
+part of 'register_cubit.dart';
 
 enum ConfirmPasswordValidationError { invalid }
 
-class SignUpState extends Equatable {
-  const SignUpState({
+class RegisterState extends Equatable {
+  const RegisterState({
     this.name = const Name.pure(),
     this.cpf = const Cpf.pure(),
     this.email = const Email.pure(),
@@ -25,7 +25,7 @@ class SignUpState extends Equatable {
   List<Object> get props =>
       [name, cpf, email, password, confirmedPassword, status];
 
-  SignUpState copyWith({
+  RegisterState copyWith({
     Name? name,
     Cpf? cpf,
     Email? email,
@@ -34,7 +34,7 @@ class SignUpState extends Equatable {
     FormzStatus? status,
     String? errorMessage,
   }) {
-    return SignUpState(
+    return RegisterState(
       name: name ?? this.name,
       cpf: cpf ?? this.cpf,
       email: email ?? this.email,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/core/error/error_object.dart';
+import '../../../core/error/error_object.dart';
 
 import '../../../core/error/failure.dart';
 import '../theme/colors.dart';
