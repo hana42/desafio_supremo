@@ -1,8 +1,9 @@
-import 'package:desafio_supremo/presentation/shared/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:desafio_supremo/presentation/shared/widgets/header_widget.dart';
 
 import '../../bloc/login/login_cubit.dart';
 
@@ -14,6 +15,8 @@ class LoginPage extends StatelessWidget {
   static Page<void> page() => const MaterialPage<void>(child: LoginPage());
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -21,8 +24,8 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 250,
-              child: HeaderWidget(250, true),
+              height: size.height * 0.3,
+              child: HeaderWidget(size.height * 0.3),
             ),
             Container(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
