@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../injection.dart';
+import '../../../../core/injection.dart';
 import '../../../bloc/statement/statement_cubit.dart';
 import '../../../shared/theme/constants.dart';
 import '../../../shared/widgets/bottom_loader.dart';
@@ -51,7 +51,7 @@ class _StatementListState extends State<StatementList> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               margin: kDefaultPadding / 2,
-              content: ErrorDialog(error: state.error),
+              content: ErrorDialog(failure: state.failure),
             ),
           );
         }

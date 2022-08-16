@@ -10,11 +10,11 @@ abstract class SavingsState extends Equatable {
 class SavingsInitial extends SavingsState {}
 
 class SavingsError extends SavingsState {
-  const SavingsError(this.message);
-  final String message;
+  const SavingsError(this.failure);
+  final Failure failure;
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [failure];
 }
 
 class SavingsSuccess extends SavingsState {

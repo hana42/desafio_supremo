@@ -28,7 +28,7 @@ void main() {
     );
 
     test('returns a savings model when successful', () async {
-      final call = dataSource.getSavings();
+      final call = await dataSource.getSavings();
 
       expect(call, equals(tSavingsModel));
     });

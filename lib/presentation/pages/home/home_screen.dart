@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../injection.dart';
+import '../../../core/injection.dart';
 import '../../bloc/app/app_bloc.dart';
 import '../../shared/widgets/user_goals_list.dart';
 

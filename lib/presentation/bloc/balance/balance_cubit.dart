@@ -1,7 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/error/error_object.dart';
+import 'package:desafio_supremo/core/error/failure.dart';
+
 import '../../../domain/entities/balance.dart';
 import '../../../domain/usecases/balance/get_balance_impl.dart';
 
@@ -15,8 +16,7 @@ class BalanceCubit extends Cubit<BalanceState> {
     final result = await _getBalance();
 
     result.fold(
-      (failure) =>
-          emit(BalanceError(ErrorObject.mapFailureToError(failure: failure))),
+      (failure) => emit(BalanceError(failure)),
       (data) => emit(BalanceSuccess(data)),
     );
   }

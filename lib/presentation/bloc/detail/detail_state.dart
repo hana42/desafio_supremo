@@ -15,11 +15,11 @@ class DetailInitial extends DetailState {
 }
 
 class DetailError extends DetailState {
-  const DetailError(this.error);
-  final ErrorObject error;
+  const DetailError(this.failure);
+  final Failure failure;
 
   @override
-  List<Object?> get props => [error];
+  List<Object?> get props => [failure];
 }
 
 class DetailSuccess extends DetailState {

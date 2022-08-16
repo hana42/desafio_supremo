@@ -45,7 +45,7 @@ void main() {
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
-      expect(result.left, equals(const ServerFailure()));
+      expect(result.left, isA<ServerFailure>());
     });
 
     test('returns data parsing failure when fails to decode json', () async {
@@ -56,7 +56,7 @@ void main() {
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
-      expect(result.left, equals(const DataParsingFailure()));
+      expect(result.left, isA<DataParsingFailure>());
     });
 
     test('returns connection failure when the device has no internet',
@@ -68,7 +68,7 @@ void main() {
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
-      expect(result.left, equals(const ConnectionFailure()));
+      expect(result.left, isA<ConnectionFailure>());
     });
 
     test('returns a unkown exception when another type of Exception is thrown',
@@ -80,7 +80,7 @@ void main() {
 
       verify(mockBalanceRemoteDataSource.getBalance());
 
-      expect(result.left, equals(const UnkownFailure()));
+      expect(result.left, isA<UnkownFailure>());
     });
   });
 }
