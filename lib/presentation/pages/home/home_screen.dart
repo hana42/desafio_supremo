@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
               accountName: Text(
                 FirebaseAuth.instance.currentUser?.displayName ?? '',
               ),
-              accountEmail: Text(FirebaseAuth.instance.currentUser!.email!),
+              accountEmail: Text(FirebaseAuth.instance.currentUser?.email ?? ''),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
