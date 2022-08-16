@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:shimmer/shimmer.dart';
 
 import '../theme/colors.dart';
@@ -15,7 +16,7 @@ class ShimmerLoading extends StatelessWidget {
       gradient: const LinearGradient(
         begin: Alignment.topRight,
         end: Alignment.bottomLeft,
-        colors: [kLightGrey, kDarkGrey],
+        colors: [kLightGrey, Colors.white],
         tileMode: TileMode.mirror,
       ),
       child: child,
