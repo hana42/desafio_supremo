@@ -20,9 +20,9 @@ class HomeDrawer extends StatelessWidget {
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(color: kBlack),
             accountName: Text(
-              FirebaseAuth.instance.currentUser!.displayName ?? 'David Bond',
+              FirebaseAuth.instance.currentUser?.displayName ?? '',
             ),
-            accountEmail: Text(FirebaseAuth.instance.currentUser!.email!),
+            accountEmail: Text(FirebaseAuth.instance.currentUser?.email ?? ''),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
