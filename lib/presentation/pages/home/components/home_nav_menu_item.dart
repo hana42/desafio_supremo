@@ -32,9 +32,6 @@ class HomeNavMenuItem extends StatelessWidget {
                         child: child,
                       );
                     }));
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(builder: (_) => page),
-            // );
           },
           style: OutlinedButton.styleFrom(
             padding: const EdgeInsets.only(top: 15),

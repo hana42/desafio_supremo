@@ -54,7 +54,7 @@ class _NameInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'Nome',
             helperText: '',
-            errorText: state.name.invalid ? 'invalid name' : null,
+            errorText: state.name.invalid ? 'Nome Inválido' : null,
           ),
         );
       },
@@ -75,7 +75,7 @@ class _CpfInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'CPF',
             helperText: '',
-            errorText: state.cpf.invalid ? 'invalid cpf' : null,
+            errorText: state.cpf.invalid ? 'CPF Inválido' : null,
           ),
         );
       },
@@ -96,7 +96,7 @@ class _EmailInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'Email',
             helperText: '',
-            errorText: state.email.invalid ? 'invalid email' : null,
+            errorText: state.email.invalid ? 'Email Inválido' : null,
           ),
         );
       },
@@ -118,7 +118,7 @@ class _PasswordInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'Senha',
             helperText: '',
-            errorText: state.password.invalid ? 'invalid password' : null,
+            errorText: state.password.invalid ? 'Senha Inválida' : null,
           ),
         );
       },
@@ -143,9 +143,8 @@ class _ConfirmPasswordInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'Confirme a senha',
             helperText: '',
-            errorText: state.confirmedPassword.invalid
-                ? 'passwords do not match'
-                : null,
+            errorText:
+                state.confirmedPassword.invalid ? 'Senha diferente' : null,
           ),
         );
       },

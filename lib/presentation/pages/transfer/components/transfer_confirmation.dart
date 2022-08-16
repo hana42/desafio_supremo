@@ -120,13 +120,9 @@ class TransferConfirmation extends StatelessWidget {
                 SizedBox(
                   width: 240,
                   height: 180,
-                  // child: FittedBox(
                   child: Lottie.network(
                       'https://assets5.lottiefiles.com/packages/lf20_1snz9wmy.json',
                       fit: BoxFit.cover),
-
-                  //   fit: BoxFit.fill,
-                  // ),
                 ),
                 const SizedBox(height: 30),
                 const Text(

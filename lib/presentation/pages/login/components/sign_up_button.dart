@@ -6,6 +6,7 @@ class SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       key: const Key('signUpForm_continue_raisedButton'),
       children: [
         Text(

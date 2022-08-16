@@ -33,14 +33,14 @@ class LoginForm extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 4),
-              SignUpButton(),
               const SizedBox(height: 16),
               EmailInput(),
               const SizedBox(height: 8),
               PasswordInput(),
               const SizedBox(height: 8),
               LoginButton(),
+              const SizedBox(height: 8),
+              SignUpButton(),
             ],
           ),
         ),

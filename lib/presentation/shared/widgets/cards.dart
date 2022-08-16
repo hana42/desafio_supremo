@@ -37,11 +37,13 @@ class DotIndicator extends StatefulWidget {
 class _DotIndicatorState extends State<DotIndicator> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Container(
-        height: 8.0,
-        width: 8.0,
+        height: size.height * 0.8,
+        width: size.width * 0.8,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4.0),
           color: widget.isActive ? kBlack : kDarkGrey,
