@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:desafio_supremo/core/di/injection.dart';
+
 import '../../../bloc/Savings/savings_cubit.dart';
 import '../../../shared/theme/colors.dart';
 import '../../../shared/theme/constants.dart';
@@ -40,6 +42,7 @@ class SavingsWidget extends StatelessWidget {
             ],
           ),
           BlocListener<SavingsCubit, SavingsState>(
+            bloc: locator.get<SavingsCubit>(),
             listener: (context, state) {
               if (state is SavingsError) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -51,6 +54,7 @@ class SavingsWidget extends StatelessWidget {
               }
             },
             child: BlocBuilder<SavingsCubit, SavingsState>(
+              bloc: locator.get<SavingsCubit>()..getSavings(),
               builder: (context, state) {
                 if (state is SavingsSuccess) {
                   var savings = state.amount.amount;

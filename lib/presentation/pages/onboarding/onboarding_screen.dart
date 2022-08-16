@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/widgets/custom_button.dart';
 import '../login/login_screen.dart';
-import 'components/register_button.dart';
 
 import 'choose_card.dart';
 

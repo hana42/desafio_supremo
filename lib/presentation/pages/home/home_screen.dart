@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.grey[200]!,
         title: Text(
-            'Olá, ${FirebaseAuth.instance.currentUser!.displayName ?? 'David'}.'),
+            'Olá, ${FirebaseAuth.instance.currentUser?.displayName ?? ''}.'),
         centerTitle: false,
       ),
       endDrawer: Drawer(
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
             UserAccountsDrawerHeader(
               decoration: BoxDecoration(color: kBlack),
               accountName: Text(
-                FirebaseAuth.instance.currentUser!.displayName ?? 'David Bond',
+                FirebaseAuth.instance.currentUser?.displayName ?? '',
               ),
               accountEmail: Text(FirebaseAuth.instance.currentUser!.email!),
             ),

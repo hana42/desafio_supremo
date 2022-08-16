@@ -1,7 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../theme/constants.dart';
+
 import 'glass_morphism.dart';
 
 class CreditCard extends StatelessWidget {
@@ -29,7 +31,7 @@ class CreditCard extends StatelessWidget {
             Align(
               alignment: Alignment.bottomLeft,
               child: Text(
-                (FirebaseAuth.instance.currentUser?.displayName ?? 'David Bond')
+                (FirebaseAuth.instance.currentUser?.displayName ?? 'Card Holder')
                     .toUpperCase(),
                 style: Theme.of(context).textTheme.button,
               ),

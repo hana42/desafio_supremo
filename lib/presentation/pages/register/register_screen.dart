@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/di/injection.dart';
 import '../../bloc/register/register_cubit.dart';
 import '../../shared/theme/colors.dart';
 import '../../shared/widgets/clipper_header.dart';
 import '../../shared/widgets/header.dart';
+
 import 'components/register_form.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -42,7 +44,7 @@ class RegisterScreen extends StatelessWidget {
               ],
             ),
             BlocProvider(
-              create: (context) => locator.get<RegisterCubit>(),
+              create: (context) => RegisterCubit(AuthenticationRepository()),
               child: RegisterForm(),
             )
           ],

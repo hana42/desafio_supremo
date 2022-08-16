@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:desafio_supremo/core/di/injection.dart';
-
 import '../../../bloc/login/login_cubit.dart';
 
 class PasswordInput extends StatelessWidget {
@@ -16,7 +14,7 @@ class PasswordInput extends StatelessWidget {
           autofocus: true,
           key: const Key('loginForm_passwordInput_textField'),
           onChanged: (password) =>
-              locator.get<LoginCubit>().passwordChanged(password),
+              context.read<LoginCubit>().passwordChanged(password),
           obscureText: true,
           textInputAction: TextInputAction.done,
           decoration: InputDecoration(

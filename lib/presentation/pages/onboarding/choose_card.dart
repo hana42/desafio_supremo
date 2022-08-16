@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/theme/colors.dart';
+import '../../shared/widgets/custom_button.dart';
 import '../register/register_screen.dart';
 
-import '../../shared/theme/colors.dart';
-
-import 'components/card_transform.dart';
-import 'components/register_button.dart';
+import 'components/rotate_card.dart';
 
 class CardPicker extends StatefulWidget {
   const CardPicker({Key? key}) : super(key: key);

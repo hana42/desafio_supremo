@@ -54,15 +54,15 @@ void init() {
   locator.registerFactory<StatementCubit>(
     () => StatementCubit(locator<GetStatementImpl>()),
   );
-  locator.registerFactory<AppBloc>(
+  locator.registerLazySingleton<AppBloc>(
     () => AppBloc(auth: locator<AuthenticationRepository>()),
   );
 
-  locator.registerFactory<AuthenticationRepository>(
+  locator.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepository(),
   );
 
-  locator.registerFactory<RegisterCubit>(
+  locator.registerLazySingleton<RegisterCubit>(
     () => RegisterCubit(locator<AuthenticationRepository>()),
   );
 

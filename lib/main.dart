@@ -7,16 +7,13 @@ import 'core/di/injection.dart' as di;
 import 'firebase_options.dart';
 import 'presentation/app.dart';
 
-void main() {
+void main() async {
   di.init();
   WidgetsFlutterBinding.ensureInitialized();
-  initFirebase();
-}
 
-initFirebase() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  );  
 
   final authenticationRepository = AuthenticationRepository();
   runApp(App(authenticationRepository: authenticationRepository));
