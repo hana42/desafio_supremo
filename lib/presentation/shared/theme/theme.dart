@@ -29,17 +29,18 @@ class CustomTheme {
         border: const UnderlineInputBorder(),
         hintStyle: const TextStyle(color: Colors.black),
         enabledBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: kDarkGrey)),
-        focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: kDarkGrey)),
+            borderSide: BorderSide(color: Colors.grey, width: 1)),
+        focusedBorder:
+            const UnderlineInputBorder(borderSide: BorderSide(color: kBlack)),
         errorBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.red, width: 2)),
+            borderSide: BorderSide(color: Colors.red, width: 1)),
         focusedErrorBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.red, width: 2)),
-        fillColor: Colors.black,
+            borderSide: BorderSide(color: Colors.red, width: 1)),
+        fillColor: kBlack,
         contentPadding: kDefaultPadding / 2,
         labelStyle: kBodyText2,
         prefixStyle: kBodyText2,
+        isDense: true,
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,

@@ -22,21 +22,6 @@ class PasswordInput extends StatelessWidget {
           decoration: InputDecoration(
             errorText: state.password.invalid ? 'Senha inválida' : null,
             hintText: 'Senha',
-            hintStyle: const TextStyle(color: Colors.black),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1),
-            ),
-            focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black)),
-            errorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 1),
-            ),
-            focusedErrorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 1),
-            ),
-            fillColor: Colors.black,
-            isDense: true,
-            contentPadding: const EdgeInsets.fromLTRB(12, 16, 12, 16),
           ),
           cursorColor: Colors.black,
           style: TextStyle(

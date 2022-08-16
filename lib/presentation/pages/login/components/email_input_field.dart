@@ -19,22 +19,7 @@ class EmailInput extends StatelessWidget {
           onChanged: (email) => locator.get<LoginCubit>().emailChanged(email),
           decoration: InputDecoration(
             hintText: 'Email',
-            hintStyle: const TextStyle(color: Colors.black),
             errorText: state.email.invalid ? 'Email inválido' : null,
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1),
-            ),
-            focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black)),
-            errorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 1),
-            ),
-            focusedErrorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 1),
-            ),
-            fillColor: Colors.black,
-            isDense: true,
-            contentPadding: const EdgeInsets.fromLTRB(12, 16, 12, 16),
           ),
           cursorColor: Colors.black,
           style: TextStyle(
