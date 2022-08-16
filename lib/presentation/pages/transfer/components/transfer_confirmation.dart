@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
@@ -117,7 +118,7 @@ class TransferConfirmation extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const HomeScreen()),
+                      MaterialPageRoute(builder: (_) => HomeScreen()),
                     );
                   },
                   child: Text(

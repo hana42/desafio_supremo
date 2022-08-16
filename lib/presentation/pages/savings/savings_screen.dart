@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_supremo/presentation/pages/savings/components/savings_container.dart';
+import 'components/savings_container.dart';
 
-import '../../shared/theme/constants.dart';
 
-import 'components/user_goals_list.dart';
+
+// import '../../shared/theme/constants.dart';
+
+// import 'components/user_goals_list.dart';
 
 class SavingsScreen extends StatelessWidget {
   @override
@@ -21,7 +23,7 @@ class SavingsScreen extends StatelessWidget {
             Center(
               child: Text('Não funciona'),
             ),
-            // SavingsWidget(),
+            SavingsWidget(),
             // SizedBox(height: 60),
             // Padding(
             //   padding: kDefaultPadding,
