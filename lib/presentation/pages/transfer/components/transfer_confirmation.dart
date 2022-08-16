@@ -122,6 +122,7 @@ class TransferConfirmation extends StatelessWidget {
                   },
                   child: Text(
                     'Voltar para Home',
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
