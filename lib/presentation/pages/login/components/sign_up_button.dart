@@ -6,13 +6,11 @@ class RegisterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.min,
       key: const Key('RegisterForm_continue_raisedButton'),
       children: [
-        Text(
-          'Não tem uma conta?',
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(height: 2),
-        ),
+        Text('Não tem uma conta?'),
         TextButton(
           onPressed: () =>
               Navigator.of(context).push<void>(RegisterScreen.route()),

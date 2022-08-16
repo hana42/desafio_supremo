@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
-import '../../home/home_screen.dart';
-
 import '../../../bloc/register/register_cubit.dart';
 import '../../../shared/theme/constants.dart';
+import '../../home/home_screen.dart';
 import '../../onboarding/components/register_button.dart';
 
 class RegisterForm extends StatelessWidget {
@@ -58,7 +57,6 @@ class _NameInput extends StatelessWidget {
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             labelText: 'Nome',
-            helperText: '',
             errorText: state.name.invalid ? 'Nome Inválido' : null,
           ),
         );
@@ -80,7 +78,6 @@ class _CpfInput extends StatelessWidget {
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             labelText: 'CPF',
-            helperText: '',
             errorText: state.cpf.invalid ? 'CPF Inválido' : null,
           ),
         );
@@ -103,7 +100,6 @@ class _EmailInput extends StatelessWidget {
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             labelText: 'Email',
-            helperText: '',
             errorText: state.email.invalid ? 'Email Inválido' : null,
           ),
         );
@@ -126,7 +122,6 @@ class _PasswordInput extends StatelessWidget {
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             labelText: 'Senha',
-            helperText: '',
             errorText: state.password.invalid ? 'Senha Inválida' : null,
           ),
         );

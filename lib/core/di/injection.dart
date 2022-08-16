@@ -3,20 +3,19 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/datasources/balance_visibility/balance_visibility_local_data_source_impl.dart';
-import '../../data/repositories/balance_visibility_repository_impl.dart';
-import '../../domain/usecases/balance_visibility/get_balance_visibility_impl.dart';
-import '../../domain/usecases/balance_visibility/save_balance_visibility_impl.dart';
-
 import '../../data/datasources/balance/balance_remote_data_source_impl.dart';
+import '../../data/datasources/balance_visibility/balance_visibility_local_data_source_impl.dart';
 import '../../data/datasources/detail/detail_remote_data_source_impl.dart';
 import '../../data/datasources/savings/savings_local_data_source_impl.dart';
 import '../../data/datasources/statement/statement_remote_data_source_impl.dart';
 import '../../data/repositories/balance_repository_impl.dart';
+import '../../data/repositories/balance_visibility_repository_impl.dart';
 import '../../data/repositories/detail_repository_impl.dart';
 import '../../data/repositories/savings_repository_impl.dart';
 import '../../data/repositories/statement_repository_impl.dart';
 import '../../domain/usecases/balance/get_balance_impl.dart';
+import '../../domain/usecases/balance_visibility/get_balance_visibility_impl.dart';
+import '../../domain/usecases/balance_visibility/save_balance_visibility_impl.dart';
 import '../../domain/usecases/detail/get_detail_impl.dart';
 import '../../domain/usecases/savings/get_savings_impl.dart';
 import '../../domain/usecases/statement/get_statement_impl.dart';
@@ -48,7 +47,7 @@ void init() {
     () => DetailCubit(locator<GetDetailImpl>()),
   );
 
-  locator.registerLazySingleton<SavingsCubit>(
+  locator.registerLazySingleton(
     () => SavingsCubit(locator<GetSavingsImpl>()),
   );
 
