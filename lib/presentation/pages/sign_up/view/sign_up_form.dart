@@ -52,7 +52,7 @@ class _NameInput extends StatelessWidget {
           onChanged: (name) => context.read<SignUpCubit>().nameChanged(name),
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
-            labelText: 'name',
+            labelText: 'Nome',
             helperText: '',
             errorText: state.name.invalid ? 'invalid name' : null,
           ),
@@ -94,7 +94,7 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) => context.read<SignUpCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            labelText: 'email',
+            labelText: 'Email',
             helperText: '',
             errorText: state.email.invalid ? 'invalid email' : null,
           ),
@@ -116,7 +116,7 @@ class _PasswordInput extends StatelessWidget {
               context.read<SignUpCubit>().passwordChanged(password),
           obscureText: true,
           decoration: InputDecoration(
-            labelText: 'password',
+            labelText: 'Senha',
             helperText: '',
             errorText: state.password.invalid ? 'invalid password' : null,
           ),
@@ -141,7 +141,7 @@ class _ConfirmPasswordInput extends StatelessWidget {
               .confirmedPasswordChanged(confirmPassword),
           obscureText: true,
           decoration: InputDecoration(
-            labelText: 'confirm password',
+            labelText: 'Confirme a senha',
             helperText: '',
             errorText: state.confirmedPassword.invalid
                 ? 'passwords do not match'

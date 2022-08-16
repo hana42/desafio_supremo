@@ -26,7 +26,7 @@ class PasswordInput extends StatelessWidget {
               borderSide: BorderSide(color: Colors.grey, width: 1),
             ),
             focusedBorder: UnderlineInputBorder(
-                borderSide: const BorderSide(color: Colors.blue)),
+                borderSide: const BorderSide(color: Colors.black)),
             errorBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.red, width: 1),
             ),

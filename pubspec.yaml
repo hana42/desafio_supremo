@@ -58,6 +58,12 @@ dev_dependencies:
   lints: ^2.0.0
   bloc_test: ^9.0.3
   dependency_validator: ^3.0.0
+  flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/NoBank3.png"
 
 flutter:
   uses-material-design: true
