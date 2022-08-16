@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:confetti/confetti.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'components/advertisement_card.dart';
@@ -9,6 +8,8 @@ import 'components/home_header.dart';
 import 'components/home_nav_menu.dart';
 
 class HomeScreen extends StatelessWidget {
+  static Page<void> page() => MaterialPage<void>(child: HomeScreen());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +21,7 @@ class HomeScreen extends StatelessWidget {
       ),
       endDrawer: HomeDrawer(),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: const [
             HomeHeader(),
