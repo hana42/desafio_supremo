@@ -11,13 +11,13 @@ class SignUpButton extends StatelessWidget {
       children: [
         Text(
           'Não tem uma conta?',
-          style: TextStyle(color: Colors.black),
+          style: Theme.of(context).textTheme.bodyText2!.copyWith(height: 2),
         ),
         TextButton(
           onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
           child: Text(
             'Registrar',
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.overline!,
           ),
         ),
       ],

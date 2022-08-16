@@ -10,6 +10,7 @@ class PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
+      bloc: locator.get<LoginCubit>(),
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return TextFormField(
