@@ -19,6 +19,5 @@ initFirebase() async {
   );
 
   final authenticationRepository = AuthenticationRepository();
-  await authenticationRepository.user.first;
-  runApp(App(authenticationRepository: AuthenticationRepository()));
+  runApp(App(authenticationRepository: authenticationRepository));
 }

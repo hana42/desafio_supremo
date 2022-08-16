@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
+import 'package:desafio_supremo/core/di/injection.dart';
 import 'package:desafio_supremo/presentation/pages/onboarding/components/register_button.dart';
 
 import '../../../bloc/login/login_cubit.dart';
@@ -20,12 +21,8 @@ class LoginButton extends StatelessWidget {
                 child: CustomButton(
                   'Entrar',
                   key: const Key('loginForm_passwordInput_textField'),
-                  onPressed: () {
-                    return state.status.isValidated
-                        ? () =>
-                            context.read<LoginCubit>().logInWithCredentials()
-                        : null;
-                  },
+                  onPressed: () =>
+                      locator.get<LoginCubit>().logInWithCredentials(),
                 ),
               );
       },

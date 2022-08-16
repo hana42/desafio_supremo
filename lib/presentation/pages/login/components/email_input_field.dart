@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/di/injection.dart';
 import '../../../bloc/login/login_cubit.dart';
 
 class EmailInput extends StatelessWidget {
@@ -13,7 +14,7 @@ class EmailInput extends StatelessWidget {
         return TextFormField(
           key: const Key('loginForm_emailInput_textField'),
           keyboardType: TextInputType.emailAddress,
-          onChanged: (email) => context.read<LoginCubit>().emailChanged(email),
+          onChanged: (email) => locator.get<LoginCubit>().emailChanged(email),
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             hintText: 'Email',

@@ -23,7 +23,7 @@ class App extends StatelessWidget {
     return RepositoryProvider.value(
       value: _authenticationRepository,
       child: BlocProvider(
-        create: (_) => locator.get<AppBloc>(),
+        create: (_) => AppBloc(auth: _authenticationRepository),
         child: AppView(),
       ),
     );

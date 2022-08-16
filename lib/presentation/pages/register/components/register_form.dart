@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
+import 'package:desafio_supremo/core/di/injection.dart';
+
 import '../../../bloc/register/register_cubit.dart';
 import '../../../shared/theme/constants.dart';
 import '../../home/home_screen.dart';
@@ -52,7 +54,7 @@ class _NameInput extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           key: const Key('RegisterForm_nameInput_textField'),
-          onChanged: (name) => context.read<RegisterCubit>().nameChanged(name),
+          onChanged: (name) => locator.get<RegisterCubit>().nameChanged(name),
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
@@ -73,7 +75,7 @@ class _CpfInput extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           key: const Key('RegisterForm_cpfInput_textField'),
-          onChanged: (cpf) => context.read<RegisterCubit>().cpfChanged(cpf),
+          onChanged: (cpf) => locator.get<RegisterCubit>().cpfChanged(cpf),
           keyboardType: TextInputType.number,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
@@ -95,7 +97,7 @@ class _EmailInput extends StatelessWidget {
         return TextFormField(
           key: const Key('RegisterForm_emailInput_textField'),
           onChanged: (email) =>
-              context.read<RegisterCubit>().emailChanged(email),
+              locator.get<RegisterCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
@@ -117,7 +119,7 @@ class _PasswordInput extends StatelessWidget {
         return TextField(
           key: const Key('RegisterForm_passwordInput_textField'),
           onChanged: (password) =>
-              context.read<RegisterCubit>().passwordChanged(password),
+              locator.get<RegisterCubit>().passwordChanged(password),
           obscureText: true,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
@@ -140,8 +142,8 @@ class _ConfirmPasswordInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('RegisterForm_confirmedPasswordInput_textField'),
-          onChanged: (confirmPassword) => context
-              .read<RegisterCubit>()
+          onChanged: (confirmPassword) => locator
+              .get<RegisterCubit>()
               .confirmedPasswordChanged(confirmPassword),
           obscureText: true,
           textInputAction: TextInputAction.done,
@@ -168,7 +170,7 @@ class _RegisterButton extends StatelessWidget {
                 key: const Key('RegisterForm_continue_elevate_button'),
                 'Confirmar',
                 onPressed: () => state.status.isValidated
-                    ? context.read<RegisterCubit>().registerFormSubmitted()
+                    ? locator.get<RegisterCubit>().registerFormSubmitted()
                     : null,
               );
       },

@@ -54,7 +54,6 @@ void init() {
   locator.registerFactory<StatementCubit>(
     () => StatementCubit(locator<GetStatementImpl>()),
   );
-
   locator.registerFactory<AppBloc>(
     () => AppBloc(auth: locator<AuthenticationRepository>()),
   );
@@ -67,7 +66,7 @@ void init() {
     () => RegisterCubit(locator<AuthenticationRepository>()),
   );
 
-  locator.registerFactory<LoginCubit>(
+  locator.registerLazySingleton<LoginCubit>(
     () => LoginCubit(locator<AuthenticationRepository>()),
   );
 
