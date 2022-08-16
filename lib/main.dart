@@ -19,6 +19,6 @@ firebase() async {
   );
 
   final authenticationRepository = AuthenticationRepository();
-  // await authenticationRepository.user.first;
+  await authenticationRepository.user.first;
   runApp(App(authenticationRepository: authenticationRepository));
 }
