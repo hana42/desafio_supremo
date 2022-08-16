@@ -2,7 +2,6 @@ import 'package:either_dart/either.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import 'package:desafio_supremo/core/error/failure.dart';
 import 'package:desafio_supremo/domain/entities/detail.dart';
 import 'package:desafio_supremo/domain/usecases/detail/get_detail_impl.dart';
 
@@ -36,8 +35,6 @@ void main() {
 
       final result = await usecase(tId);
 
-      expect(result.isRight, true);
-      expect(result.right, isA<Detail>());
       expect(result.right, equals(testDetail));
     });
   });

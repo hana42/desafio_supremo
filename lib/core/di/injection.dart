@@ -8,11 +8,11 @@ import '../../data/datasources/balance_visibility/balance_visibility_local_data_
 import '../../data/datasources/detail/detail_remote_data_source_impl.dart';
 import '../../data/datasources/savings/savings_local_data_source_impl.dart';
 import '../../data/datasources/statement/statement_remote_data_source_impl.dart';
-import '../../data/repositories/balance_repository_impl.dart';
-import '../../data/repositories/balance_visibility_repository_impl.dart';
-import '../../data/repositories/detail_repository_impl.dart';
-import '../../data/repositories/savings_repository_impl.dart';
-import '../../data/repositories/statement_repository_impl.dart';
+import '../../data/repositories/balance/balance_repository_impl.dart';
+import '../../data/repositories/balance_visibility/balance_visibility_repository_impl.dart';
+import '../../data/repositories/detail/detail_repository_impl.dart';
+import '../../data/repositories/savings/savings_repository_impl.dart';
+import '../../data/repositories/statement/statement_repository_impl.dart';
 import '../../domain/usecases/balance/get_balance_impl.dart';
 import '../../domain/usecases/balance_visibility/get_balance_visibility_impl.dart';
 import '../../domain/usecases/balance_visibility/save_balance_visibility_impl.dart';

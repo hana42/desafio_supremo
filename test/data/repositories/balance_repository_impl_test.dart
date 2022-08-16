@@ -5,8 +5,8 @@ import 'package:mockito/mockito.dart';
 
 import 'package:desafio_supremo/core/error/exception.dart';
 import 'package:desafio_supremo/core/error/failure.dart';
-import 'package:desafio_supremo/data/models/balance_model.dart';
-import 'package:desafio_supremo/data/repositories/balance_repository_impl.dart';
+import 'package:desafio_supremo/data/models/balance/balance_model.dart';
+import 'package:desafio_supremo/data/repositories/balance/balance_repository_impl.dart';
 import 'package:desafio_supremo/domain/entities/balance.dart';
 
 import '../../helpers/test_helper.mocks.dart';

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
-import '../../domain/entities/detail.dart';
+import '../../../domain/entities/detail.dart';
 
 class DetailModel extends Equatable {
   const DetailModel({

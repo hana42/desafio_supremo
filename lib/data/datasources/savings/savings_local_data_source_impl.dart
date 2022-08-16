@@ -1,9 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
-
 import '../../../core/error/exception.dart';
-import '../../models/savings_model.dart';
+import '../../models/savings/savings_model.dart';
 
 import 'savings_local_data_source.dart';
 

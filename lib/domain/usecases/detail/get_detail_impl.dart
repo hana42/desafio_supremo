@@ -2,7 +2,7 @@ import 'package:either_dart/either.dart';
 
 import '../../../core/error/failure.dart';
 import '../../entities/detail.dart';
-import '../../repositories/detail_repository.dart';
+import '../../repositories/detail/detail_repository.dart';
 
 import 'get_detail.dart';
 

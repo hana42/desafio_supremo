@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:either_dart/either.dart';
 
-import '../../core/error/exception.dart';
-import '../../core/error/failure.dart';
-import '../../domain/entities/statement.dart';
-import '../../domain/repositories/statement_repository.dart';
-import '../datasources/statement/statement_remote_data_source.dart';
+import '../../../core/error/exception.dart';
+import '../../../core/error/failure.dart';
+import '../../../domain/entities/statement.dart';
+import '../../../domain/repositories/statement/statement_repository.dart';
+import '../../datasources/statement/statement_remote_data_source.dart';
 
 class StatementRepositoryImpl implements StatementRepository {
   StatementRepositoryImpl(this.statementRemoteDataSource);

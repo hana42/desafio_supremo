@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:desafio_supremo/data/models/detail_model.dart';
+import 'package:desafio_supremo/data/models/detail/detail_model.dart';
 import 'package:desafio_supremo/domain/entities/detail.dart';
 
 import '../../helpers/json_reader.dart';

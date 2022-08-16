@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:desafio_supremo/data/models/balance_model.dart';
+import 'package:desafio_supremo/data/models/balance/balance_model.dart';
 import 'package:desafio_supremo/domain/entities/balance.dart';
 
 import '../../helpers/json_reader.dart';

@@ -100,10 +100,11 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
       await _authenticationRepository.signUp(
-          email: state.email.value,
-          password: state.password.value,
-          name: state.name.value,
-          cpf: state.cpf.value);
+        email: state.email.value,
+        password: state.password.value,
+        name: state.name.value,
+        cpf: state.cpf.value,
+      );
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
     } on SignUpWithEmailAndPasswordFailure catch (e) {
       emit(

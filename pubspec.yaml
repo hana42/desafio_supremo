@@ -53,7 +53,6 @@ dev_dependencies:
   lint: ^1.0.0
   flutter_lints: ^2.0.0
   mockito: ^5.2.0
-  mocktail: ^0.3.0
   build_runner: ^2.2.0
   lints: ^2.0.0
   bloc_test: ^9.0.3

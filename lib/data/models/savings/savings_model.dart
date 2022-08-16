@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/savings.dart';
+import '../../../domain/entities/savings.dart';
 
 class SavingsModel extends Equatable {
   const SavingsModel({required this.amount});

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 import '/core/error/exception.dart';
 import '/core/utils/api.utils.dart';
-import '/data/models/statement_model.dart';
+import '../../models/statement/statement_model.dart';
 import 'statement_remote_data_source.dart';
 
 class StatementRemoteDataSourceImpl implements StatementRemoteDataSource {

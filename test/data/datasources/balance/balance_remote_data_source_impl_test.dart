@@ -8,7 +8,7 @@ import 'package:mockito/mockito.dart';
 import 'package:desafio_supremo/core/error/exception.dart';
 import 'package:desafio_supremo/core/utils/api.utils.dart';
 import 'package:desafio_supremo/data/datasources/balance/balance_remote_data_source_impl.dart';
-import 'package:desafio_supremo/data/models/balance_model.dart';
+import 'package:desafio_supremo/data/models/balance/balance_model.dart';
 
 import '../../../helpers/json_reader.dart';
 import '../../../helpers/test_helper.mocks.dart';

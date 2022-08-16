@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 import '../../../core/error/exception.dart';
 import '../../../core/utils/api.utils.dart';
-import '../../models/detail_model.dart';
+import '../../models/detail/detail_model.dart';
 
 import 'detail_remote_data_source.dart';
 

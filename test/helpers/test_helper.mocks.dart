@@ -20,29 +20,29 @@ import 'package:desafio_supremo/data/datasources/statement/statement_remote_data
     as _i8;
 import 'package:desafio_supremo/data/datasources/statement/statement_remote_data_source_impl.dart'
     as _i24;
-import 'package:desafio_supremo/data/models/balance_model.dart' as _i4;
-import 'package:desafio_supremo/data/models/detail_model.dart' as _i5;
-import 'package:desafio_supremo/data/models/savings_model.dart' as _i6;
-import 'package:desafio_supremo/data/models/statement_model.dart' as _i25;
-import 'package:desafio_supremo/data/repositories/balance_repository_impl.dart'
+import 'package:desafio_supremo/data/models/balance/balance_model.dart' as _i4;
+import 'package:desafio_supremo/data/models/detail/detail_model.dart' as _i5;
+import 'package:desafio_supremo/data/models/savings/savings_model.dart' as _i6;
+import 'package:desafio_supremo/data/models/statement/statement_model.dart' as _i25;
+import 'package:desafio_supremo/data/repositories/balance/balance_repository_impl.dart'
     as _i28;
-import 'package:desafio_supremo/data/repositories/detail_repository_impl.dart'
+import 'package:desafio_supremo/data/repositories/detail/detail_repository_impl.dart'
     as _i30;
-import 'package:desafio_supremo/data/repositories/savings_repository_impl.dart'
+import 'package:desafio_supremo/data/repositories/savings/savings_repository_impl.dart'
     as _i31;
-import 'package:desafio_supremo/data/repositories/statement_repository_impl.dart'
+import 'package:desafio_supremo/data/repositories/statement/statement_repository_impl.dart'
     as _i29;
 import 'package:desafio_supremo/domain/entities/balance.dart' as _i13;
 import 'package:desafio_supremo/domain/entities/detail.dart' as _i17;
 import 'package:desafio_supremo/domain/entities/savings.dart' as _i19;
 import 'package:desafio_supremo/domain/entities/statement.dart' as _i15;
-import 'package:desafio_supremo/domain/repositories/balance_repository.dart'
+import 'package:desafio_supremo/domain/repositories/balance/balance_repository.dart'
     as _i20;
-import 'package:desafio_supremo/domain/repositories/detail_repository.dart'
+import 'package:desafio_supremo/domain/repositories/detail/detail_repository.dart'
     as _i22;
-import 'package:desafio_supremo/domain/repositories/savings_repository.dart'
+import 'package:desafio_supremo/domain/repositories/savings/savings_repository.dart'
     as _i23;
-import 'package:desafio_supremo/domain/repositories/statement_repository.dart'
+import 'package:desafio_supremo/domain/repositories/statement/statement_repository.dart'
     as _i21;
 import 'package:desafio_supremo/domain/usecases/balance/get_balance_impl.dart'
     as _i10;

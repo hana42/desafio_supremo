@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:either_dart/either.dart';
 
-import '../../core/error/exception.dart';
-import '../../core/error/failure.dart';
-import '../../domain/entities/savings.dart';
-import '../../domain/repositories/savings_repository.dart';
-import '../datasources/savings/savings_local_data_source_impl.dart';
+import '../../../core/error/exception.dart';
+import '../../../core/error/failure.dart';
+import '../../../domain/entities/savings.dart';
+import '../../../domain/repositories/savings/savings_repository.dart';
+import '../../datasources/savings/savings_local_data_source_impl.dart';
 
 class SavingsRepositoryImpl implements SavingsRepository {
   SavingsRepositoryImpl(this._savingsLocalDataSource);

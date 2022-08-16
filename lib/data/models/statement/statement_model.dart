@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
-import '../../domain/entities/statement.dart';
+import '../../../domain/entities/statement.dart';
 
 class StatementModel extends Equatable {
   const StatementModel({

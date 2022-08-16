@@ -2,10 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/error/exception.dart';
 
-abstract class BalanceVisibilityLocalDataSource {
-  bool get();
-  Future<bool> post(bool isVisible);
-}
+import 'balance_visibility_local_data_source.dart';
 
 class BalanceVisibilityLocalDataSourceImpl
     implements BalanceVisibilityLocalDataSource {

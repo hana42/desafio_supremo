@@ -4,7 +4,7 @@ import 'get_savings.dart';
 
 import '../../../core/error/failure.dart';
 import '../../entities/savings.dart';
-import '../../repositories/savings_repository.dart';
+import '../../repositories/savings/savings_repository.dart';
 
 class GetSavingsImpl implements GetSavings {
   GetSavingsImpl(this._repository);

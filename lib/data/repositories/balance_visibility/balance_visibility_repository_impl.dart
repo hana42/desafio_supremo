@@ -1,9 +1,9 @@
 import 'package:either_dart/either.dart';
 
-import '../../core/error/exception.dart';
-import '../../core/error/failure.dart';
-import '../../domain/repositories/balance_visibility_repository.dart';
-import '../datasources/balance_visibility/balance_visibility_local_data_source_impl.dart';
+import '../../../core/error/exception.dart';
+import '../../../core/error/failure.dart';
+import '../../../domain/repositories/balance_visibility/balance_visibility_repository.dart';
+import '../../datasources/balance_visibility/balance_visibility_local_data_source.dart';
 
 class BalanceVisibilityRepositoryImpl implements BalanceVisibilityRepository {
   BalanceVisibilityRepositoryImpl(this.localDataSource);
